@@ -11,6 +11,20 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "Visión",
+        "groups": [
+          {
+            "group": "Qué queremos lograr",
+            "icon": "bullseye",
+            "pages": [
+              "vision/index",
+              "vision/problema",
+              "vision/roadmap"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Plataforma",
         "groups": [
           {
