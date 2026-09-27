@@ -1,0 +1,121 @@
+---
+title: "Modelo de datos de torneos en VANTS: estructura y participantes"
+description: "Conoce las tablas de torneos de VANTS: torneos, etapas, participantes y standings, con sus columnas, relaciones y campos de configuracion flexible."
+sidebarTitle: "Torneos"
+---
+
+Los torneos agrupan partidos bajo una misma competicion con reglas, etapas y una tabla de posiciones. Esta pagina describe las cuatro tablas que modelan un torneo completo en VANTS, desde su creacion hasta la clasificacion final.
+
+Cada torneo pertenece a un juego y una region, y puede tener varias etapas que se desarrollan en secuencia, como fase de grupos seguida de eliminatoria.
+
+## Tabla de torneos
+
+La tabla `tournaments` almacena la informacion general de cada competicion.
+
+```sql
+CREATE TABLE tournaments (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  slug              VARCHAR(150) NOT NULL UNIQUE,
+  name              VARCHAR(200) NOT NULL,
+  game_id           UUID NOT NULL REFERENCES games(id),
+  region_id         UUID NOT NULL REFERENCES regions(id),
+  organizer_id      UUID NOT NULL REFERENCES users(id),
+  format            VARCHAR(50) NOT NULL,
+  status            VARCHAR(30) NOT NULL DEFAULT 'draft',
+  registration_status VARCHAR(30) NOT NULL DEFAULT 'closed',
+  starts_at         TIMESTAMPTZ,
+  ends_at           TIMESTAMPTZ,
+  prize_pool        DECIMAL(12,2),
+  currency          VARCHAR(3) DEFAULT 'USD',
+  rules_url         TEXT,
+  description       TEXT,
+  cover_image_url   TEXT,
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+| Columna | Descripcion |
+| --- | --- |
+| `format` | Formato competitivo, como suizo, grupos o eliminatoria |
+| `status` | Estado del torneo: draft, published, ongoing, completed, cancelled |
+| `registration_status` | Abierta, cerrada, invitacion o pendiente |
+| `prize_pool` | Monto total de premios con dos decimales |
+| `rules_url` | Enlace al documento de reglas del torneo |
+| `cover_image_url` | Imagen de portada para la pagina del torneo |
+
+## Tabla de etapas de torneo
+
+La tabla `tournament_stages` divide un torneo en fases consecutivas.
+
+```sql
+CREATE TABLE tournament_stages (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tournament_id UUID NOT NULL REFERENCES tournaments(id),
+  name          VARCHAR(150) NOT NULL,
+  type          VARCHAR(50) NOT NULL,
+  sequence      SMALLINT NOT NULL DEFAULT 1,
+  starts_at     TIMESTAMPTZ,
+  ends_at       TIMESTAMPTZ,
+  settings      JSONB,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+La columna `settings` de tipo JSONB guarda parametros especificos de la etapa, como numero de grupos, tamaño de bracket, criterios de desempate o sistema de puntos por victoria. Esto permite adaptar la misma estructura de tabla a distintos formatos sin modificar el esquema.
+
+## Tabla de participantes
+
+La tabla `tournament_participants` registra quien compite en un torneo, ya sea como equipo o como jugador individual.
+
+```sql
+CREATE TABLE tournament_participants (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tournament_id UUID NOT NULL REFERENCES tournaments(id),
+  team_id       UUID REFERENCES teams(id),
+  user_id       UUID REFERENCES users(id),
+  seed          SMALLINT,
+  status        VARCHAR(30) NOT NULL DEFAULT 'registered',
+  checked_in_at TIMESTAMPTZ,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+Un participante tiene `team_id` o `user_id`, nunca ambos en la misma fila. La columna `seed` indica la posicion previa asignada para sorteos o bracket, y `checked_in_at` confirma que el participante valido su asistencia antes del inicio.
+
+## Tabla de standings
+
+La tabla `standings` almacena la clasificacion de cada etapa.
+
+```sql
+CREATE TABLE standings (
+  id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  tournament_stage_id UUID NOT NULL REFERENCES tournament_stages(id),
+  participant_id    UUID NOT NULL REFERENCES tournament_participants(id),
+  position          SMALLINT NOT NULL DEFAULT 0,
+  points            SMALLINT NOT NULL DEFAULT 0,
+  played            SMALLINT NOT NULL DEFAULT 0,
+  wins              SMALLINT NOT NULL DEFAULT 0,
+  losses            SMALLINT NOT NULL DEFAULT 0,
+  draws             SMALLINT NOT NULL DEFAULT 0,
+  maps_for          SMALLINT NOT NULL DEFAULT 0,
+  maps_against      SMALLINT NOT NULL DEFAULT 0,
+  rounds_for        SMALLINT NOT NULL DEFAULT 0,
+  rounds_against    SMALLINT NOT NULL DEFAULT 0,
+  tiebreak_data     JSONB,
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+| Columna | Descripcion |
+| --- | --- |
+| `position` | Lugar en la clasificacion, 1 para el primero |
+| `points` | Puntos acumulados segun el sistema del torneo |
+| `maps_for` / `maps_against` | Mapas ganados y perdidos en la etapa |
+| `rounds_for` / `rounds_against` | Rondas totales a favor y en contra |
+| `tiebreak_data` | JSON con criterios de desempate aplicados |
+
+La columna `tiebreak_data` permite almacenar detalles de desempate, como diferencia de rondas, enfrentamientos directos o tiempo promedio de victoria, sin complicar la estructura principal.

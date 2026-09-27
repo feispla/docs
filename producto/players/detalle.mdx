@@ -1,0 +1,103 @@
+---
+title: "Ficha detallada de jugador en VANTS con historial y estadísticas"
+description: "Explora la ficha completa de un jugador en VANTS. Revisa avatar, rating, rango, rendimiento reciente, historial de partidas, estadísticas, torneos, logros y evolución de rating."
+sidebarTitle: "Detalle"
+---
+
+La ficha detallada de cada jugador en VANTS centraliza toda su información competitiva pública. La ruta sigue el patrón `/players/:playerSlug` y se organiza en secciones verticales que permiten conocer su perfil, rendimiento actual y trayectoria histórica en la plataforma.
+
+## Perfil principal
+
+La cabecera de la ficha muestra los datos identificativos del competidor:
+
+| Campo | Descripción |
+| --- | --- |
+| Avatar | Imagen de perfil subida por el jugador o avatar por defecto |
+| Nickname | Nombre de competidor |
+| Región | Región competitiva asignada |
+| Equipo | Escuadra actual con enlace a su ficha, o "Sin equipo" |
+| Juego | Título principal en el que compite |
+| Rol | Posición competitiva dentro del equipo o en solitario |
+| Rating VANTS | Número entero del rating en ese juego específico |
+| Rango | Rango actual con división (por ejemplo, Ascendente I) |
+
+## Rendimiento reciente
+
+Resumen de los últimos 10 partidos oficiales jugados:
+
+| Métrica | Descripción |
+| --- | --- |
+| Partidos | 10 |
+| Victorias | Número de victorias en ese tramo |
+| Derrotas | Número de derrotas en ese tramo |
+| Win rate | Porcentaje de victorias |
+| Rating promedio | Promedio del rating del jugador en esos partidos |
+| Rendimiento individual | Promedio ponderado de métricas clave según el juego |
+
+## Historial de partidas
+
+Tabla con los partidos oficiales recientes del jugador:
+
+| Columna | Descripción |
+| --- | --- |
+| Fecha | Día y hora del partido |
+| Torneo | Evento donde se jugó |
+| Rival | Equipo contrario |
+| Resultado | Victoria o derrota |
+| Marcador | Puntuación final |
+| Formato | BO1, BO3 o BO5 |
+| Estado | Programado, En vivo, Finalizado, etc. |
+
+## Estadísticas
+
+Desglose de métricas acumuladas en la temporada actual, organizadas por juego:
+
+- **VALORANT**: K/D/A, ACS, ADR, HS%, First kills, Clutches, Multikills
+- **CS2**: K/D, ADR, KAST, HS%, Rating VANTS, Entry kills, Clutches
+- **LoL**: K/D/A, CS/min, Oro/min, Daño/min, Visión/min, Participación en asesinatos
+
+## Torneos
+
+Lista de torneos en los que el jugador ha participado como miembro de un equipo:
+
+| Columna | Descripción |
+| --- | --- |
+| Torneo | Nombre con enlace al evento |
+| Equipo | Escuadra con la que compitió |
+| Estado | Inscrito, clasificado, eliminado, campeón |
+| Mejor posición | Ronda más lejana alcanzada |
+| Fechas | Periodo del torneo |
+
+## Logros
+
+Sección con insignias y reconocimientos obtenidos en VANTS:
+
+- Rango máximo alcanzado por temporada
+- Victorias en torneos oficiales VANTS
+- Récords personales (máximo rating, racha de victorias)
+- Participaciones en eventos destacados
+
+## Mapas, agentes y campeones favoritos
+
+Según el juego principal del jugador, esta sección muestra:
+
+| Juego | Elementos mostrados |
+| --- | --- |
+| VALORANT | Mapas más jugados con win rate, agentes más seleccionados con pick rate y win rate |
+| CS2 | Mapas más jugados con win rate por lado, arma preferida con kills y precisión |
+| LoL | Campeones más jugados con pick rate y win rate, rol principal |
+
+## Gráfica de evolución de rating
+
+Un gráfico de línea que muestra la variación del rating VANTS del jugador a lo largo del tiempo. El eje horizontal representa la fecha y el eje vertical el rating. Puedes seleccionar el periodo visualizado:
+
+- 7 días
+- 30 días
+- Temporada completa
+- Histórico
+
+La gráfica incluye marcadores para partidos individuales, lo que permite correlacionar subidas o bajadas de rating con resultados específicos.
+
+<Note>
+  La ficha pública respeta la configuración de privacidad del jugador. Si ha ocultado su historial de partidas o estadísticas detalladas, esas secciones aparecen limitadas para visitantes no autenticados.
+</Note>

@@ -1,0 +1,82 @@
+---
+title: "Partidos de ejemplo en el modo demo de VANTS"
+description: "Ejemplos de partidos demo en VANTS: uno en vivo, uno próximo y uno finalizado con formatos BO1, BO3 y BO5. El seed garantiza consistencia entre marcador y ganador."
+sidebarTitle: "Partidos demo"
+---
+
+El modo demo de VANTS genera partidos de ejemplo que cubren todos los estados y formatos de serie. Esta página muestra tres ejemplos representativos y explica cómo el seed mantiene la coherencia entre marcador, formato y resultado.
+
+## Ejemplos de match cards
+
+### Partido en vivo (BO3)
+
+```json
+{
+  "id": "demo-match-001",
+  "status": "live",
+  "format": "BO3",
+  "game": "VALORANT",
+  "team_a": "Eclipse Core",
+  "team_b": "Night Vector",
+  "score_a": 1,
+  "score_b": 0,
+  "current_map": "Mapa 2",
+  "start_time": "2024-01-15T18:00:00Z",
+  "region": "Europa",
+  "level": "Oficial VANTS"
+}
+```
+
+El badge muestra "En vivo" en rojo pulsante. El marcador indica 1-0 a favor de Eclipse Core, con el segundo mapa en curso. Como es BO3, el ganador se define al llegar a 2 mapas ganados.
+
+### Partido próximo (BO1)
+
+```json
+{
+  "id": "demo-match-002",
+  "status": "scheduled",
+  "format": "BO1",
+  "game": "Counter-Strike 2",
+  "team_a": "Nova Strike",
+  "team_b": "Zenith Pulse",
+  "score_a": 0,
+  "score_b": 0,
+  "start_time": "2024-01-16T20:00:00Z",
+  "region": "Norteamérica",
+  "level": "Comunidad"
+}
+```
+
+El badge muestra "Programado" en azul. No hay marcador aún. La tarjeta destaca la hora de inicio convertida a la zona horaria del usuario.
+
+### Partido finalizado (BO5)
+
+```json
+{
+  "id": "demo-match-003",
+  "status": "completed",
+  "format": "BO5",
+  "game": "VALORANT",
+  "team_a": "Vortex Atlas",
+  "team_b": "Aurora Cell",
+  "score_a": 3,
+  "score_b": 1,
+  "winner": "Vortex Atlas",
+  "start_time": "2024-01-10T16:00:00Z",
+  "region": "Brasil",
+  "level": "Liga"
+}
+```
+
+El badge muestra "Finalizado" en gris. El marcador 3-1 indica que Vortex Atlas ganó la serie. En BO5, el máximo posible es 3 mapas ganados para un equipo.
+
+## Consistencia del seed
+
+El generador de demo garantiza que cada partido cumpla reglas internas:
+
+1. **Marcador compatible con best_of**: en BO1, el score solo puede ser 1-0. En BO3, nunca excede 2-1. En BO5, nunca excede 3-2.
+2. **Ganador coincide con equipo líder**: el campo `winner` siempre corresponde al equipo con `score` mayor.
+3. **Estados coherentes**: un partido `completed` siempre tiene `winner` definido. Un partido `live` tiene `score` actualizable.
+4. **Series cerradas**: no hay partidos finalizados con empate o marcador incompleto.
+
+Estas reglas permiten probar la interfaz sin encontrar inconsistencias visuales como un BO3 marcado 2-2 o un ganador que no coincide con el score.

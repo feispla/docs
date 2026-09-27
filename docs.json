@@ -1,37 +1,339 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mintlify Starter Kit",
+  "theme": "aspen",
+  "name": "VANTS",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#E30613",
+    "light": "#FF3B4A",
+    "dark": "#B0000E"
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Plataforma",
+        "groups": [
+          {
+            "group": "Empezar",
+            "icon": "rocket",
+            "pages": [
+              "index",
+              "empezar/quickstart",
+              "empezar/crear-cuenta",
+              "empezar/vincular-juegos"
+            ]
+          },
+          {
+            "group": "Mi perfil",
+            "icon": "user",
+            "pages": [
+              "perfil/resumen",
+              "perfil/partidas",
+              "perfil/estadisticas",
+              "perfil/torneos",
+              "perfil/equipos",
+              "perfil/logros",
+              "perfil/privacidad"
+            ]
+          },
+          {
+            "group": "Competir",
+            "icon": "trophy",
+            "pages": [
+              "competir/partidos",
+              "competir/calendario",
+              "competir/torneos",
+              "competir/detalle-torneo",
+              "competir/detalle-partido",
+              "competir/rankings"
+            ]
+          },
+          {
+            "group": "Comunidad",
+            "icon": "newspaper",
+            "pages": [
+              "comunidad/noticias",
+              "comunidad/estadisticas",
+              "comunidad/comparador"
+            ]
+          },
+          {
+            "group": "Acceso",
+            "icon": "right-to-bracket",
+            "pages": [
+              "acceso/index",
+              "acceso/iniciar-sesion",
+              "acceso/registro",
+              "acceso/proveedores",
+              "acceso/recuperar",
+              "acceso/2fa",
+              "acceso/sesiones",
+              "acceso/menores"
+            ]
+          },
+          {
+            "group": "Planes y monetización",
+            "icon": "credit-card",
+            "pages": [
+              "monetizacion/index",
+              "monetizacion/planes",
+              "monetizacion/vants-plus",
+              "monetizacion/vants-pro",
+              "monetizacion/organizadores",
+              "monetizacion/patrocinios",
+              "monetizacion/premios",
+              "monetizacion/pagos",
+              "monetizacion/facturacion",
+              "monetizacion/reembolsos"
+            ]
+          },
+          {
+            "group": "Cuenta y ajustes",
+            "icon": "gear",
+            "pages": [
+              "cuenta/ajustes",
+              "cuenta/notificaciones",
+              "cuenta/seguridad",
+              "cuenta/faq"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Producto",
+        "groups": [
+          {
+            "group": "Visión general",
+            "icon": "compass",
+            "pages": [
+              "producto/index",
+              "producto/navegacion",
+              "producto/homepage"
+            ]
+          },
+          {
+            "group": "Partidos",
+            "icon": "calendar",
+            "pages": [
+              "producto/matches/index",
+              "producto/matches/live",
+              "producto/matches/upcoming",
+              "producto/matches/results",
+              "producto/matches/detalle"
+            ]
+          },
+          {
+            "group": "Torneos",
+            "icon": "trophy",
+            "pages": [
+              "producto/tournaments/index",
+              "producto/tournaments/detalle",
+              "producto/tournaments/overview",
+              "producto/tournaments/matches",
+              "producto/tournaments/standings",
+              "producto/tournaments/bracket",
+              "producto/tournaments/stats",
+              "producto/tournaments/news"
+            ]
+          },
+          {
+            "group": "Rankings",
+            "icon": "list-ol",
+            "pages": [
+              "producto/rankings/index",
+              "producto/rankings/players",
+              "producto/rankings/teams"
+            ]
+          },
+          {
+            "group": "Estadísticas",
+            "icon": "chart-line",
+            "pages": [
+              "producto/stats/index",
+              "producto/stats/players",
+              "producto/stats/teams",
+              "producto/stats/maps",
+              "producto/stats/agents-or-champions"
+            ]
+          },
+          {
+            "group": "Noticias",
+            "icon": "newspaper",
+            "pages": [
+              "producto/news/index",
+              "producto/news/articulo"
+            ]
+          },
+          {
+            "group": "Equipos y jugadores",
+            "icon": "people-group",
+            "pages": [
+              "producto/teams/index",
+              "producto/teams/detalle",
+              "producto/players/index",
+              "producto/players/detalle"
+            ]
+          },
+          {
+            "group": "Perfil competitivo",
+            "icon": "id-badge",
+            "pages": [
+              "producto/profile/index",
+              "producto/profile/matches",
+              "producto/profile/stats",
+              "producto/profile/tournaments",
+              "producto/profile/settings"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Ingeniería",
+        "groups": [
+          {
+            "group": "Arquitectura",
+            "icon": "diagram-project",
+            "pages": [
+              "ingenieria/index",
+              "ingenieria/rutas",
+              "ingenieria/tiempo-real",
+              "ingenieria/rendimiento"
+            ]
+          },
+          {
+            "group": "Modelo de datos",
+            "icon": "database",
+            "pages": [
+              "ingenieria/datos/index",
+              "ingenieria/datos/entidades",
+              "ingenieria/datos/matches",
+              "ingenieria/datos/tournaments",
+              "ingenieria/datos/news",
+              "ingenieria/datos/favorites"
+            ]
+          },
+          {
+            "group": "Design system",
+            "icon": "swatchbook",
+            "pages": [
+              "ingenieria/design/index",
+              "ingenieria/design/componentes",
+              "ingenieria/design/estados",
+              "ingenieria/design/responsive",
+              "ingenieria/design/accesibilidad"
+            ]
+          },
+          {
+            "group": "Datos y demo",
+            "icon": "flask",
+            "pages": [
+              "ingenieria/demo/index",
+              "ingenieria/demo/equipos",
+              "ingenieria/demo/torneos",
+              "ingenieria/demo/matches"
+            ]
+          },
+          {
+            "group": "Integraciones",
+            "icon": "plug",
+            "pages": [
+              "ingenieria/integraciones/index",
+              "ingenieria/integraciones/proveedores",
+              "ingenieria/integraciones/nuevo-juego"
+            ]
+          },
+          {
+            "group": "Legal e IP",
+            "icon": "scale-balanced",
+            "pages": [
+              "ingenieria/legal/marcas",
+              "ingenieria/legal/contenido",
+              "ingenieria/legal/datos"
+            ]
+          },
+          {
+            "group": "Operaciones",
+            "icon": "wrench",
+            "pages": [
+              "ingenieria/operaciones/seo",
+              "ingenieria/operaciones/pruebas",
+              "ingenieria/operaciones/entrega"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Juegos",
+        "groups": [
+          {
+            "group": "VALORANT",
+            "icon": "crosshairs",
+            "pages": [
+              "juegos/valorant/index",
+              "juegos/valorant/rangos",
+              "juegos/valorant/estadisticas",
+              "juegos/valorant/torneos"
+            ]
+          },
+          {
+            "group": "Counter-Strike 2",
+            "icon": "gun",
+            "pages": [
+              "juegos/cs2/index",
+              "juegos/cs2/rangos",
+              "juegos/cs2/estadisticas",
+              "juegos/cs2/torneos"
+            ]
+          },
+          {
+            "group": "League of Legends",
+            "icon": "chess-rook",
+            "pages": [
+              "juegos/lol/index",
+              "juegos/lol/rangos",
+              "juegos/lol/estadisticas",
+              "juegos/lol/torneos"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Colabora",
+        "groups": [
+          {
+            "group": "Socios y desarrolladores",
+            "icon": "handshake",
+            "pages": [
+              "colabora/index",
+              "colabora/socios",
+              "colabora/desarrolladores",
+              "colabora/contribuir",
+              "colabora/contacto",
+              "colabora/contacto-programacion",
+              "colabora/webhook-discord"
+            ]
+          },
+          {
+            "group": "Streamers y creadores",
+            "icon": "video",
+            "pages": [
+              "colabora/streamers/index",
+              "colabora/streamers/programa",
+              "colabora/streamers/kit"
+            ]
+          },
+          {
+            "group": "Apoya el proyecto",
+            "icon": "heart",
+            "pages": [
+              "colabora/donaciones/index",
+              "colabora/donaciones/metodos",
+              "colabora/donaciones/transparencia"
+            ]
+          }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -40,14 +342,18 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://discord.gg/rCHE7jvRS4",
+        "label": "Discord"
+      },
+      {
+        "href": "/colabora/index",
+        "label": "Socios y desarrolladores"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Únete al Discord",
+      "href": "https://discord.gg/rCHE7jvRS4"
     }
   },
   "contextual": {
@@ -55,18 +361,67 @@
       "copy",
       "view",
       "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
+      "claude"
     ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  }
+      "x": "https://x.com/vantcall",
+      "github": "https://github.com/feispla",
+      "discord": "https://discord.gg/rCHE7jvRS4",
+      "instagram": "https://instagram.com/vantcalls",
+      "youtube": "https://youtube.com/@feispla"
+    },
+    "links": [
+      {
+        "header": "Streaming",
+        "items": [
+          {
+            "label": "Twitch VANTS",
+            "href": "https://twitch.tv/vantcall"
+          },
+          {
+            "label": "Kick Feispla",
+            "href": "https://kick.com/feispla"
+          },
+          {
+            "label": "YouTube Feispla",
+            "href": "https://youtube.com/@feispla"
+          }
+        ]
+      },
+      {
+        "header": "Redes",
+        "items": [
+          {
+            "label": "Discord",
+            "href": "https://discord.gg/rCHE7jvRS4"
+          },
+          {
+            "label": "Twitter VANTS",
+            "href": "https://x.com/vantcall"
+          },
+          {
+            "label": "Instagram VANTS",
+            "href": "https://instagram.com/vantcalls"
+          },
+          {
+            "label": "Twitter CEO (Feispla)",
+            "href": "https://x.com/feispla"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/feispla"
+          }
+        ]
+      }
+    ]
+  },
+  "appearance": {
+    "default": "light"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "background": {}
 }

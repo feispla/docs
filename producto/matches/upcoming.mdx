@@ -1,0 +1,61 @@
+---
+title: "Próximos partidos en VANTS: calendario y recordatorios"
+description: "Consulta los enfrentamientos programados en VANTS. Filtra por juego, visualiza countdowns, hora local y configura recordatorios para no perderte ningún partido."
+sidebarTitle: "Próximos"
+---
+
+VANTS te muestra todos los enfrentamientos programados en una vista dedicada donde puedes filtrar por juego, ver el tiempo restante y activar recordatorios. Esta página describe cómo funcionan las tarjetas de próximos partidos, los filtros rápidos y el sistema de recordatorios.
+
+## Tarjetas de próximos partidos
+
+Cada tarjeta en `/matches/upcoming` presenta la información esencial para que decidas qué partidos seguir:
+
+- **Fecha y hora local**: el horario se adapta automáticamente a la zona horaria de tu navegador
+- **Countdown**: temporizador que indica cuánto falta para el inicio
+- **Equipos**: nombres de los equipos participantes
+- **Juego**: VALORANT, Counter-Strike 2 o League of Legends
+- **Torneo**: serie o competición a la que pertenece el enfrentamiento
+- **Formato**: BO1, BO3 o BO5
+- **Fase**: grupos, playoffs, final u otra fase del torneo
+
+## Ejemplo de tarjeta textual
+
+```text
+Hoy 20:00  (en 2 h 15 min)
+
+VANTS Challenger Series  |  CS2  |  Fase de grupos  |  BO3
+
+IRON WOLVES    vs    NIGHT VECTOR
+```
+
+## Filtros rápidos por juego
+
+En la parte superior de la vista aparecen botones de filtro rápido que te permiten mostrar únicamente los partidos de un juego específico. Al seleccionar un filtro, la URL se actualiza para mantener tu preferencia. Los filtros disponibles cubren los tres juegos principales de la plataforma.
+
+## Botón Recordatorio
+
+Cada tarjeta de próximo partido incluye un botón de recordatorio que utiliza el componente `FavoriteButton`. Al activarlo, recibirás una notificación antes del inicio del enfrentamiento. El estado del recordatorio se guarda en tu perfil de usuario.
+
+<Tip>
+  Activa recordatorios en los partidos que más te interesan. VANTS te avisará con suficiente antelación para que no pierdas el inicio, incluso si el horario cambia por aplazamiento.
+</Tip>
+
+## Zona horaria y precisión
+
+Todos los horarios se muestran en tu hora local detectada automáticamente. Si tu región experimenta un cambio de horario de verano (DST), VANTS ajusta los horarios de los partidos para mantener la precisión sin que necesites intervenir.
+
+## Estados previos al inicio
+
+Antes de que un partido comience, puede encontrarse en uno de estos estados:
+
+| Slug interno | Etiqueta visible | Significado |
+| --- | --- | --- |
+| `scheduled` | Programado | Fecha y hora confirmadas |
+| `check_in` | Check-in | Equipos confirmando asistencia |
+| `delayed` | Aplazado | Inicio pospuesto por circunstancias externas |
+
+## Navegación relacionada
+
+- [Partidos en vivo](/producto/matches/live)
+- [Resultados](/producto/matches/results)
+- [Detalle de partido](/producto/matches/detalle)

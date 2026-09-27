@@ -1,0 +1,68 @@
+---
+title: "VANTS Bracket Interactivo: Navegación y Vista de Partidos"
+description: "Descubre el componente BracketView de VANTS. Navega por ramas de ganadores, perdedores y la gran final con zoom, scroll y match cards interactivas."
+sidebarTitle: "Bracket"
+---
+
+El bracket de un torneo en VANTS se renderiza mediante el componente `BracketView`, una representación visual interactiva del árbol de eliminación. Esta vista permite seguir el progreso de la competición desde las primeras rondas hasta la final, con soporte para formatos de eliminación directa y doble eliminación.
+
+## Estructura del BracketView
+
+El componente organiza el bracket en las siguientes secciones:
+
+### Rama de ganadores (Winners Bracket)
+
+Muestra todos los enfrentamientos de la rama principal. Los equipos que ganan avanzan hacia la derecha del árbol. Los que pierden descienden a la rama de perdedores (en formato de doble eliminación).
+
+### Rama de perdedores (Losers Bracket)
+
+Visible únicamente en torneos con formato de doble eliminación. Los equipos que caen desde la rama de ganadores compiten por un lugar en la gran final.
+
+### Gran final
+
+El enfrentamiento decisivo entre el ganador de la rama de ganadores y el ganador de la rama de perdedores. En doble eliminación, si el equipo de la rama de perdedores gana, se activa un reset de final para determinar al campeón.
+
+### Reset de final
+
+Cuando el formato de doble eliminación lo requiere, un segundo partido de gran final se programa automáticamente si el ganador de la rama de perdedores derrota al invicto de la rama de ganadores.
+
+## Match cards
+
+Cada enfrentamiento del bracket se presenta en una match card que contiene:
+
+- Nombres de ambos equipos
+- Logos originales de VANTS (sin marcas de terceros)
+- Score actual o final del partido
+- Fecha y hora programada
+- Estado del partido con indicador visual
+- Enlace al detalle completo del enfrentamiento
+
+## Navegación adaptativa
+
+El BracketView ajusta su comportamiento según el dispositivo:
+
+### En móvil
+
+- Scroll horizontal nativo para recorrer el árbol completo
+- Match cards apiladas verticalmente por ronda para facilitar la lectura
+- Toque en una match card para expandir detalles
+
+### En desktop
+
+- Zoom controlado mediante controles de + / - o rueda del ratón
+- Pan (arrastre) para desplazarse por el árbol completo
+- Match cards fijas en su posición dentro del bracket
+
+<Warning>
+  El diseño visual del BracketView es una implementación original de VANTS. No repliques la estructura visual exacta de portales externos ni copies sus esquemas de color, disposición de nodos o estilos de conectores. La disposición del árbol, el espaciado entre rondas y los indicadores de estado son propios de la plataforma.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="Partidos" icon="swords" href="/producto/tournaments/matches">
+    Listado cronológico de todos los enfrentamientos del torneo.
+  </Card>
+
+  <Card title="Clasificación" icon="trophy" href="/producto/tournaments/standings">
+    Tabla de posiciones con métricas y reglas de desempate.
+  </Card>
+</CardGroup>

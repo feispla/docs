@@ -1,0 +1,64 @@
+---
+title: "Directorio de jugadores en VANTS con filtros y rating"
+description: "Explora el directorio de jugadores de VANTS. Filtra competidores por juego, región, rol y ranking. Cada PlayerCard muestra avatar, nickname, equipo, juego y rating VANTS."
+sidebarTitle: "Jugadores"
+---
+
+El directorio de jugadores de VANTS reúne los perfiles públicos de todos los competidores registrados. Desde esta sección puedes descubrir nuevos talentos, comparar ratings individuales y acceder a la ficha detallada de cada jugador con su historial y estadísticas.
+
+## Filtros del directorio
+
+La barra superior permite combinar estos filtros:
+
+| Filtro | Opciones |
+| --- | --- |
+| Juego | VALORANT, Counter-Strike 2, League of Legends |
+| Región | Global, Norteamérica, LATAM, Europa, Brasil, Asia |
+| Rol | Según el juego: Duelista, Iniciador, Controlador, Centinela (VALORANT); AWP, Entry, IGL, Support (CS2); Top, Jungla, Mid, ADC, Support (LoL) |
+| Ranking | Todos, top 50, top 100, top 500 |
+| Orden | Rating descendente, nombre A-Z, fecha de registro |
+
+## PlayerCard
+
+Cada jugador se muestra en una tarjeta con la siguiente información:
+
+| Elemento | Descripción |
+| --- | --- |
+| Avatar | Imagen de perfil subida por el jugador o avatar por defecto |
+| Nickname | Nombre de competidor |
+| Equipo | Nombre de la escuadra actual con enlace a su ficha, o "Sin equipo" |
+| Juego | Título principal en el que compite |
+| Rating VANTS | Número entero del rating en ese juego |
+| Rango | Rango actual con división (por ejemplo, Diamante II) |
+
+Al hacer clic en una tarjeta, accedes a la ficha detallada del jugador en la ruta `/players/:playerSlug`.
+
+## Búsqueda directa
+
+El directorio incluye un campo de búsqueda que busca coincidencias en:
+
+- Nickname del jugador
+- Nombre del equipo actual
+- Tag del equipo actual
+
+La búsqueda es insensible a mayúsculas y acentos. Los resultados se ordenan por relevancia.
+
+## Estados de jugador
+
+Los jugadores pueden mostrar estos estados:
+
+| Estado | Descripción |
+| --- | --- |
+| Activo | Ha jugado partidos oficiales en la última temporada |
+| Inactivo | Registrado pero sin partidos recientes |
+| Nuevo | Registrado en los últimos 30 días |
+| Transferible | Sin equipo actual y abierto a ofertas (si lo ha indicado en su perfil) |
+
+<Tip>
+  Filtra por "Transferible" + juego + región para descubrir jugadores sin equipo que podrían encajar en tu escuadra.
+</Tip>
+
+## Navegación relacionada
+
+- [Ficha detallada de jugador](/producto/players/detalle)
+- [Rankings de jugadores](/producto/rankings/players)

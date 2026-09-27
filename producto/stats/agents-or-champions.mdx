@@ -1,0 +1,69 @@
+---
+title: "Pick rate, ban rate y win rate de agentes y campeones en VANTS"
+description: "Consulta las estadísticas de agentes, campeones y armas en VANTS. Analiza pick rate, ban rate y win rate por temporada con normalización por meta actual."
+sidebarTitle: "Agentes y campeones"
+---
+
+La sección de agentes y campeones en VANTS muestra la distribución de selecciones y el rendimiento asociado a cada opción disponible en los juegos soportados. Estos datos reflejan el meta competitivo de cada temporada y permiten identificar opciones sobredimensionadas o infravaloradas en el entorno de la plataforma.
+
+## Métricas principales
+
+Cada entrada (agente, campeón o arma) muestra tres métricas clave:
+
+| Métrica | Descripción |
+| --- | --- |
+| Pick rate | Porcentaje de partidos donde fue seleccionado |
+| Ban rate | Porcentaje de partidos donde fue vetado (solo en modos con sistema de ban) |
+| Win rate | Porcentaje de victorias cuando fue seleccionado |
+
+## Vistas por juego
+
+<Tabs>
+  <Tab title="VALORANT">
+    En VALORANT, cada agente se clasifica por rol (Duelista, Iniciador, Controlador, Centinela). Las métricas incluyen:
+
+    - Pick rate por agente y por rol
+    - Win rate por agente en formato BO1 y BO3
+    - Correlación entre combinaciones de agentes y victoria del equipo
+
+    Los agentes con pick rate superior al 15% y win rate superior al 55% se marcan como opciones dominantes en el meta actual.
+  </Tab>
+  <Tab title="LoL">
+    En League of Legends, cada campeón se clasifica por rol (Top, Jungla, Mid, ADC, Support). Las métricas incluyen:
+
+    - Pick rate por campeón y por rol
+    - Ban rate en partidos con fase de selección
+    - Win rate por campeón en formato BO1, BO3 y BO5
+    - Presencia (pick rate + ban rate) como indicador de prioridad competitiva
+
+    La presencia alta con win rate bajo suele indicar un campeón prioritario en draft pero difícil de ejecutar.
+  </Tab>
+  <Tab title="CS2">
+    Counter-Strike 2 no usa agentes ni campeones. En su lugar, VANTS registra:
+
+    - Arma preferida por jugador (rifle principal más usado)
+    - Distribución de kills por tipo de arma (rifle, AWP, SMG, pistola)
+    - Daño por utilidad (granadas de humo, flash, HE, molotov)
+    - Éxito en retakes correlacionado con el tipo de utilidad empleada
+
+    Estas métricas permiten analizar el estilo de juego individual y colectivo sin depender de un sistema de selección de personajes.
+  </Tab>
+</Tabs>
+
+## Normalización por temporada
+
+<Info>
+  Los datos de pick rate, ban rate y win rate se normalizan por temporada para reflejar el meta actual. Un agente con 60% de win rate en una temporada pasada puede mostrar 45% en la presente si recibió ajustes de balance o cambios en el map pool. Siempre filtra por la temporada activa para decisiones tácticas actuales.
+</Info>
+
+## Filtros adicionales
+
+- **Rol**: limita a posiciones específicas
+- **Formato de serie**: BO1, BO3, BO5 (algunos agentes o campeones escalan mejor en series largas)
+- **Región**: compara prioridades de draft entre Norteamérica, Europa, LATAM, Brasil y Asia
+- **Periodo**: 7 días, 30 días, temporada completa
+
+## Navegación relacionada
+
+- [Estadísticas de jugadores](/producto/stats/players)
+- [Estadísticas de mapas](/producto/stats/maps)

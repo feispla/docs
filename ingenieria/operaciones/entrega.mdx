@@ -1,0 +1,111 @@
+---
+title: "Flujo de entrega de cambios en la plataforma VANTS"
+description: "Proceso de entrega de cambios en VANTS: revisión en rama, formatter, lint, typecheck, tests, build, commit específico y push al repositorio feispla/vantcall-docs."
+sidebarTitle: "Entrega"
+---
+
+VANTS sigue un flujo de entrega estandarizado para cada cambio en la plataforma. Este proceso garantiza que el código que llega a producción pase por verificación automatizada y revisión manual.
+
+## Flujo por cambio
+
+<Steps>
+  <Step title="Revisar el repositorio">
+    Asegurate de partir de la última versión de la rama principal:
+
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
+
+    Crea una rama descriptiva para tu cambio:
+
+    ```bash
+    git checkout -b feat/nombre-del-cambio
+    ```
+  </Step>
+  <Step title="Aplicar el cambio">
+    Implementa la modificación siguiendo las convenciones de código de VANTS:
+
+    - Usa el design system para componentes nuevos.
+    - Mantiene la accesibilidad (focus visible, ARIA, contraste).
+    - No introduces dependencias sin justificar.
+    - Documenta cualquier decisión técnica relevante en el PR.
+  </Step>
+  <Step title="Correr formatter, lint y typecheck">
+    Ejecuta las herramientas de calidad antes de commitear:
+
+    ```bash
+    npm run format
+    npm run lint
+    npm run typecheck
+    ```
+
+    Corrige todos los errores reportados. No commitees con warnings de lint sin justificación.
+  </Step>
+  <Step title="Correr tests y build">
+    Verifica que los casos de prueba pasen y la aplicación compile:
+
+    ```bash
+    npm run test
+    npm run build
+    ```
+
+    Los tests deben cubrir al menos los casos críticos definidos en la guía de pruebas. Si agregas funcionalidad nueva, incluye tests que la validen.
+  </Step>
+  <Step title="Corregir errores">
+    Si algún paso anterior falla:
+
+    1. Lee el mensaje de error completo.
+    2. Corrige la causa raíz, no solo el síntoma.
+    3. Vuelve a ejecutar el paso que falló.
+    4. Repite hasta que todos los pasos pasen limpio.
+  </Step>
+  <Step title="Commit específico">
+    Escribe un mensaje de commit claro y descriptivo:
+
+    ```bash
+    git commit -m "feat: agrega filtro de región al calendario de partidos"
+    ```
+
+    Sigue la convención de commits de VANTS:
+
+    - `feat:` nueva funcionalidad.
+    - `fix:` corrección de bug.
+    - `docs:` cambios en documentación.
+    - `refactor:` reestructuración de código sin cambio de comportamiento.
+    - `test:` agregar o modificar tests.
+    - `chore:` tareas de mantenimiento.
+  </Step>
+  <Step title="Push al repositorio">
+    Sube tu rama al repositorio remoto:
+
+    ```bash
+    git push origin feat/nombre-del-cambio
+    ```
+
+    Abre un Pull Request hacia `main` con descripción del cambio, motivación y evidencia de pruebas.
+  </Step>
+</Steps>
+
+<Warning>
+  Todo cambio debe versionarse y subirse al repositorio `feispla/vantcall-docs`. No mantengas cambios locales sin commitear ni compartas archivos fuera del control de versiones. El repositorio es la única fuente de verdad para el código y la documentación de VANTS.
+</Warning>
+
+## Revisión de Pull Request
+
+Antes de mergear, cada PR debe cumplir:
+
+- Al menos una aprobación de un reviewer.
+- Todos los checks de CI pasando (lint, typecheck, tests, build).
+- Sin conflictos con la rama principal.
+- Descripción clara del cambio y su impacto.
+- Screenshots o video si el cambio afecta la interfaz.
+
+## Despliegue
+
+Una vez mergeado a `main`, el despliegue se activa automáticamente:
+
+1. CI ejecuta tests y build en la rama principal.
+2. Si pasa, se genera la imagen de contenedor.
+3. El despliegue se realiza en el entorno de staging.
+4. Tras validación manual, se promueve a producción.

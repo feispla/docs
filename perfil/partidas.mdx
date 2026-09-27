@@ -1,0 +1,61 @@
+---
+title: "Historial de Partidas en VANTS"
+description: "Consulta tu historial de partidas en VANTS con filtros avanzados. Revisa resultados, rivales, mapas y desempeno individual de cada enfrentamiento."
+sidebarTitle: "Partidas"
+---
+
+El historial de partidas de VANTS guarda cada enfrentamiento en el que participas, ya sea en cola competitiva, scrims, ligas o torneos. Desde esta seccion puedes revisar resultados pasados, analizar tu desempeno individual y filtrar por multiples criterios para encontrar exactamente lo que buscas.
+
+## Columnas del historial
+
+Cada fila de tu historial muestra la informacion esencial del partido:
+
+- **Rival**: nombre del equipo o jugador contra el que competiste.
+- **Marcador**: resultado final con rondas o mapas ganados y perdidos.
+- **Resultado**: victoria, derrota, aplazado o cancelado.
+- **Torneo / Cola**: nombre del evento o modo de juego donde se disputo.
+- **Fecha**: dia y hora de inicio del partido.
+- **Mapa**: escenario donde se jugo (si aplica).
+- **Desempeno individual**: resumen visual de tus metricas clave para esa partida.
+
+Haz clic en cualquier partido para acceder a su ficha detallada. Desde ahi puedes ver estadisticas completas por ronda, economia y comparativas con tus rivales. Tambien puedes acceder directamente desde el enlace a `/competir/detalle-partido`.
+
+## Filtros disponibles
+
+Usa los filtros superiores para reducir el historial a partidos especificos:
+
+<AccordionGroup>
+  <Accordion title="Juego">
+    Selecciona VALORANT, Counter-Strike 2 o League of Legends para ver solo partidas de ese titulo.
+  </Accordion>
+
+  <Accordion title="Periodo">
+    Opciones rapidas: ultimos 7, 30 o 90 dias. Tambien puedes definir un rango de fechas personalizado.
+  </Accordion>
+
+  <Accordion title="Modo">
+    Filtra por tipo de enfrentamiento: normal, scrim, liga o torneo.
+  </Accordion>
+
+  <Accordion title="Mapa">
+    Muestra solo partidas disputadas en un escenario concreto. Util para analizar tu desempeno por territorio.
+  </Accordion>
+
+  <Accordion title="Resultado">
+    Limita la vista a victorias, derrotas o partidos aplazados.
+  </Accordion>
+</AccordionGroup>
+
+Los filtros se combinan entre si. Por ejemplo, puedes buscar tus victorias en VALORANT de los ultimos 30 dias en modo torneo y en el mapa Ascent.
+
+## Estados de partido
+
+VANTS clasifica cada partido en uno de estos estados:
+
+- **En vivo**: el partido se esta disputando en este momento.
+- **Proximo**: programado pero aun no iniciado.
+- **Finalizado**: concluido con resultado oficial.
+- **Aplazado**: pospuesto para reprogramacion.
+- **Cancelado**: anulado sin resultado valido.
+
+Solo los partidos finalizados afectan tus estadisticas de perfil y tu Rango VANTS.

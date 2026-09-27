@@ -1,0 +1,101 @@
+---
+title: "Ficha detallada de equipo en VANTS con roster y estadísticas"
+description: "Explora la ficha completa de un equipo en VANTS. Revisa identidad visual, roster, resultados recientes, próximos partidos, torneos, estadísticas e historial."
+sidebarTitle: "Detalle"
+---
+
+La ficha detallada de cada equipo en VANTS centraliza toda la información pública de una escuadra. La ruta sigue el patrón `/teams/:teamSlug` y se compone de secciones organizadas verticalmente que permiten conocer la identidad, el rendimiento actual y la trayectoria histórica del equipo.
+
+## Banner e identidad visual
+
+La parte superior de la ficha muestra:
+
+- **Banner del equipo**: imagen de ancho completo con paleta de colores definida por la organización
+- **Logo**: imagen cuadrada de identidad visual
+- **Nombre y tag**: nombre completo y abreviatura (por ejemplo, Nova Strike / NVTX)
+
+## Información general
+
+Debajo del banner se encuentra el bloque de datos básicos:
+
+| Campo | Descripción |
+| --- | --- |
+| Nombre | Nombre completo de la escuadra |
+| Tag | Abreviatura oficial |
+| Región | Región competitiva principal (Norteamérica, LATAM, Europa, Brasil, Asia) |
+| Juego | Título en el que compite activamente |
+| Ranking | Posición en el ranking VANTS del juego y región |
+| Rating VANTS | Número entero del rating actual en ese juego |
+
+## Roster
+
+La sección de roster lista los jugadores activos del equipo:
+
+| Columna | Descripción |
+| --- | --- |
+| Avatar | Imagen de perfil del jugador |
+| Nickname | Nombre de competidor con enlace a su perfil |
+| Rol | Posición competitiva dentro del equipo |
+| Rating VANTS | Rating individual en el mismo juego |
+| Fecha de ingreso | Cuándo se unió al roster actual |
+
+## Entrenador y manager (opcional)
+
+Si el equipo lo ha configurado, aparece una subsección con:
+
+- Nombre del entrenador principal
+- Nombre del manager o segundo entrenador
+- Enlaces a sus perfiles de VANTS si están registrados
+
+## Resultados recientes
+
+Una tabla con los últimos 10 partidos oficiales del equipo:
+
+| Columna | Descripción |
+| --- | --- |
+| Fecha | Día y hora del partido |
+| Rival | Equipo contrario con enlace a su ficha |
+| Resultado | Victoria o derrota con marcador |
+| Torneo | Evento donde se jugó |
+| Formato | BO1, BO3 o BO5 |
+
+## Próximos partidos
+
+Lista de partidos programados con estado, fecha, rival y torneo. Los estados posibles son: Programado, Check-in, En vivo, Pausado, Aplazado, Finalizado, Cancelado, W.O., En disputa.
+
+## Torneos
+
+Sección con los torneos en los que el equipo ha participado o está inscrito:
+
+| Columna | Descripción |
+| --- | --- |
+| Torneo | Nombre con enlace al evento |
+| Estado | Inscrito, clasificado, eliminado, campeón |
+| Fechas | Periodo del torneo |
+| Mejor posición | Ronda más lejana alcanzada |
+
+## Estadísticas
+
+Resumen agregado del equipo en la temporada actual:
+
+- Partidos jugados, victorias, derrotas
+- Win rate global y por mapa
+- Rating VANTS promedio del roster
+- Rendimiento reciente (últimos 10 partidos)
+
+## Historial
+
+Línea de tiempo con los cambios principales del equipo:
+
+- Fechas de registro en VANTS
+- Cambios de roster significativos
+- Participaciones destacadas en torneos
+- Cambios de región o juego principal
+
+## Noticias relacionadas
+
+Hasta 4 artículos del centro de noticias que mencionan al equipo, ordenados por fecha de publicación.
+
+<Note>
+  Solo los equipos con perfil público activo muestran todas las secciones. Los equipos con perfil privado limitan la visibilidad de roster y estadísticas detalladas.
+</Note>

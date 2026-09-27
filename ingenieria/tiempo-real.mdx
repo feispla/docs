@@ -1,0 +1,45 @@
+---
+title: "Estrategia de tiempo real en VANTS: polling, SSE y WebSockets"
+description: "Conoce como VANTS mantiene los datos actualizados con polling para calendarios, SSE para partidos en vivo y WebSockets cuando el proveedor lo justifica, con backoff y revalidacion."
+sidebarTitle: "Tiempo real"
+---
+
+VANTS muestra partidos en vivo, cambios de standings y noticias sin que el usuario tenga que recargar la pagina. Esta pagina explica la estrategia de tiempo real que equilibra frescura de datos con consumo razonable de recursos.
+
+La plataforma combina tres tecnicas segun el tipo de informacion y la criticidad de la actualizacion. No todos los datos necesitan la misma velocidad, por lo que se elige el canal adecuado para cada caso.
+
+## Canales de actualizacion
+
+### Polling para calendarios y listados
+
+Las paginas de calendario, proximos partidos y resultados usan polling con intervalos de 60 a 120 segundos. Este ritmo es suficiente para reflejar cambios de horario o nuevos partidos programados sin generar carga innecesaria en el servidor ni en la red del usuario.
+
+El polling se pausa automaticamente cuando la pestana pierde el foco y se reanuda al volver, ahorrando bateria y datos moviles.
+
+### Server-Sent Events para partidos en vivo
+
+Los partidos con estado `live` o `paused` usan SSE (Server-Sent Events) para enviar actualizaciones desde el servidor al navegador. Este canal es unidireccional, liviano y se reconecta automaticamente si la conexion se interrumpe.
+
+SSE es ideal para marcadores, mapas en curso y cambios de estado porque no requiere mantener estado complejo en el cliente.
+
+### WebSockets para integraciones especificas
+
+WebSockets se reservan para los casos en los que el proveedor de datos externo exige este protocolo. No es el canal por defecto de VANTS porque anade complejidad de reconexion y manejo de errores que SSE resuelve de forma nativa.
+
+## Mecanismos de resiliencia
+
+<Steps>
+  <Step title="Backoff exponencial">
+    Si un canal de tiempo real falla, el cliente espera 1 segundo antes del primer reintento, luego 2, 4, 8 y asi sucesivamente hasta un maximo de 30 segundos. Esto evita saturar al servidor con intentos simultaneos.
+  </Step>
+  <Step title="Revalidacion al recuperar foco">
+    Cuando el usuario vuelve a la pestana despues de estar en segundo plano, el cliente solicita una actualizacion inmediata para compensar el tiempo sin polling ni SSE activo.
+  </Step>
+  <Step title="Indicador de frescura">
+    La interfaz muestra un texto como "Actualizado hace 45 segundos" para que el usuario sepa si los datos que ve son recientes o si hay un problema de conexion.
+  </Step>
+</Steps>
+
+<Warning>
+  Evita reducir los intervalos de polling por debajo de 60 segundos en listados generales. Un polling excesivo aumenta el consumo de datos del usuario, la carga en los servidores y puede provocar limitacion de tasa sin mejorar la experiencia visible.
+</Warning>

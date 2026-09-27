@@ -1,0 +1,78 @@
+---
+title: "Accesibilidad en la interfaz de VANTS: WCAG AA y navegación"
+description: "Prácticas de accesibilidad de VANTS: HTML semántico, navegación por teclado, ARIA, contraste AA, anuncios de estado y respeto a prefers-reduced-motion."
+sidebarTitle: "Accesibilidad"
+---
+
+VANTS construye sus interfaces para que cualquier persona pueda usarlas, independientemente de cómo navegue o perciba el contenido. Esta página detalla las prácticas obligatorias para todo componente y página de la plataforma.
+
+## HTML semántico
+
+Usa elementos HTML según su significado, no solo su apariencia:
+
+- `<header>`, `<main>`, `<footer>`, `<nav>` definen las regiones principales de la página.
+- `<article>` para cards de noticias y partidos independientes.
+- `<section>` con `aria-labelledby` para agrupar contenido relacionado.
+- `<button>` para acciones interactivas; nunca uses `<div>` o `<span>` con `onclick`.
+- `<table>` con `<thead>`, `<th scope="col">` para tablas de datos; evita tablas para layout.
+
+## Navegación por teclado
+
+Todo elemento interactivo debe ser alcanzable y operable sin ratón:
+
+- Orden de tabulación lógico que sigue el flujo visual de la página.
+- `Tab` avanza, `Shift+Tab` retrocede, `Enter` o `Space` activa.
+- Atajos de teclado documentados: `/` para buscar, `Esc` para cerrar modales y drawers.
+- Skip link visible al enfocar para saltar al contenido principal.
+
+## Focus visible
+
+- Cada elemento enfocado muestra un anillo de foco de al menos 2px con contraste suficiente respecto al fondo.
+- El anillo de foco nunca se oculta con `outline: none` sin reemplazo.
+- En modales y drawers, el foco se trampa dentro del overlay hasta que se cierre.
+
+## ARIA cuando corresponde
+
+- `aria-label` y `aria-labelledby` para elementos sin texto visible.
+- `aria-expanded` en botones que despliegan contenido.
+- `aria-live="polite"` en contenedores que reciben actualizaciones dinámicas (marcadores en vivo, notificaciones).
+- `role="alert"` para mensajes de error críticos.
+- Evita redundancia: no uses `role="button"` en un `<button>`.
+
+## No dependas solo del color
+
+- Los estados de partido usan icono + color + texto: un usuario daltónico distingue `En vivo` del icono pulsante incluso sin percibir el rojo.
+- Los enlaces se distinguen por subrayado o peso de fuente, no solo por color.
+- Los gráficos de tendencia incluyen patrón o forma además del color.
+
+## Texto alternativo en imágenes
+
+- Toda imagen funcional lleva `alt` descriptivo.
+- Imágenes decorativas usan `alt=""` para que el lector de pantalla las ignore.
+- Logos de equipos incluyen el nombre del equipo en el `alt`.
+
+## Contraste WCAG AA
+
+- Texto normal: ratio mínimo 4.5:1 respecto al fondo.
+- Texto grande (18px+ o bold 14px+): ratio mínimo 3:1.
+- Los badges de estado se verifican con herramientas de contraste antes de cada release.
+
+## Mensajes de estado anunciables
+
+- Cuando un partido pasa a `live`, un elemento `aria-live` anuncia: "Partido entre Eclipse Core y Nova Strike ahora en vivo".
+- Los toasts de éxito o error se anuncian automáticamente sin mover el foco.
+- Las actualizaciones de marcador en partidos en vivo se acumulan y se anuncian cada 30 segundos para no saturar.
+
+## Tablas accesibles
+
+- Encabezados con `scope="col"` o `scope="row"`.
+- En móvil, las tablas convertidas en cards mantienen los encabezados como `aria-label` en cada celda.
+- El orden de lectura de pantalla sigue la jerarquía visual incluso después de la transformación responsive.
+
+## Respeto por prefers-reduced-motion
+
+- Si el usuario activa reducción de movimiento en su sistema, VANTS desactiva:
+  - La animación pulsante del indicador `live` (se reemplaza por un estado estático).
+  - Las transiciones de reordenamiento en listados.
+  - Los skeletons animados (se muestran como bloques estáticos).
+- Las transiciones de apertura de modales y drawers se reducen a 0ms o se reemplazan por fade instantáneo.

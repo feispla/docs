@@ -1,0 +1,66 @@
+---
+title: "Rankings competitivos de jugadores, equipos y regiones en VANTS"
+description: "Consulta los rankings de VANTS: jugadores, equipos y regiones. Filtra por juego, temporada y contexto competitivo. Requisitos mínimos de partidas y actualización semanal."
+sidebarTitle: "Rankings"
+---
+
+Los rankings de VANTS miden el rendimiento competitivo en tres dimensiones: jugadores individuales, equipos y regiones. Cada tabla se calcula con métricas específicas del juego y se actualiza semanalmente para reflejar el estado real de la escena.
+
+<Tabs>
+  <Tab title="Jugadores">
+    El ranking de jugadores ordena a los competidores según su rendimiento individual en partidos oficiales y matchmaking competitivo. Las métricas ponderadas dependen del juego:
+
+    - **VALORANT**: ACS, K/D, KAST, ADR, HS% y consistencia por mapa.
+    - **Counter-Strike 2**: Rating 2.0, ADR, KAST, impacto en rondas de clutch.
+    - **League of Legends**: KDA, CS/min, Damage/min, Vision Score, Gold Diff@15.
+
+    Para aparecer en el ranking debes haber completado un mínimo de partidas en el periodo evaluado. Este mínimo evita que jugadores con muy pocos partidos aparezcan por encima de competidores consistentes.
+  </Tab>
+  <Tab title="Equipos">
+    El ranking de equipos combina resultados de torneos, winrate en series y rendimiento promedio de sus jugadores. Los criterios incluyen:
+
+    - Victorias y derrotas en torneos oficiales.
+    - Rondas o mapas ganados vs perdidos.
+    - Fuerza del calendario enfrentado.
+
+    Solo los equipos con actividad reciente en torneos registrados en VANTS son elegibles. Los equipos inactivos por más de una temporada completa dejan de aparecer hasta que vuelvan a competir.
+  </Tab>
+  <Tab title="Regiones">
+    El ranking de regiones compara el nivel competitivo de cada zona geográfica sumando el rendimiento de sus jugadores y equipos top. Se pondera:
+
+    - Cantidad de equipos en fases finales de torneos internacionales.
+    - Profundidad del talento (jugadores en el top 100 global).
+    - Resultados cruzados en enfrentamientos interregionales.
+
+    Este ranking te ayuda a entender qué regiones dominan cada juego en el momento actual.
+  </Tab>
+</Tabs>
+
+## Filtros de contexto
+
+Usa los filtros superiores para evitar mezclar contextos que no son comparables:
+
+- **Juego**: VALORANT, Counter-Strike 2 o League of Legends.
+- **Temporada**: selecciona la temporada o split que quieres consultar.
+- **Contexto**: matchmaking (ranked individual) o torneo oficial. Los rankings de matchmaking y de torneo se calculan por separado porque miden habilidades diferentes.
+- **Región**: filtra el ranking global a una zona geográfica concreta.
+
+## Actualización y criterios de inclusión
+
+<Info>
+  Los rankings se actualizan cada semana, generalmente los lunes, con los datos de la semana anterior completamente procesados.
+</Info>
+
+<Note>
+  El mínimo de partidas para aparecer varía por juego y contexto. Consulta la leyenda de cada tabla para ver el número exacto requerido en la temporada activa.
+</Note>
+
+<CardGroup cols={2}>
+  <Card title="Ver torneos" icon="trophy" href="/competir/torneos">
+    Descubre en qué torneos compiten los jugadores y equipos top.
+  </Card>
+
+  <Card title="Ver partidos" icon="crosshairs" href="/competir/partidos">
+    Sigue los enfrentamientos que definen el ranking semanal.
+  </Card>
+</CardGroup>

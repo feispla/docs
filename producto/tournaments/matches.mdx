@@ -1,0 +1,73 @@
+---
+title: "VANTS Partidos de Torneo: Listado, Estados y Filtros"
+description: "Descubre cómo VANTS organiza los partidos de un torneo. Filtra por fase, equipo y estado, y consulta las etiquetas visuales de cada enfrentamiento."
+sidebarTitle: "Partidos"
+---
+
+La pestaña de partidos en VANTS agrupa todos los enfrentamientos de un torneo en un listado cronológico y filtrable. Esta vista permite seguir el progreso de la competición, identificar partidos en vivo y revisar resultados históricos por fase.
+
+## Agrupación del listado
+
+Los partidos se organizan en dos niveles de agrupación:
+
+1. **Por fase**: cada fase del torneo (Clasificatorio, Grupos, Playoffs, Final) forma una sección independiente.
+2. **Por fecha**: dentro de cada fase, los partidos se ordenan cronológicamente por día y hora local del usuario.
+
+## Estados de partido
+
+Cada partido muestra una etiqueta visual que indica su estado actual. VANTS utiliza los siguientes estados internos con sus etiquetas en español:
+
+| Slug interno | Etiqueta visible |
+| --- | --- |
+| `scheduled` | Programado |
+| `check_in` | Check-in |
+| `live` | En vivo |
+| `paused` | Pausado |
+| `delayed` | Aplazado |
+| `completed` | Finalizado |
+| `cancelled` | Cancelado |
+| `forfeited` | W.O. |
+| `disputed` | En disputa |
+
+Los estados `live` y `check_in` reciben indicadores visuales adicionales, como un punto pulsante o un contador de tiempo restante para el check-in.
+
+## Filtros disponibles
+
+Puedes refinar el listado de partidos mediante los siguientes filtros:
+
+### Por fase
+
+Selecciona una fase específica del torneo para ver solo los enfrentamientos de esa etapa.
+
+### Por equipo
+
+Filtra todos los partidos en los que participa un equipo concreto, útil para seguir la trayectoria de un roster durante la competición.
+
+### Por estado
+
+Elige uno o varios estados para mostrar únicamente partidos Programados, En vivo, Finalizados o cualquier combinación.
+
+## Información por partido
+
+Cada fila del listado muestra:
+
+- Nombres de los equipos enfrentados
+- Logos originales de VANTS (sin marcas de terceros)
+- Hora programada o tiempo transcurrido
+- Estado actual con etiqueta visual
+- Resultado parcial o final cuando aplica
+- Enlace al detalle del partido
+
+<Tip>
+  En torneos con múltiples fases simultáneas, el filtro por fase te permite concentrarte solo en los Playoffs sin perder de vista los partidos de grupos que aún están en curso.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Clasificación" icon="trophy" href="/producto/tournaments/standings">
+    Tabla de posiciones con métricas y reglas de desempate.
+  </Card>
+
+  <Card title="Bracket" icon="git-branch" href="/producto/tournaments/bracket">
+    Representación visual del árbol de eliminación.
+  </Card>
+</CardGroup>

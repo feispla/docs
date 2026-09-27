@@ -1,0 +1,67 @@
+---
+title: "VANTS Página de Torneo: Estructura con Pestañas y Subpáginas"
+description: "Conoce la arquitectura de la página de detalle de torneo en VANTS. Navega por pestañas y subpáginas para acceder a partidos, bracket, estadísticas y noticias."
+sidebarTitle: "Detalle"
+---
+
+La página de detalle de un torneo en VANTS organiza toda la información competitiva en una estructura clara de pestañas y subpáginas. Esta arquitectura permite a los usuarios navegar rápidamente entre el resumen general, los partidos en curso, la clasificación y el contenido mediático del torneo.
+
+## Estructura de pestañas principales
+
+Cada torneo cuenta con una barra de navegación superior que agrupa la información en las siguientes pestañas:
+
+1. **Resumen**: información general, fechas, formato, premio y reglas resumidas.
+2. **Partidos**: listado cronológico de todos los enfrentamientos del torneo.
+3. **Clasificación**: tabla de posiciones según el formato de la competición.
+4. **Grupos**: distribución de equipos en grupos cuando el formato lo requiere.
+5. **Bracket**: representación visual del árbol de eliminación directa o doble eliminación.
+6. **Equipos**: roster completo de cada equipo participante.
+7. **Jugadores**: perfiles individuales con estadísticas acumuladas del torneo.
+8. **Estadísticas**: métricas agregadas y líderes por categoría del juego.
+9. **Noticias**: feed de anuncios, recaps y entrevistas vinculadas al torneo.
+10. **Reglas**: reglamento completo de la competición.
+11. **Premios**: distribución de recompensas y criterios de elegibilidad.
+
+## Subpáginas accesibles
+
+Desde la pestaña de Resumen, los usuarios pueden acceder directamente a las subpáginas especializadas mediante tarjetas de navegación.
+
+<CardGroup cols={2}>
+  <Card title="Resumen" icon="layout" href="/producto/tournaments/overview">
+    Datos generales del torneo: nombre, juego, organizador, fechas, formato y premio.
+  </Card>
+
+  <Card title="Partidos" icon="swords" href="/producto/tournaments/matches">
+    Enfrentamientos agrupados por fase, fecha y estado del partido.
+  </Card>
+
+  <Card title="Clasificación" icon="trophy" href="/producto/tournaments/standings">
+    Tabla de posiciones con métricas de rendimiento y desempates.
+  </Card>
+
+  <Card title="Bracket" icon="git-branch" href="/producto/tournaments/bracket">
+    Vista interactiva del árbol de eliminación con match cards.
+  </Card>
+
+  <Card title="Estadísticas" icon="bar-chart-2" href="/producto/tournaments/stats">
+    Líderes del torneo por métricas clave de cada juego.
+  </Card>
+
+  <Card title="Noticias" icon="newspaper" href="/producto/tournaments/news">
+    Feed de contenido asociado: anuncios, recaps y entrevistas.
+  </Card>
+</CardGroup>
+
+## Navegación entre torneos
+
+En la parte superior de la página se muestra un breadcrumb que permite regresar al listado general:
+
+```text
+Torneos / {nombre-del-torneo} / {pestaña-activa}
+```
+
+La URL refleja la pestaña activa mediante el slug correspondiente, por ejemplo `/tournaments/nova-strike-2025/matches` cuando el usuario está en la pestaña de Partidos.
+
+<Note>
+  La estructura de pestañas es consistente en todos los torneos, aunque algunas pestañas pueden ocultarse si el formato de la competición no las requiere. Por ejemplo, Grupos solo aparece cuando el torneo incluye una fase de grupos.
+</Note>

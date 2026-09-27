@@ -1,0 +1,47 @@
+---
+title: "Sesiones activas en VANTS: controla tus dispositivos"
+description: "Revisa y gestiona tus sesiones activas en VANTS: dispositivo, navegador, ubicación y última actividad. Aprende a revocar accesos y entiende la duración de los tokens."
+sidebarTitle: "Sesiones"
+---
+
+Desde el panel de sesiones activas de VANTS puedes ver exactamente dónde tienes abierta tu cuenta, qué dispositivo y navegador se usaron, y desde qué ubicación aproximada se inició la sesión. Esta herramienta te permite detectar accesos inesperados y cerrar remotamente cualquier sesión que no reconozcas.
+
+## Información visible por sesión
+
+Cada sesión activa muestra los siguientes datos en tu panel de seguridad:
+
+- **Dispositivo**: nombre del equipo o modelo del móvil detectado.
+- **Navegador**: nombre y versión aproximada del navegador.
+- **IP aproximada**: dirección IP del origen (últimos octetos enmascarados por privacidad).
+- **Ciudad**: ubicación geográfica aproximada basada en la IP.
+- **Última actividad**: timestamp del último request autenticado.
+
+## Duración y expiración de tokens
+
+VANTS utiliza un sistema de doble token para mantener tu sesión segura:
+
+| Token | Duración | Qué ocurre al expirar |
+| --- | --- | --- |
+| Access | 24 horas | Se renueva automáticamente con el refresh token si la sesión sigue válida |
+| Refresh | 30 días | Si expira, debes volver a iniciar sesión con credenciales |
+
+Además, cualquier cambio de contraseña invalida inmediatamente todos los tokens activos, forzando el re-login en todos los dispositivos.
+
+<Steps>
+  <Step title="Abre el panel de sesiones">
+    Ve a **Configuración > Seguridad > Sesiones activas** en tu panel de VANTS.
+  </Step>
+  <Step title="Revisa la lista de sesiones">
+    Identifica cada dispositivo por su nombre, navegador, ciudad y última actividad. La sesión actual se marca con una etiqueta destacada.
+  </Step>
+  <Step title="Revoca una sesión específica">
+    Haz clic en **Cerrar sesión** junto a cualquier entrada que no reconozcas. Esa sesión quedará invalidada inmediatamente y el dispositivo deberá volver a autenticarse.
+  </Step>
+  <Step title="Cierra todas las sesiones excepto la actual">
+    Usa el botón **Cerrar todas las demás sesiones** para invalidar todos los tokens excepto el de tu dispositivo actual. Esto es útil si cambiaste de dispositivo o sospechas de acceso no autorizado.
+  </Step>
+</Steps>
+
+<Tip>
+  Activa las **alertas por email en nuevos inicios de sesión** desde Configuración > Notificaciones. Recibirás un aviso cada vez que se abra una sesión desde un nuevo dispositivo o ubicación, con un enlace directo para cerrarla si no fuiste tú.
+</Tip>

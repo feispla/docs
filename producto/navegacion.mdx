@@ -1,0 +1,63 @@
+---
+title: "Navegación principal y secundaria de la plataforma VANTS"
+description: "Documentación de los menús de navegación de VANTS: rutas principales, filtros por juego, secciones secundarias y comportamiento del selector persistente."
+sidebarTitle: "Navegación"
+---
+
+VANTS organiza toda la plataforma en dos niveles de navegación: un menú principal con las áreas centrales del producto y una barra secundaria con filtros por juego, estado y preferencias del usuario. Esta página describe cada elemento, su ruta y cómo interactúan entre sí.
+
+## Navegación principal
+
+El menú superior contiene las nueve secciones centrales de la plataforma. Todos los enlaces son accesibles desde cualquier página.
+
+| Elemento | Ruta | Descripción |
+| --- | --- | --- |
+| Inicio | `/` | Homepage con resumen editorial y competitivo. |
+| Partidos | `/partidos` | Listado completo de partidos con filtros por estado. |
+| Torneos | `/torneos` | Calendario y detalle de torneos por juego y región. |
+| Rankings | `/rankings` | Tablas de clasificación por juego, rango y región. |
+| Estadísticas | `/estadisticas` | Métricas de jugadores, equipos y destacados semanales. |
+| Noticias | `/noticias` | Artículos editoriales categorizados por juego y tema. |
+| Equipos | `/equipos` | Directorio de equipos registrados con búsqueda y filtros. |
+| Jugadores | `/jugadores` | Perfiles individuales con rating y historial público. |
+| Mi perfil | `/perfil` | Configuración personal, favoritos y notificaciones. |
+
+## Navegación secundaria
+
+Debajo del menú principal, la barra secundaria ofrece filtros contextuales que cambian según la sección activa. Estos son los elementos disponibles en las secciones de Partidos, Torneos y Rankings:
+
+| Elemento | Ruta | Descripción |
+| --- | --- | --- |
+| Todos los juegos | `?juego=todos` | Muestra contenido de VALORANT, CS2 y LoL combinado. |
+| VALORANT | `?juego=valorant` | Filtra resultados exclusivos para VALORANT. |
+| CS2 | `?juego=cs2` | Filtra resultados exclusivos para Counter-Strike 2. |
+| League of Legends | `?juego=lol` | Filtra resultados exclusivos para League of Legends. |
+| En vivo | `?estado=live` | Partidos o transmisiones con estado "En vivo". |
+| Próximos | `?estado=scheduled` | Partidos programados y en check-in. |
+| Resultados | `?estado=completed` | Partidos finalizados, cancelados o con W.O. |
+| Mis favoritos | `?favoritos=true` | Contenido marcado por el usuario en su perfil. |
+
+<Tip>
+  El **GameSwitcher** es un selector de juego persistente que guarda tu última selección en el almacenamiento local del navegador. Si eliges VALORANT en la homepage, las secciones de Partidos, Torneos y Rankings cargarán automáticamente con ese filtro activo. Puedes anularlo manualmente desde la barra secundaria en cualquier momento.
+</Tip>
+
+## Comportamiento del filtro por región
+
+Además del filtro por juego, las secciones de Rankings, Torneos y Partidos incluyen un selector de región que afecta los datos mostrados:
+
+- **Global**: muestra todos los resultados sin restricción geográfica.
+- **Norteamérica**, **LATAM**, **Europa**, **Brasil**, **Asia**: filtran contenido según la región asignada al torneo, equipo o servidor de clasificación.
+
+La región seleccionada se sincroniza con el GameSwitcher si el usuario activa la opción "Aplicar región a toda la plataforma" desde su perfil.
+
+## Estados de partido en la navegación
+
+La barra secundaria agrupa los estados internos de los partidos en tres etiquetas visibles para el usuario:
+
+| Etiqueta visible | Estados internos incluidos |
+| --- | --- |
+| Próximos | `scheduled`, `check_in` |
+| En vivo | `live`, `paused`, `delayed` |
+| Resultados | `completed`, `cancelled`, `forfeited`, `disputed` |
+
+Esto simplifica la navegación sin exponer los slugs técnicos al usuario final.

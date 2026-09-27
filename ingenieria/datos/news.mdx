@@ -1,0 +1,72 @@
+---
+title: "Modelo de datos de noticias en VANTS: artículos y estados editoriales"
+description: "Revisa la tabla de noticias de VANTS con sus campos de contenido, SEO, estados editoriales y relaciones con juegos y torneos."
+sidebarTitle: "Noticias"
+---
+
+El CMS de noticias de VANTS permite publicar contenido editorial vinculado a la escena competitiva. Esta pagina describe la tabla principal que almacena articulos, sus estados de publicacion y los campos que optimizan la visibilidad en buscadores.
+
+Cada articulo puede asociarse a un juego o a un torneo especifico, lo que permite mostrar noticias relevantes en las paginas de perfil de esas entidades.
+
+## Estados editoriales
+
+Un articulo atraviesa los siguientes estados antes de llegar al usuario final:
+
+| Estado | Descripcion |
+| --- | --- |
+| `borrador` | El articulo esta en edicion y no es visible publicamente |
+| `programado` | Aprobado para publicacion en una fecha futura |
+| `publicado` | Visible en el sitio y accesible por su slug |
+| `archivado` | Retirado de la portada pero conservado en el sistema |
+
+## Tabla de articulos
+
+La tabla `news_articles` guarda todo el contenido editorial de la plataforma.
+
+```sql
+CREATE TABLE news_articles (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  slug             VARCHAR(200) NOT NULL UNIQUE,
+  title            VARCHAR(250) NOT NULL,
+  excerpt          VARCHAR(500),
+  body             TEXT NOT NULL,
+  author_id        UUID NOT NULL REFERENCES users(id),
+  game_id          UUID REFERENCES games(id),
+  tournament_id    UUID REFERENCES tournaments(id),
+  status           VARCHAR(30) NOT NULL DEFAULT 'borrador',
+  published_at     TIMESTAMPTZ,
+  cover_image_url  TEXT,
+  seo_title        VARCHAR(70),
+  seo_description  VARCHAR(160),
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+| Columna | Tipo | Descripcion |
+| --- | --- | --- |
+| `slug` | VARCHAR(200) | Identificador unico y legible para la URL del articulo |
+| `excerpt` | VARCHAR(500) | Resumen que aparece en listados y tarjetas de preview |
+| `body` | TEXT | Contido completo del articulo en formato enriquecido |
+| `author_id` | UUID | Usuario editor que redacto el articulo |
+| `game_id` | UUID | Juego al que se vincula, opcional |
+| `tournament_id` | UUID | Torneo relacionado, opcional |
+| `status` | VARCHAR(30) | Estado editorial actual |
+| `published_at` | TIMESTAMPTZ | Fecha y hora de publicacion efectiva |
+| `cover_image_url` | TEXT | Imagen principal que acompana al articulo |
+| `seo_title` | VARCHAR(70) | Titulo optimizado para motores de busqueda |
+| `seo_description` | VARCHAR(160) | Descripcion meta para resultados de busqueda |
+
+## Campos de SEO
+
+Los campos `seo_title` y `seo_description` permiten personalizar lo que aparece en Google y redes sociales sin alterar el titulo visible en la pagina. Si estos campos estan vacios, el sistema usa `title` y `excerpt` como valores por defecto.
+
+<Note>
+  Mantén `seo_title` bajo 60 caracteres y `seo_description` entre 130 y 155 caracteres para que no se trunquen en los resultados de busqueda.
+</Note>
+
+## Relaciones con entidades competitivas
+
+Los campos `game_id` y `tournament_id` son opcionales pero recomendados cuando el articulo trata sobre un evento o titulo especifico. Gracias a estas columnas, la pagina de un torneo puede mostrar un feed de noticias relacionadas sin necesidad de etiquetas intermedias.
+
+Si un articulo es de interes general, ambos campos pueden quedar en NULL y el articulo aparecera solo en el feed principal de `/news`.

@@ -1,0 +1,74 @@
+---
+title: "Diseño responsive de la plataforma VANTS"
+description: "Estrategia responsive de VANTS: navegación, tablas, brackets, filtros y paneles de estadísticas adaptados a desktop y móvil sin ocultar información crítica."
+sidebarTitle: "Responsive"
+---
+
+VANTS está diseñado para funcionar desde monitores ultrawide hasta smartphones. Esta página explica cómo cada sección de la plataforma se adapta sin perder funcionalidad ni ocultar información esencial.
+
+## Desktop (1024px en adelante)
+
+En pantallas grandes, la plataforma aprovecha el ancho para mostrar información densa y navegación persistente.
+
+### Navegación lateral o superior
+
+- `MainNavigation` se muestra como barra lateral fija o barra superior según la sección.
+- Los filtros de región y fecha se ubican en una barra de herramientas sobre el contenido.
+- El `GameSwitcher` permanece visible en todo momento para cambiar de contexto sin perder la posición.
+
+### Tablas amplias
+
+- `StandingsTable`, `RankingTable` y `ResponsiveDataTable` muestran todas las columnas.
+- El ordenamiento por columnas está disponible con clic en el encabezado.
+- Las columnas de estadísticas avanzadas se muestran con tooltip al hover.
+
+### Bracket con scroll y zoom
+
+- `BracketView` usa un layout horizontal con conectores visibles entre rondas.
+- El usuario puede hacer zoom con controles o gestos de pinza.
+- Un minimapa muestra la posición actual dentro del bracket completo.
+
+### Paneles de estadísticas
+
+- `StatCard` y `StatTrend` se disponen en grid de 3 a 4 columnas.
+- Los gráficos de tendencia muestran más puntos de datos.
+
+## Móvil (hasta 767px)
+
+En pantallas pequeñas, la prioridad es la legibilidad y el acceso rápido a la acción principal.
+
+### Navegación compacta
+
+- `MobileNavigation` reemplaza a la barra lateral con una barra inferior o un menú hamburguesa.
+- El `GameSwitcher` se colapsa en un selector de pestañas deslizables.
+
+### Filtros en drawer
+
+- `RegionFilter` y `DateFilter` se mueven a un `Drawer` que se abre desde un botón flotante o la barra de herramientas.
+- Los filtros activos se resumen como chips tocables sobre el listado.
+
+### Partidos como tarjetas
+
+- `MatchCard` y `LiveMatchCard` ocupan todo el ancho con padding consistente.
+- La información secundaria (región, formato) se comprime en una sola línea.
+
+### Tablas convertidas en filas expandibles
+
+- `ResponsiveDataTable` transforma cada fila en una card con los datos principales visibles.
+- Al tocar, la fila se expande mostrando estadísticas adicionales.
+- El encabezado de tabla desaparece visualmente pero se mantiene como `aria-label` para lectores de pantalla.
+
+### Bracket con scroll horizontal
+
+- `BracketView` se apila en scroll horizontal continuo.
+- Cada ronda ocupa el ancho completo de la pantalla.
+- Los conectores entre rondas se simplifican a líneas verticales.
+
+### Botones de acción visibles
+
+- `FavoriteButton` y acciones principales se mantienen en áreas de fácil alcance del pulgar.
+- Los CTAs no se ocultan detrás de menús de tres puntos a menos que haya más de dos acciones.
+
+<Warning>
+  No ocultes información crítica sin proporcionar un acceso alternativo. Si una columna desaparece en móvil, su contenido debe estar disponible mediante expansión, drawer o página de detalle. El usuario debe poder consultar cualquier dato que ve en desktop.
+</Warning>

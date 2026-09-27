@@ -1,0 +1,69 @@
+---
+title: "Partidos en vivo de VANTS: seguimiento en tiempo real"
+description: "Descubre cómo VANTS muestra partidos en vivo con indicador LIVE, actualización en tiempo real y tarjetas con marcador, mapa y ronda actual."
+sidebarTitle: "En vivo"
+---
+
+VANTS te permite seguir los enfrentamientos que ocurren en este momento a través de una página dedicada que agrupa todos los partidos con estado En vivo. Esta página explica cómo se listan esos partidos, qué información muestra cada tarjeta y cómo funciona la actualización de datos.
+
+## Lista de partidos en vivo
+
+Cuando entras a `/matches/live`, VANTS muestra únicamente los partidos cuyo estado interno es `live`. No aparecen partidos en check-in, pausados o aplazados a menos que cambien su estado durante tu sesión. La lista se ordena por fecha de inicio, mostrando primero los más recientes.
+
+## Indicador LIVE
+
+Cada tarjeta de partido en vivo incluye un indicador visual LIVE propio de VANTS. Se trata de un punto pulsante de color rojo junto a la etiqueta "En vivo" que permite identificar de inmediato qué enfrentamientos están activos sin necesidad de leer el estado textual.
+
+## Actualización en tiempo real
+
+Los datos de los partidos en vivo se actualizan mediante el sistema de tiempo real de VANTS. Según la arquitectura actual de la plataforma, esto puede implementarse con polling periódico, Server-Sent Events (SSE) o WebSockets. Para conocer los detalles técnicos del stack, consulta la documentación de ingeniería en `/ingenieria/tiempo-real`.
+
+<Info>
+  El intervalo de refresco recomendado para la vista de partidos en vivo es de 5 a 10 segundos. Intervalos menores pueden generar carga innecesaria sin mejorar la experiencia visual.
+</Info>
+
+## Estructura de la tarjeta LiveMatchCard
+
+Cada tarjeta de partido en vivo presenta la siguiente información en tiempo real:
+
+- **Marcador actual**: puntos o rondas ganadas por cada equipo en el momento de la consulta
+- **Juego**: VALORANT, Counter-Strike 2 o League of Legends
+- **Torneo**: nombre del torneo o serie al que pertenece el partido
+- **Formato de serie**: BO1, BO3 o BO5
+- **Fase**: grupos, playoffs, final u otra fase del torneo
+- **Mapa actual**: escenario o mapa en juego (cuando aplica)
+- **Ronda actual**: ronda o minuto aproximado del encuentro (cuando aplica)
+
+## Ejemplo de tarjeta textual
+
+```text
+[● LIVE]  VANTS Challenger Series  |  CS2  |  Playoffs  |  BO3
+
+ECLIPSE CORE        11
+NIGHT VECTOR         9
+
+Mapa actual: Vortex Atlas
+Ronda: 21/30
+```
+
+## Estados relacionados
+
+Un partido puede pasar por varios estados antes o después de estar en vivo. Estos son los slugs internos que utiliza VANTS y sus etiquetas visibles:
+
+| Slug interno | Etiqueta visible |
+| --- | --- |
+| `scheduled` | Programado |
+| `check_in` | Check-in |
+| `live` | En vivo |
+| `paused` | Pausado |
+| `delayed` | Aplazado |
+| `completed` | Finalizado |
+| `cancelled` | Cancelado |
+| `forfeited` | W.O. |
+| `disputed` | En disputa |
+
+## Navegación relacionada
+
+- [Próximos partidos](/producto/matches/upcoming)
+- [Resultados](/producto/matches/results)
+- [Detalle de partido](/producto/matches/detalle)

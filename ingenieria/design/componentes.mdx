@@ -1,0 +1,64 @@
+---
+title: "Componentes de interfaz del design system VANTS"
+description: "Catálogo completo de componentes de VANTS: navegación, partidos, torneos, estadísticas, noticias, estados vacío/carga/error y overlays. Cada componente con propósito y notas de uso."
+sidebarTitle: "Componentes"
+---
+
+VANTS se construye a partir de un sistema de componentes reutilizables que cubren toda la plataforma: navegación, visualización de partidos, torneos, estadísticas y estados de interfaz. Esta página lista cada componente con su propósito y consideraciones clave.
+
+## Componentes de navegación y estructura
+
+| Componente | Propósito | Notas |
+| --- | --- | --- |
+| AppShell | Contenedor raíz que define el layout base con header, área de contenido y espacio para navegación | Define las regiones landmark principales para accesibilidad |
+| MainNavigation | Barra de navegación principal en desktop, con enlaces a calendario, torneos, rankings y noticias | Colapsa en iconos con labels en hover en pantallas medianas |
+| MobileNavigation | Navegación inferior o lateral en móvil con acceso rápido a las secciones principales | Usa iconos claros; el label siempre visible para evitar ambigüedad |
+| GameSwitcher | Selector de juego activo (VALORANT, Counter-Strike 2, League of Legends) | Cambiar de juego actualiza el contexto global sin recargar la página |
+| RegionFilter | Filtro de región con opciones como Global, Norteamérica, LATAM, Europa, Brasil, Asia | Soporta selección múltiple y estado "Todas" |
+| DateFilter | Filtro temporal para calendario: hoy, mañana, esta semana, personalizado | En móvil se mueve a un drawer para no ocupar ancho |
+
+## Componentes de partido y torneo
+
+| Componente | Propósito | Notas |
+| --- | --- | --- |
+| MatchStatusBadge | Indica el estado de un partido con color, icono y label en español | Estados: Programado, Check-in, En vivo, Pausado, Aplazado, Finalizado, Cancelado, W.O., En disputa |
+| MatchCard | Tarjeta compacta con equipos, marcador, hora, región y formato | Diseñada para listados densos; el área clickeable es toda la tarjeta |
+| LiveMatchCard | Variante de MatchCard para partidos en vivo con indicador pulsante y stats actualizadas | Usa el acento rojo `#FF4655` para el indicador de live |
+| TournamentCard | Tarjeta de torneo con nombre, juego, estado, premio y fechas | Prioriza la imagen del torneo o un gradiente generado como fallback |
+| TournamentHeader | Cabecera de página de torneo con nombre, formato, estado, reglas y fechas clave | Incluye breadcrumbs y acciones como compartir o añadir a favoritos |
+| BracketView | Visualización de bracket para eliminación simple o doble | En desktop usa layout horizontal; en móvil scroll horizontal con zoom opcional |
+| StandingsTable | Tabla de clasificación de una fase de grupos o liga | Soporta desempates visuales y resaltado del equipo del usuario |
+| RankingTable | Tabla de rankings globales o por región con posición, equipo, puntos VP y rating | Los números grandes en la columna de posición facilitan el escaneo |
+
+## Componentes de jugador, equipo y estadísticas
+
+| Componente | Propósito | Notas |
+| --- | --- | --- |
+| PlayerCard | Tarjeta de jugador con nombre, tag, equipo, región y estadísticas destacadas | En móvil se convierte en fila expandible |
+| TeamCard | Tarjeta de equipo con logo, nombre, tag, región, roster y estadísticas recientes | Incluye botón de favorito si el usuario está autenticado |
+| StatCard | Tarjeta numérica para una métrica clave (K/D, win rate, rating promedio) | Número grande arriba, label abajo, tendencia opcional |
+| StatTrend | Indicador de variación respecto al periodo anterior, con flecha y porcentaje | Verde para positivo, rojo para negativo, gris para sin cambio |
+
+## Componentes de contenido y búsqueda
+
+| Componente | Propósito | Notas |
+| --- | --- | --- |
+| NewsCard | Tarjeta de noticia con imagen, título, fecha, juego relacionado y resumen | La imagen usa ratio fijo para evitar saltos de layout |
+| NewsHero | Componente destacado para la noticia principal con imagen grande y texto superpuesto | Limitado a una noticia; en móvil apila verticalmente |
+| SearchInput | Campo de búsqueda global con resultados agrupados por tipo (equipo, jugador, torneo) | Incluye atajo de teclado `/` para activar |
+| EmptyState | Ilustración y mensaje cuando no hay resultados para una búsqueda o filtro | Incluye sugerencia de acción alternativa |
+| LoadingState | Skeleton animado que respeta la estructura del componente que cargará | Nunca usa spinners genéricos en listados |
+| ErrorState | Mensaje de error con código, descripción y acción de reintento | Distingue entre error de red y error de servidor |
+| Pagination | Navegación por páginas para listados largos | En móvil usa "Cargar más" en lugar de números de página |
+| FavoriteButton | Botón de favorito con estado activo/inactivo y animación sutil | Persiste en localStorage para usuarios no autenticados |
+| TimezoneLabel | Muestra la zona horaria activa y permite cambio rápido | Default a la zona del navegador |
+| ResponsiveDataTable | Tabla que se adapta a móvil convirtiendo filas en cards expandibles | Mantiene encabezados accesibles como aria-labels |
+
+## Componentes de overlay y feedback
+
+| Componente | Propósito | Notas |
+| --- | --- | --- |
+| Modal | Ventana modal centrada para acciones que requieren confirmación o formularios | Cierra con Escape y clic fuera; trampa de foco activa |
+| Drawer | Panel lateral que se desliza para filtros, detalles o navegación secundaria | En móvil ocupa todo el ancho; en desktop usa ancho fijo |
+| Toast | Notificación temporal para acciones completadas o errores | Máximo 3 toasts visibles; duración de 4 segundos |
+| ConfirmationDialog | Diálogo específico para acciones destructivas (eliminar favorito, abandonar torneo) | Requiere clic explícito en el botón de confirmación |

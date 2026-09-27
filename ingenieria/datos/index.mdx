@@ -1,0 +1,63 @@
+---
+title: "Modelo de datos de VANTS: convenciones y estructura general"
+description: "Conoce las convenciones del modelo de datos de VANTS: snake_case, timestamps con zona horaria, slugs estables y uso de JSON solo para datos flexibles. Enlaces a entidades, partidos, torneos, noticias y favoritos."
+sidebarTitle: "Modelo de datos"
+---
+
+VANTS almacena toda la informacion competitiva en un modelo relacional con convenciones claras que facilitan el mantenimiento y la consulta. Esta pagina explica las reglas generales que aplican a todas las tablas del sistema.
+
+El modelo separa los datos estructurados, que se consultan y filtran constantemente, de los datos flexibles, que varian segun el juego o el proveedor externo.
+
+## Convenciones de nomenclatura
+
+Todas las tablas y columnas usan `snake_case`. Los nombres son descriptivos y evitan abreviaturas ambiguas. Por ejemplo, `created_at` en vez de `crtd` y `match_series_id` en vez de `ms_id`.
+
+Los identificadores unicos son UUID de tipo 4 en la mayoria de las tablas, salvo en tablas de configuracion pequenas donde un entero autoincremental es suficiente.
+
+## Timestamps con zona horaria
+
+Todas las columnas de fecha y hora se almacenan en UTC y llevan el sufijo `_at`. El frontend se encarga de convertir a la zona horaria del usuario usando el campo `timezone` de la tabla `regions`.
+
+Las columnas estandar son:
+
+- `created_at`: momento de creacion del registro
+- `updated_at`: momento de la ultima modificacion
+- `published_at`, `started_at`, `completed_at`: timestamps especificos del dominio
+
+## Slugs estables
+
+Los slugs son cadenas unicas, legibles y permanentes que identifican recursos en URLs. No cambian cuando el nombre del recurso cambia, para evitar enlaces rotos. Por ejemplo, un torneo puede cambiar de nombre sin que su slug se modifique.
+
+Se generan a partir del nombre original, se normalizan a minusculas, se reemplazan los espacios por guiones y se anade un sufijo numerico si ya existe otro igual.
+
+## Uso de JSON
+
+Las columnas de tipo JSON o JSONB se reservan para datos que varian segun el juego o el proveedor y que no se consultan directamente en filtros SQL. Por ejemplo, estadisticas detalladas de un mapa o configuracion de una etapa de torneo.
+
+<Info>
+  No uses JSON para campos que se filtran, ordenan o unen frecuentemente. Si un dato aparece en una clausula `WHERE` o `JOIN`, debe tener su propia columna con tipo adecuado.
+</Info>
+
+## Entidades principales
+
+<CardGroup cols={2}>
+  <Card title="Entidades base" icon="box" href="/ingenieria/datos/entidades">
+    Juegos, regiones, equipos y membresias de equipo.
+  </Card>
+
+  <Card title="Partidos" icon="swords" href="/ingenieria/datos/matches">
+    Series, mapas, jugadores por partido y estados del flujo competitivo.
+  </Card>
+
+  <Card title="Torneos" icon="trophy" href="/ingenieria/datos/tournaments">
+    Torneos, etapas, participantes y tablas de posiciones.
+  </Card>
+
+  <Card title="Noticias" icon="newspaper" href="/ingenieria/datos/news">
+    Articulos, estados editoriales y campos de SEO.
+  </Card>
+
+  <Card title="Favoritos" icon="star" href="/ingenieria/datos/favorites">
+    Seguimiento de equipos, jugadores, torneos y partidos por usuario.
+  </Card>
+</CardGroup>

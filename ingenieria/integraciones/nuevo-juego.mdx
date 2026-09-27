@@ -1,0 +1,83 @@
+---
+title: "Agregar un nuevo juego a la plataforma VANTS"
+description: "Pasos para integrar un nuevo juego en VANTS: registro en tabla games, adaptador de estadísticas, métricas destacadas, fases soportadas y configuración del GameSwitcher."
+sidebarTitle: "Nuevo juego"
+---
+
+VANTS está diseñado para admitir nuevos juegos competitivos sin reescribir la plataforma. Esta página guía el proceso de integración desde el registro inicial hasta la activación en la interfaz.
+
+<Steps>
+  <Step title="Registrar el juego en la tabla games">
+    Inserta una nueva fila en la tabla `games` con los campos obligatorios:
+
+    ```sql
+    INSERT INTO games (slug, name, short_name, is_active, icon_url, default_region)
+    VALUES ('newgame', 'Nombre del Juego', 'NJG', true, '/icons/newgame.svg', 'Global');
+    ```
+
+    El `slug` se usa en URLs y referencias internas. El `short_name` aparece en el `GameSwitcher` y filtros compactos.
+  </Step>
+  <Step title="Crear el adaptador de estadísticas">
+    Implementa un adaptador que normalice los datos del proveedor al modelo interno de VANTS. El adaptador debe manejar:
+
+    - Formato de serie (BO1, BO3, BO5 o personalizado).
+    - Estructura de marcador por mapa o ronda.
+    - Identificación de jugadores y equipos.
+    - Metadatos de partido (mapas, duración, modo de juego).
+
+    ```ts
+    interface GameStatsAdapter {
+      normalizeMatch(raw: ProviderMatch): VantsMatch;
+      normalizePlayerStats(raw: ProviderPlayerStats): VantsPlayerStats;
+      supportedFormats(): SeriesFormat[];
+    }
+    ```
+  </Step>
+  <Step title="Definir métricas destacadas">
+    Cada juego tiene estadísticas visibles en `StatCard` y perfiles de jugador. Define las métricas principales:
+
+    | Métrica | Tipo | Ejemplo |
+    | --- | --- | --- |
+    | Rating principal | número entero | 2450 |
+    | K/D ratio | decimal | 1.35 |
+    | Win rate | porcentaje | 62.5% |
+    | Mapas jugados | entero | 47 |
+
+    El rating es un número entero por juego y nunca se mezcla con el rating de otros juegos.
+  </Step>
+  <Step title="Registrar tipos de fase soportados">
+    Define qué estructuras de torneo aplica el juego:
+
+    - Fase de grupos (round-robin).
+    - Eliminación simple.
+    - Eliminación doble.
+    - Suizo.
+    - Liga (todos contra todos).
+
+    Registra las fases en `tournament_phase_types` vinculadas al `game_id`.
+  </Step>
+  <Step title="Configurar el GameSwitcher">
+    Añade el nuevo juego al componente `GameSwitcher` con:
+
+    - Icono representativo (SVG propio, nunca logo oficial del juego).
+    - Label traducido.
+    - Ruta base para redirección al cambiar de juego.
+
+    Al cambiar de juego, el contexto global se actualiza y todas las vistas filtran por el `game_id` seleccionado.
+  </Step>
+  <Step title="Actualizar rankings sin mezclar rating">
+    Crea tablas o particiones de ranking específicas para el nuevo juego:
+
+    ```sql
+    CREATE TABLE rankings_newgame (
+      player_id UUID REFERENCES players(id),
+      rating INTEGER NOT NULL,
+      rank INTEGER NOT NULL,
+      region VARCHAR(50),
+      updated_at TIMESTAMP DEFAULT NOW()
+    );
+    ```
+
+    El rating del nuevo juego es independiente. Un jugador puede tener 2450 en VALORANT y 1800 en el nuevo juego sin que ambos valores se comparen o promedien.
+  </Step>
+</Steps>

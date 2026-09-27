@@ -1,0 +1,34 @@
+---
+title: "Proveedores OAuth en VANTS: login con cuentas externas"
+description: "Consulta qué proveedores OAuth soporta VANTS, qué datos lee de cada uno, cómo desvincularlos y qué juegos se desbloquean al vincular Steam o Riot ID."
+sidebarTitle: "Proveedores"
+---
+
+VANTS te permite acceder y vincular tu cuenta mediante proveedores de identidad externos. Esto simplifica el login, reduce contraseñas y desbloquea funcionalidades específicas según el proveedor que conectes. En esta página verás qué datos lee VANTS de cada proveedor, cómo gestionar los enlaces y qué ventajas obtienes al vincular perfiles de juego.
+
+## Proveedores soportados
+
+| Proveedor | Scope | Datos que se leen | Se puede desvincular |
+| --- | --- | --- | --- |
+| Google | email, profile | Email público, nombre y foto de perfil | Sí, desde configuración de cuenta |
+| Discord | identify, email | ID de Discord, email, nombre de usuario y avatar | Sí, desde configuración de cuenta |
+| Apple | name, email | Email privado o público, nombre | Sí, desde configuración de cuenta |
+| Steam | identity | Steam ID público, nombre de perfil, avatar | Sí, desde configuración de cuenta |
+| Riot ID | account | PUUID de Riot, nombre de invocador | Sí, desde configuración de cuenta |
+
+## Desbloqueo automático de juegos
+
+Al vincular ciertos proveedores, VANTS detecta automáticamente tus perfiles de juego y los asocia a tu cuenta:
+
+- **Steam**: desbloquea automáticamente tu perfil de **CS2** para inscripciones y estadísticas.
+- **Riot ID**: desbloquea simultáneamente tus perfiles de **VALORANT** y **League of Legends**.
+
+Para otros juegos o si prefieres vincular manualmente, visita la guía de [vinculación de juegos](/empezar/vincular-juegos).
+
+<Warning>
+  VANTS nunca te pedirá la contraseña de tus cuentas de Google, Discord, Steam o cualquier otro proveedor. El login siempre ocurre en el dominio oficial del proveedor. Si recibes un mensaje solicitando credenciales de terceros, repórtalo inmediatamente: es phishing.
+</Warning>
+
+## Gestión de proveedores vinculados
+
+Desde tu panel de configuración puedes ver todos los proveedores activos, añadir nuevos o desvincular los existentes. Para mantener el acceso a tu cuenta, asegúrate de conservar al menos un método de login activo: email con contraseña o cualquier proveedor vinculado.

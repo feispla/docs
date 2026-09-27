@@ -1,0 +1,64 @@
+---
+title: "Directorio de equipos en VANTS con filtros y rating"
+description: "Explora el directorio de equipos de VANTS. Filtra escuadras por juego, región y ranking. Cada TeamCard muestra logo, nombre, tag, región, juego y rating VANTS."
+sidebarTitle: "Equipos"
+---
+
+El directorio de equipos de VANTS reúne todas las escuadras registradas en la plataforma. Desde esta sección puedes descubrir equipos nuevos, comparar ratings y acceder a la ficha detallada de cada organización con su identidad visual y roster actual.
+
+## Filtros del directorio
+
+La barra superior del directorio permite combinar estos filtros:
+
+| Filtro | Opciones |
+| --- | --- |
+| Juego | VALORANT, Counter-Strike 2, League of Legends |
+| Región | Global, Norteamérica, LATAM, Europa, Brasil, Asia |
+| Ranking | Todos, top 50, top 100, top 500 |
+| Orden | Rating descendente, nombre A-Z, fecha de registro |
+
+## TeamCard
+
+Cada equipo se muestra en una tarjeta con la siguiente información:
+
+| Elemento | Descripción |
+| --- | --- |
+| Logo propio | Imagen de identidad visual subida por el equipo |
+| Nombre | Nombre completo de la escuadra |
+| Tag | Abreviatura de 2 a 5 caracteres (por ejemplo, NVTX, IRWL) |
+| Región | Región competitiva principal |
+| Juego | Título en el que compite |
+| Rating VANTS | Número entero del rating en ese juego |
+
+Al hacer clic en una tarjeta, accedes a la ficha detallada del equipo en la ruta `/teams/:teamSlug`.
+
+## Búsqueda directa
+
+El directorio incluye un campo de búsqueda que busca coincidencias en:
+
+- Nombre del equipo
+- Tag
+- Nombre de jugadores del roster activo
+
+La búsqueda es insensible a mayúsculas y acentos. Los resultados se ordenan por relevancia (nombre exacto primero, luego tag, luego jugador).
+
+## Estados de equipo
+
+Los equipos pueden tener estos estados visibles:
+
+| Estado | Descripción |
+| --- | --- |
+| Activo | Tiene roster completo y ha jugado partidos en la última temporada |
+| Inactivo | Registrado pero sin partidos en la última temporada |
+| Nuevo | Registrado en los últimos 30 días |
+
+Los equipos inactivos aparecen al final del listado por defecto, a menos que apliques un filtro específico.
+
+<Tip>
+  Usa la combinación de filtros "Juego" + "Región" + "Ranking top 50" para descubrir los equipos más competitivos de tu zona en el título que te interesa.
+</Tip>
+
+## Navegación relacionada
+
+- [Ficha detallada de equipo](/producto/teams/detalle)
+- [Rankings de equipos](/producto/rankings/teams)

@@ -1,0 +1,41 @@
+---
+title: "Integraciones de datos en la plataforma VANTS"
+description: "Arquitectura de integraciones de VANTS: capa de datos desacoplada, contrato interno con proveedores externos y protección de datos sin autorización."
+sidebarTitle: "Integraciones"
+---
+
+VANTS consume datos de múltiples fuentes a través de una capa de integración desacoplada. Esta página explica la arquitectura de conexión con proveedores externos y las reglas para mantener la integridad y legalidad de los datos.
+
+## Capa de datos desacoplada
+
+La plataforma no depende directamente de ninguna API externa. En su lugar, usa una capa intermedia que:
+
+1. Recibe datos de proveedores autorizados.
+2. Los normaliza al modelo interno de VANTS.
+3. Los almacena en las tablas propias de la plataforma.
+4. Expone los datos normalizados a la interfaz y a la API pública.
+
+Este diseño permite cambiar de proveedor, agregar nuevas fuentes o desconectar una integración sin afectar el resto de la plataforma.
+
+## Contrato interno con proveedores
+
+Cuando un proveedor externo alimenta datos a VANTS, debe cumplir un contrato mínimo:
+
+| Campo | Tabla | Descripción |
+| --- | --- | --- |
+| `external_source` | `match_series` | Identificador del proveedor que originó los datos |
+| `external_match_id` | `match_series` | ID del partido en el sistema del proveedor |
+| `external_source` | Tablas relacionadas | Vincula estadísticas, jugadores y equipos con la fuente |
+
+Estos campos permiten trazar el origen de cada dato, auditar inconsistencias y reconectar registros si cambia la integración.
+
+## Protección de datos
+
+VANTS no expone datos protegidos sin autorización explícita:
+
+- Datos de APIs oficiales solo se muestran después de obtener los permisos correspondientes.
+- Estadísticas detalladas de jugadores requieren acuerdo con el proveedor.
+- Resultados de torneos no autorizados no se publican en la plataforma.
+- Cualquier dato marcado como privado en la fuente se ignora durante la importación.
+
+La interfaz distingue claramente entre datos oficiales de VANTS, datos de proveedores autorizados y contenido generado por la comunidad.

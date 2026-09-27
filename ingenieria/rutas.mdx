@@ -1,0 +1,55 @@
+---
+title: "Rutas de VANTS: tabla completa de URLs públicas y privadas"
+description: "Consulta la tabla completa de rutas de VANTS, con su proposito y visibilidad. Incluye secciones de partidos, torneos, rankings, estadísticas, noticias, equipos, jugadores y perfil."
+sidebarTitle: "Rutas"
+---
+
+VANTS organiza todo su contenido en rutas predecibles que facilitan la navegacion y el posicionamiento en buscadores. Esta pagina lista cada ruta, explica para que sirve y indica si es publica o requiere sesion de usuario.
+
+Las rutas de perfil son privadas y no deben indexarse, ya que su contenido depende del usuario autenticado. El resto de la plataforma esta pensada para ser publica y compartible.
+
+## Tabla de rutas
+
+| Ruta | Proposito | Publico / Privado |
+| --- | --- | --- |
+| `/` | Inicio con calendario destacado, noticias y rankings rapidos | Publico |
+| `/matches` | Listado general de partidos con filtros por juego, region y estado | Publico |
+| `/matches/live` | Partidos que estan en estado `live` o `paused` | Publico |
+| `/matches/upcoming` | Partidos programados que aun no han comenzado | Publico |
+| `/matches/results` | Partidos finalizados con resultados confirmados | Publico |
+| `/matches/:matchSlug` | Detalle completo de un partido: alineaciones, mapas, estadisticas y stream | Publico |
+| `/tournaments` | Listado de torneos activos y pasados con filtros por juego y region | Publico |
+| `/tournaments/:tournamentSlug` | Pagina principal de un torneo con informacion general | Publico |
+| `/tournaments/:tournamentSlug/overview` | Resumen del torneo: formato, premios, fechas clave | Publico |
+| `/tournaments/:tournamentSlug/matches` | Calendario de partidos del torneo | Publico |
+| `/tournaments/:tournamentSlug/standings` | Tabla de posiciones o clasificacion del torneo | Publico |
+| `/tournaments/:tournamentSlug/bracket` | Bracket visual de eliminacion o grupos | Publico |
+| `/tournaments/:tournamentSlug/stats` | Estadisticas agregadas del torneo por jugador y equipo | Publico |
+| `/tournaments/:tournamentSlug/news` | Noticias vinculadas al torneo | Publico |
+| `/rankings` | Pagina principal de rankings con resumen por juego | Publico |
+| `/rankings/players` | Clasificacion individual con filtros por region y rango | Publico |
+| `/rankings/teams` | Clasificacion de equipos segun rendimiento reciente | Publico |
+| `/stats` | Portal de estadisticas con acceso a secciones especializadas | Publico |
+| `/stats/players` | Estadisticas individuales por jugador, filtrables por juego y periodo | Publico |
+| `/stats/teams` | Estadisticas colectivas por equipo | Publico |
+| `/stats/maps` | Rendimiento por mapa: win rate, picks, bans | Publico |
+| `/stats/agents-or-champions` | Estadisticas por agente o campeon segun el juego activo | Publico |
+| `/news` | Feed de noticias con filtros por juego, torneo y etiqueta | Publico |
+| `/news/:articleSlug` | Articulo individual con contenido completo y entidades vinculadas | Publico |
+| `/teams` | Directorio de equipos registrados en VANTS | Publico |
+| `/teams/:teamSlug` | Perfil publico de un equipo: plantilla, resultados, proximos partidos | Publico |
+| `/players` | Directorio de jugadores con busqueda y filtros | Publico |
+| `/players/:playerSlug` | Perfil publico de un jugador: estadisticas, historial de equipos, partidos | Publico |
+| `/profile` | Panel principal del usuario autenticado | Privado |
+| `/profile/matches` | Historial de partidos del usuario en plataforma | Privado |
+| `/profile/stats` | Estadisticas personales del usuario | Privado |
+| `/profile/tournaments` | Torneos en los que el usuario ha participado | Privado |
+| `/profile/settings` | Configuracion de cuenta, notificaciones y privacidad | Privado |
+
+<Note title="Rutas de perfil">
+  Las rutas bajo `/profile/*` son privadas y no deben aparecer en sitemaps ni ser indexadas por buscadores. El servidor debe responder con `X-Robots-Tag: noindex` o meta robots equivalente.
+</Note>
+
+## Convenciones de rutas dinamicas
+
+Los parametros como `:matchSlug`, `:tournamentSlug`, `:teamSlug`, `:playerSlug` y `:articleSlug` son valores unicos y estables en el tiempo. No cambian cuando un partido pasa de `scheduled` a `completed`, lo que permite compartir enlaces sin que se rompan.

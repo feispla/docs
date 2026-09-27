@@ -1,0 +1,55 @@
+---
+title: "Modo demo de VANTS: seed de datos de ejemplo para desarrollo"
+description: "El modo demo de VANTS genera datos de ejemplo: 3 juegos, 5 regiones, 12 equipos, 30 jugadores, 6 torneos y partidos en todos los estados. Nunca simula datos oficiales como en vivo."
+sidebarTitle: "Modo demo"
+---
+
+El modo demo permite probar y desarrollar la plataforma VANTS sin depender de datos reales ni conexiones externas. Al activarse, el sistema genera un seed completo con juegos, equipos, jugadores, torneos y partidos que cubren todos los escenarios de la interfaz.
+
+## Contenido del seed inicial
+
+El seed de demo se genera automáticamente con la siguiente estructura:
+
+| Entidad | Cantidad | Detalle |
+| --- | --- | --- |
+| Juegos | 3 | VALORANT, Counter-Strike 2, League of Legends |
+| Regiones | 5 | Global, Norteamérica, LATAM, Europa, Brasil, Asia |
+| Equipos | 12 | Nombres ficticios como Eclipse Core, Nova Strike, Iron Wolves |
+| Jugadores | 30 | Roster completo distribuido entre los 12 equipos |
+| Torneos | 6 | Diferentes formatos, juegos y estados |
+| Partidos | Variable | Pasados, en vivo, próximos, en todos los estados |
+
+## Tipos de partidos generados
+
+El seed incluye ejemplos de los tres formatos de serie soportados:
+
+- **BO1**: un mapa, resultado binario.
+- **BO3**: hasta tres mapas, ganador al mejor de tres.
+- **BO5**: hasta cinco mapas, usado en finales.
+
+Los partidos cubren los estados: Programado, Check-in, En vivo, Pausado, Aplazado, Finalizado, Cancelado, W.O. y En disputa.
+
+## Estructuras de torneo
+
+El seed genera al menos dos estructuras clave:
+
+1. **Fase de grupos**: torneo con grupos de round-robin seguido de bracket de eliminación.
+2. **Doble eliminación**: bracket donde una derrota no elimina hasta la segunda.
+
+Además, se generan rankings por juego y región, noticias de ejemplo y estadísticas de jugadores.
+
+## Activación del modo demo
+
+Para activar el modo demo en un entorno de desarrollo:
+
+1. Activa la variable de entorno `VANTS_DEMO_MODE=true`.
+2. Reinicia el servidor de desarrollo.
+3. Toda la plataforma cargará datos del seed en lugar de consultar fuentes externas.
+
+<Warning>
+  Mientras esté activo el modo demo, cada tarjeta, tabla y badge muestra un indicador "Demo" o "Datos de ejemplo". Nunca simules datos oficiales como si fueran en vivo. Los usuarios deben distinguir claramente que están viendo contenido de prueba.
+</Warning>
+
+## Datos ficticios de ejemplo
+
+Los equipos, jugadores, torneos y resultados del modo demo son completamente inventados. Ningún nombre, logo, resultado o estadística corresponde a equipos o eventos reales. Esto garantiza que el desarrollo y las capturas de pantalla no infrinjan derechos de terceros.

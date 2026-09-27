@@ -1,0 +1,61 @@
+---
+title: "Calendario competitivo de VANTS: partidos en vivo, próximos y resultados"
+description: "Explora el calendario de partidos de VANTS. Navega por rutas de en vivo, próximos enfrentamientos y resultados con filtros persistentes, zona horaria local y vista semanal."
+sidebarTitle: "Partidos"
+---
+
+VANTS organiza toda la actividad competitiva en un calendario unificado donde puedes seguir partidos en tiempo real, descubrir próximos enfrentamientos y revisar resultados históricos. Esta sección explica cómo funciona la navegación del calendario, las rutas disponibles y las herramientas de filtrado que mantienen tu contexto al cambiar de vista.
+
+## Rutas del calendario
+
+La sección de partidos cuenta con cinco rutas principales que cubren todos los estados de un encuentro competitivo.
+
+| Ruta | Descripción |
+| --- | --- |
+| `/matches` | Vista general del calendario con acceso a todas las subsecciones |
+| `/matches/live` | Partidos que están en curso en este momento |
+| `/matches/upcoming` | Enfrentamientos programados para las próximas horas y días |
+| `/matches/results` | Resultados de partidos ya finalizados |
+| `/matches/:matchSlug` | Página de detalle de un partido específico |
+
+## Vistas disponibles
+
+El calendario ofrece dos modos de visualización que puedes alternar desde el selector superior.
+
+<CardGroup cols={2}>
+  <Card title="Vista lista" icon="list">
+    Muestra los partidos en orden cronológico con tarjetas verticales. Ideal para revisar muchos enfrentamientos rápidamente y aplicar filtros densos.
+  </Card>
+
+  <Card title="Vista calendario semanal" icon="calendar">
+    Presenta los partidos distribuidos por días de la semana. Útil para planificar tu seguimiento competitivo y detectar superposiciones de horarios.
+  </Card>
+</CardGroup>
+
+## Filtros persistentes
+
+Cada filtro que aplicas se refleja en la URL como parámetros de consulta. Esto significa que puedes compartir un enlace con filtros activos y quien lo abra verá exactamente la misma selección. Los filtros disponibles incluyen juego, región, torneo, nivel de partido, rango de equipos y rango de fechas.
+
+## Zona horaria y DST
+
+VANTS detecta automáticamente la zona horaria de tu navegador y muestra todos los horarios en tu hora local. Además, la plataforma reconoce los cambios de horario de verano (DST) para que los horarios de los partidos siempre sean precisos sin que necesites ajustar nada manualmente.
+
+## Navega por subpáginas
+
+<CardGroup cols={2}>
+  <Card title="En vivo" icon="radio" href="/producto/matches/live">
+    Sigue los partidos que están ocurriendo ahora con actualización en tiempo real.
+  </Card>
+
+  <Card title="Próximos" icon="clock" href="/producto/matches/upcoming">
+    Descubre enfrentamientos programados y configura recordatorios.
+  </Card>
+
+  <Card title="Resultados" icon="trophy" href="/producto/matches/results">
+    Revisa marcadores finales, MVPs y resúmenes de partidos terminados.
+  </Card>
+
+  <Card title="Detalle de partido" icon="eye" href="/producto/matches/detalle">
+    Explora alineaciones, estadísticas, timeline y mapas de un encuentro.
+  </Card>
+</CardGroup>
