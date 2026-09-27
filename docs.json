@@ -423,5 +423,10 @@
   "styling": {
     "eyebrows": "breadcrumbs"
   },
-  "background": {}
+  "background": {},
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.vants.gg"
+    }
+  }
 }
