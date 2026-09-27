@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="234" viewBox="0 0 200 234" width="200">
+  <defs>
+    <linearGradient id="gdiamante" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#cfa3ff"/>
+      <stop offset="1" stop-color="#8d5be0"/>
+    </linearGradient>
+  </defs>
+  <polygon fill="#14161b" points="100,10 184,52 184,146 100,188 16,146 16,52" stroke="url(#gdiamante)" stroke-linejoin="miter" stroke-width="7"/>
+  <polygon fill="none" opacity="0.9" points="100,23.4 171.4,59 171.4,138.9 100,174.3 28.6,138.9 28.6,59" stroke="#8d5be0" stroke-linejoin="miter" stroke-width="2"/>
+  <polyline fill="none" points="69.3,94.5 100,77.5 130.7,94.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="69.3,103.5 100,86.5 130.7,103.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="69.3,112.5 100,95.5 130.7,112.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="69.3,121.5 100,104.5 130.7,121.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="69.3,130.5 100,113.5 130.7,130.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="69.3,139.5 100,122.5 130.7,139.5" stroke="url(#gdiamante)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polygon fill="#cfa3ff" opacity="1" points="78,204 69,222 87,222"/>
+  <polygon fill="#cfa3ff" opacity="1" points="100,204 91,222 109,222"/>
+  <polygon fill="#cfa3ff" opacity="1" points="122,204 113,222 131,222"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="234" viewBox="0 0 200 234" width="200">
+  <defs>
+    <linearGradient id="gascendente" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#5ce69a"/>
+      <stop offset="1" stop-color="#1f9e55"/>
+    </linearGradient>
+  </defs>
+  <polygon fill="#14161b" points="100,10 184,52 184,146 100,188 16,146 16,52" stroke="url(#gascendente)" stroke-linejoin="miter" stroke-width="7"/>
+  <polygon fill="none" opacity="0.9" points="100,23.4 171.4,59 171.4,138.9 100,174.3 28.6,138.9 28.6,59" stroke="#1f9e55" stroke-linejoin="miter" stroke-width="2"/>
+  <polyline fill="none" points="71.5,91.0 100,76.0 128.5,91.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,99.0 100,84.0 128.5,99.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,107.0 100,92.0 128.5,107.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,115.0 100,100.0 128.5,115.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,123.0 100,108.0 128.5,123.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,131.0 100,116.0 128.5,131.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="71.5,139.0 100,124.0 128.5,139.0" stroke="url(#gascendente)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polygon fill="#5ce69a" opacity="1" points="78,204 69,222 87,222"/>
+  <polygon fill="#5ce69a" opacity="1" points="100,204 91,222 109,222"/>
+  <polygon fill="#5ce69a" opacity="1" points="122,204 113,222 131,222"/>
+</svg>

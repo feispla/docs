@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="234" viewBox="0 0 200 234" width="200">
+  <defs>
+    <linearGradient id="gescarlata" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff5a5a"/>
+      <stop offset="1" stop-color="#d01423"/>
+    </linearGradient>
+  </defs>
+  <polygon fill="#14161b" points="100,10 184,52 184,146 100,188 16,146 16,52" stroke="url(#gescarlata)" stroke-linejoin="miter" stroke-width="7"/>
+  <polygon fill="none" opacity="0.9" points="100,23.4 171.4,59 171.4,138.9 100,174.3 28.6,138.9 28.6,59" stroke="#d01423" stroke-linejoin="miter" stroke-width="2"/>
+  <polyline fill="none" points="72.6,89.5 100,75.5 127.4,89.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,96.5 100,82.5 127.4,96.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,103.5 100,89.5 127.4,103.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,110.5 100,96.5 127.4,110.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,117.5 100,103.5 127.4,117.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,124.5 100,110.5 127.4,124.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,131.5 100,117.5 127.4,131.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polyline fill="none" points="72.6,138.5 100,124.5 127.4,138.5" stroke="url(#gescarlata)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8"/>
+  <polygon fill="#ff5a5a" opacity="1" points="78,204 69,222 87,222"/>
+  <polygon fill="#ff5a5a" opacity="1" points="100,204 91,222 109,222"/>
+  <polygon fill="#ff5a5a" opacity="1" points="122,204 113,222 131,222"/>
+</svg>

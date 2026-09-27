@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="234" viewBox="0 0 200 234" width="200">
+  <defs>
+    <linearGradient id="goro" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7c03a"/>
+      <stop offset="1" stop-color="#c48a0d"/>
+    </linearGradient>
+  </defs>
+  <polygon fill="#14161b" points="100,10 184,52 184,146 100,188 16,146 16,52" stroke="url(#goro)" stroke-linejoin="miter" stroke-width="7"/>
+  <polygon fill="none" opacity="0.9" points="100,23.4 171.4,59 171.4,138.9 100,174.3 28.6,138.9 28.6,59" stroke="#c48a0d" stroke-linejoin="miter" stroke-width="2"/>
+  <polyline fill="none" points="63.8,104.0 100,82.0 136.2,104.0" stroke="url(#goro)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="9"/>
+  <polyline fill="none" points="63.8,116.0 100,94.0 136.2,116.0" stroke="url(#goro)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="9"/>
+  <polyline fill="none" points="63.8,128.0 100,106.0 136.2,128.0" stroke="url(#goro)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="9"/>
+  <polyline fill="none" points="63.8,140.0 100,118.0 136.2,140.0" stroke="url(#goro)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="9"/>
+  <polygon fill="#f7c03a" opacity="1" points="78,204 69,222 87,222"/>
+  <polygon fill="#f7c03a" opacity="1" points="100,204 91,222 109,222"/>
+  <polygon fill="#f7c03a" opacity="1" points="122,204 113,222 131,222"/>
+</svg>

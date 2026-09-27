@@ -7,7 +7,7 @@
     "light": "#FF3B4A",
     "dark": "#B0000E"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/emblema.svg",
   "navigation": {
     "tabs": [
       {
@@ -19,7 +19,8 @@
             "pages": [
               "vision/index",
               "vision/problema",
-              "vision/roadmap"
+              "vision/roadmap",
+              "vision/rangos"
             ]
           }
         ]
@@ -350,8 +351,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/lockup.svg",
+    "dark": "/logo/lockup.svg"
   },
   "navbar": {
     "links": [
