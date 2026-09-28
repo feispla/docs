@@ -335,7 +335,8 @@
               "colabora/contacto",
               "colabora/contacto-programacion",
               "colabora/faq-beta",
-              "colabora/webhook-discord"
+              "colabora/webhook-discord",
+              "colabora/derechos-de-autor"
             ]
           },
           {
@@ -458,6 +459,15 @@
           {
             "label": "GitHub",
             "href": "https://github.com/feispla"
+          }
+        ]
+      },
+      {
+        "header": "Legal",
+        "items": [
+          {
+            "label": "© 2026 VANTS. Todos los derechos reservados",
+            "href": "/colabora/derechos-de-autor"
           }
         ]
       }
