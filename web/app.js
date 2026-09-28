@@ -37,7 +37,7 @@ const fmtDay = (d) => new Date(d).toLocaleDateString('es-ES', { weekday: 'long',
 const initials = (s) => esc(String(s || '?').replace(/[^A-Za-z0-9]/g, '').slice(0, 3).toUpperCase() || '?');
 
 const STATUS_LABEL = {
-  draft: 'Borrador', upcoming: 'Próximo', registration: 'Inscripción abierta', open: 'Inscripción abierta',
+  draft: 'Borrador', single_elimination: 'Eliminación simple', double_elimination: 'Doble eliminación', round_robin: 'Liga (round robin)', swiss: 'Suizo', upcoming: 'Próximo', registration: 'Inscripción abierta', open: 'Inscripción abierta',
   in_progress: 'En curso', live: 'En vivo', active: 'Activo', completed: 'Finalizado', finished: 'Finalizado',
   cancelled: 'Cancelado', closed: 'Cerrado', scheduled: 'Programado', pending: 'Pendiente', registered: 'Inscrito',
   checked_in: 'Check-in', withdrawn: 'Retirado', disqualified: 'Descalificado',
@@ -71,7 +71,7 @@ function tournamentCard(t) {
     <h3>${esc(t.name)}</h3>
     <p>${esc(t.description || 'Torneo VANTCALL')}</p>
     <div class="t-card-meta">
-      <span>${esc(t.format || 'Formato por definir')}</span>
+      <span>${esc(statusLabel(t.format) || 'Formato por definir')}</span>
       <span>${t.current_participants || 0}${t.max_participants ? ' / ' + t.max_participants : ''} jugadores</span>
       <span>${fmtDate(t.starts_at)}</span>
     </div>
@@ -94,7 +94,7 @@ function leaderboardRows(rows) {
 function matchRow(m) {
   const n1 = m.p1 ? (m.p1.display_name || m.p1.username) : 'Por determinar';
   const n2 = m.p2 ? (m.p2.display_name || m.p2.username) : 'Por determinar';
-  const has = m.player1_score !== null && m.player1_score !== undefined && m.player2_score !== null && m.player2_score !== undefined;
+  const has = ['completed', 'finished', 'in_progress', 'live'].includes(m.status) && m.player1_score != null && m.player2_score != null;
   const w1 = m.winner_id && m.winner_id === m.player1_id;
   const w2 = m.winner_id && m.winner_id === m.player2_id;
   const live = m.status === 'in_progress' || m.status === 'live';
@@ -561,7 +561,7 @@ function tournamentPage(slug) {
             ${canRegister ? `<div class="t-actions"><button type="button" class="btn btn-primary" data-register="${esc(t.id)}">Inscribirme</button><button type="button" class="btn btn-secondary" data-unregister="${esc(t.id)}" hidden>Cancelar inscripción</button></div>` : ''}
           </div>
           <div class="dash-grid">
-            <div class="dash-card"><div class="label">Formato</div><div class="value value-sm">${esc(t.format || '—')}</div></div>
+            <div class="dash-card"><div class="label">Formato</div><div class="value value-sm">${esc(statusLabel(t.format))}</div></div>
             <div class="dash-card"><div class="label">Participantes</div><div class="value">${t.entries.length}${t.max_participants ? ' / ' + t.max_participants : ''}</div></div>
             <div class="dash-card"><div class="label">Inicio</div><div class="value value-sm">${fmtDate(t.starts_at)}</div><div class="sub">${fmtTime(t.starts_at)}</div></div>
             <div class="dash-card"><div class="label">Premio</div><div class="value value-sm">${esc(t.prize_pool || '—')}</div></div>
