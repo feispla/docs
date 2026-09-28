@@ -59,3 +59,228 @@ Usa los filtros superiores para ajustar la vista:
 <Note>
   Las métricas solo se muestran cuando hay volumen suficiente de partidos en la ventana temporal seleccionada.
 </Note>
+
+## Estadísticas de jugadores
+
+La vista de jugadores te permite analizar el rendimiento individual por título. Usa las pestañas para alternar entre juegos y consulta los promedios sobre el periodo filtrado.
+
+<Tabs>
+  <Tab title="VALORANT">
+    | Métrica | Descripción |
+    | --- | --- |
+    | K/D/A | Asesinatos, muertes y asistencias por ronda |
+    | ACS | Combat Score promedio por ronda |
+    | ADR | Daño promedio por ronda |
+    | HS% | Porcentaje de disparos a la cabeza |
+    | First kills | Primer asesinato de la ronda |
+    | First deaths | Primera muerte de la ronda |
+    | Clutches | Rondas ganadas en situación de desventaja numérica |
+    | Multikills | Rondas con 3, 4 o 5 asesinatos individuales |
+    | Plantas y desactivaciones | Número de spikes plantados y desactivados |
+
+    Estas métricas se calculan sobre partidos oficiales de formato BO1, BO3 o BO5 dentro de VANTS.
+  </Tab>
+  <Tab title="CS2">
+    | Métrica | Descripción |
+    | --- | --- |
+    | K/D | Relación de asesinatos por muerte |
+    | ADR | Daño promedio por ronda |
+    | KAST | Porcentaje de rondas con kill, asistencia, supervivencia o trade |
+    | HS% | Porcentaje de asesinatos por headshot |
+    | Rating VANTS | Rating individual calculado por la plataforma |
+    | Entry kills | Primer asesinato al entrar al sitio |
+    | Opening deaths | Primera muerte al intentar entrada |
+    | Clutches | Rondas ganadas en situación 1vX |
+    | Utilidad | Daño con granadas de humo, flash, HE y molotov |
+    | Éxito en retakes | Porcentaje de rondas ganadas en situación de retake |
+    | CT/T | Métricas separadas por lado jugado |
+
+    El rating VANTS de CS2 pondera el impacto en rondas ganadas más allá del K/D simple.
+  </Tab>
+  <Tab title="LoL">
+    | Métrica | Descripción |
+    | --- | --- |
+    | K/D/A | Asesinatos, muertes y asistencias por partido |
+    | CS/min | Súbditos asesinados por minuto |
+    | Oro/min | Oro acumulado por minuto |
+    | Daño/min | Daño infligido a campeones por minuto |
+    | Daño recibido | Daño total recibido en el partido |
+    | Visión/min | Puntuación de visión por minuto (wardscore) |
+    | Participación en asesinatos | Porcentaje de asesinatos del equipo en los que participó |
+    | Objetivos | Torres, dragones, barón, heraldo destruidos o capturados |
+    | Rendimiento por fase | Métricas desglosadas en early (0-15 min), mid (15-30 min) y late game (+30 min) |
+
+    Las métricas por fase permiten identificar jugadores con ventaja temprana o rendimiento superior en el juego tardío.
+  </Tab>
+</Tabs>
+
+## Estadísticas de equipos
+
+La vista de equipos agrega el rendimiento colectivo de cada escuadra en partidos oficiales. Aquí puedes comparar cómo se desempeña un equipo en distintos mapas, lados y fases del partido.
+
+| Métrica | Descripción |
+| --- | --- |
+| Partidos jugados | Total de partidos oficiales en el periodo filtrado |
+| Victorias / Derrotas | Desglose del resultado |
+| Win rate global | Porcentaje de victorias sobre el total |
+| Win rate por mapa | Porcentaje de victorias en cada mapa jugado |
+| Side pick | Preferencia y rendimiento por lado de inicio (ataque/defensa, CT/T, azul/rojo) |
+| Rendimiento en pistol | Porcentaje de rondas pistol ganadas |
+| Rendimiento en late game | Métricas de rondas o fases finales según el juego |
+| Racha actual | Victorias o derrotas consecutivas más recientes |
+
+### Win rate por mapa
+
+Cada equipo muestra un desglose por mapa con las siguientes columnas:
+
+| Mapa | Jugados | Ganados | Win rate | Rondas ganadas CT/T | Rondas ganadas ATK/T |
+| --- | --- | --- | --- | --- | --- |
+| Ejemplo: Bind | 12 | 8 | 66.7% | 45 / 38 | 52 / 41 |
+
+Los mapas con menos de 3 partidos jugados aparecen atenuados para indicar que la muestra es pequeña.
+
+### Side pick y comportamiento por lado
+
+VANTS registra el lado de inicio de cada equipo en cada partido. El análisis por lado muestra:
+
+- **Preferencia de lado**: porcentaje de veces que el equipo eligió o le tocó cada lado
+- **Win rate por lado**: victorias divididas por lado de inicio
+- **Rondas ganadas por mitad**: desglose de rondas ganadas en la primera y segunda mitad del mapa
+
+### Rendimiento en pistol rounds
+
+| Indicador | Descripción |
+| --- | --- |
+| Pistol rounds jugados | Total de rondas iniciales en el periodo |
+| Pistol rounds ganados | Rondas iniciales con victoria |
+| Win rate pistol | Porcentaje de rondas iniciales ganadas |
+| Conversión tras pistol ganado | Porcentaje de rondas siguientes ganadas tras victoria en pistol |
+| Recuperación tras pistol perdido | Porcentaje de rondas siguientes ganadas tras derrota en pistol |
+
+### Rendimiento en late game
+
+Según el juego, el late game se define de forma distinta:
+
+- **VALORANT y CS2**: rondas 20+ o situaciones de overtime
+- **LoL**: minuto 30 en adelante, o partidos con duración superior a 35 minutos
+
+Las métricas de late game incluyen win rate en esas condiciones, promedio de rondas o diferencia de oro en el tramo final.
+
+## Estadísticas de mapas
+
+La vista de mapas permite analizar el rendimiento competitivo por escenario de juego. Desde aquí puedes comparar el balance entre lados, la eficacia en rondas iniciales y las tendencias tácticas que varían entre regiones y niveles de torneo.
+
+<Tabs>
+  <Tab title="VALORANT">
+    | Métrica | Descripción |
+    | --- | --- |
+    | Partidos jugados | Total de partidos oficiales en el mapa |
+    | Win rate defensa | Porcentaje de victorias del lado defensor |
+    | Win rate ataque | Porcentaje de victorias del lado atacante |
+    | Rondas pistol defensa | Victorias en ronda inicial como defensor |
+    | Rondas pistol ataque | Victorias en ronda inicial como atacante |
+    | Retakes exitosos | Porcentaje de rondas ganadas en situación de retake |
+
+    Los mapas con mayor desbalance entre lados se marcan con un indicador visual para facilitar el análisis del pool competitivo.
+  </Tab>
+  <Tab title="CS2">
+    | Métrica | Descripción |
+    | --- | --- |
+    | Partidos jugados | Total de partidos oficiales en el mapa |
+    | Win rate CT | Porcentaje de rondas ganadas como Counter-Terrorist |
+    | Win rate T | Porcentaje de rondas ganadas como Terrorist |
+    | Rondas pistol CT | Victorias en ronda pistol como CT |
+    | Rondas pistol T | Victorias en ronda pistol como T |
+    | Retakes exitosos | Porcentaje de rondas ganadas en situación de retake de bombsite |
+
+    El desglose CT/T permite identificar mapas donde un lado tiene ventaja estructural que los equipos compensan con tácticas específicas.
+  </Tab>
+  <Tab title="LoL">
+    | Métrica | Descripción |
+    | --- | --- |
+    | Partidos jugados | Total de partidos oficiales en Summoner's Rift |
+    | Rutas de gank preferidas | Porcentaje de ganks por carril (top, mid, bot) |
+    | Objetivos tempranos | Dragones y heraldo capturados antes del minuto 15 |
+    | Control de Barón | Porcentaje de partidos donde el equipo ganador capturó Barón |
+    | Torres destruidas promedio | Torres caídas por partido en cada carril |
+    | Duración promedio | Tiempo medio de partido en el mapa |
+
+    A diferencia de VALORANT y CS2, LoL usa un único mapa competitivo. El análisis se centra en patrones de movimiento y control de objetivos por región.
+  </Tab>
+</Tabs>
+
+### Comparativas por región y torneo
+
+VANTS permite cruzar los datos de mapa con dos dimensiones adicionales:
+
+| Dimensión | Uso |
+| --- | --- |
+| Región | Compara el win rate por lado entre Norteamérica, Europa, LATAM, Brasil y Asia |
+| Torneo | Analiza si el balance de un mapa cambia en torneos oficiales VANTS versus comunidad |
+
+### Mapas más y menos jugados
+
+La vista general de mapas incluye una lista ordenada por frecuencia de aparición en partidos oficiales. Esto refleja el map pool competitivo activo de la temporada.
+
+## Estadísticas de agentes y campeones
+
+La vista de agentes y campeones muestra la distribución de selecciones y el rendimiento asociado a cada opción. Estos datos reflejan el meta competitivo de cada temporada.
+
+### Métricas principales
+
+| Métrica | Descripción |
+| --- | --- |
+| Pick rate | Porcentaje de partidos donde fue seleccionado |
+| Ban rate | Porcentaje de partidos donde fue vetado (solo en modos con sistema de ban) |
+| Win rate | Porcentaje de victorias cuando fue seleccionado |
+
+<Tabs>
+  <Tab title="VALORANT">
+    Cada agente se clasifica por rol (Duelista, Iniciador, Controlador, Centinela). Las métricas incluyen:
+
+    - Pick rate por agente y por rol
+    - Win rate por agente en formato BO1 y BO3
+    - Correlación entre combinaciones de agentes y victoria del equipo
+
+    Los agentes con pick rate superior al 15% y win rate superior al 55% se marcan como opciones dominantes en el meta actual.
+  </Tab>
+  <Tab title="LoL">
+    Cada campeón se clasifica por rol (Top, Jungla, Mid, ADC, Support). Las métricas incluyen:
+
+    - Pick rate por campeón y por rol
+    - Ban rate en partidos con fase de selección
+    - Win rate por campeón en formato BO1, BO3 y BO5
+    - Presencia (pick rate + ban rate) como indicador de prioridad competitiva
+
+    La presencia alta con win rate bajo suele indicar un campeón prioritario en draft pero difícil de ejecutar.
+  </Tab>
+  <Tab title="CS2">
+    Counter-Strike 2 no usa agentes ni campeones. En su lugar, VANTS registra:
+
+    - Arma preferida por jugador (rifle principal más usado)
+    - Distribución de kills por tipo de arma (rifle, AWP, SMG, pistola)
+    - Daño por utilidad (granadas de humo, flash, HE, molotov)
+    - Éxito en retakes correlacionado con el tipo de utilidad empleada
+
+    Estas métricas permiten analizar el estilo de juego individual y colectivo sin depender de un sistema de selección de personajes.
+  </Tab>
+</Tabs>
+
+<Info>
+  Los datos de pick rate, ban rate y win rate se normalizan por temporada para reflejar el meta actual. Un agente con 60% de win rate en una temporada pasada puede mostrar 45% en la presente si recibió ajustes de balance o cambios en el map pool. Siempre filtra por la temporada activa para decisiones tácticas actuales.
+</Info>
+
+## Filtros adicionales
+
+Dentro de cada subsección puedes refinar los resultados con:
+
+- **Rol**: filtra por posición competitiva
+- **Mapa**: limita a mapas específicos del juego
+- **Agente / Campeón / Arma**: según el título seleccionado
+- **Periodo**: 7 días, 30 días, temporada, histórico
+- **Formato de serie**: BO1, BO3, BO5 (algunos agentes o campeones escalan mejor en series largas)
+- **Región**: compara prioridades de draft entre Norteamérica, Europa, LATAM, Brasil y Asia
+
+<Tip>
+  Comienza con filtros amplios (juego + temporada) y ve reduciendo el alcance agregando región, torneo o equipo específico. Esto evita resultados vacíos por combinaciones sin partidos registrados.
+</Tip>

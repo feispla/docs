@@ -8,13 +8,35 @@ Los rankings de VANTS miden el rendimiento competitivo en tres dimensiones: juga
 
 <Tabs>
   <Tab title="Jugadores">
-    El ranking de jugadores ordena a los competidores según su rendimiento individual en partidos oficiales y matchmaking competitivo. Las métricas ponderadas dependen del juego:
+    El ranking de jugadores ordena a los competidores según su rendimiento individual en partidos oficiales y matchmaking competitivo.
 
-    - **VALORANT**: ACS, K/D, KAST, ADR, HS% y consistencia por mapa.
-    - **Counter-Strike 2**: Rating 2.0, ADR, KAST, impacto en rondas de clutch.
-    - **League of Legends**: KDA, CS/min, Damage/min, Vision Score, Gold Diff@15.
+    ### Columnas del ranking de jugadores
 
-    Para aparecer en el ranking debes haber completado un mínimo de partidas en el periodo evaluado. Este mínimo evita que jugadores con muy pocos partidos aparezcan por encima de competidores consistentes.
+    | Columna | Descripción |
+    | --- | --- |
+    | Posición | Número ordinal dentro del ranking filtrado |
+    | Cambio de posición | Flecha verde (subió), roja (bajó) o guion (sin cambio) respecto al periodo anterior |
+    | Jugador | Nickname con enlace al perfil público |
+    | Juego | Título para el cual se calcula el rating mostrado |
+    | Región | Región competitiva asignada a la cuenta |
+    | Rating VANTS | Número entero del rating en ese juego específico |
+    | Partidos | Total de partidos oficiales jugados en el periodo seleccionado |
+    | Win rate | Porcentaje de victorias sobre el total de partidos |
+    | Rendimiento reciente | Promedio ponderado de los últimos 10 partidos |
+    | Tendencia | Indicador visual de trayectoria: al alza, estable o a la baja |
+
+    ### Criterios de ordenación
+
+    El orden principal es el rating VANTS de mayor a menor. En caso de empate, se aplican estos criterios secuenciales:
+
+    1. Puntos VP acumulados en la temporada
+    2. Win rate en la temporada
+    3. Rendimiento reciente (últimos 10 partidos)
+    4. Fecha del último partido oficial (más reciente primero)
+
+    <Info>
+      Al cambiar el periodo, el cambio de posición se recalcula comparando contra el periodo inmediatamente anterior del mismo tipo. Por ejemplo, si filtras por 7 días, la flecha compara con los 7 días previos.
+    </Info>
   </Tab>
   <Tab title="Equipos">
     El ranking de equipos combina resultados de torneos, winrate en series y rendimiento promedio de sus jugadores. Los criterios incluyen:
@@ -23,7 +45,36 @@ Los rankings de VANTS miden el rendimiento competitivo en tres dimensiones: juga
     - Rondas o mapas ganados vs perdidos.
     - Fuerza del calendario enfrentado.
 
-    Solo los equipos con actividad reciente en torneos registrados en VANTS son elegibles. Los equipos inactivos por más de una temporada completa dejan de aparecer hasta que vuelvan a competir.
+    ### Columnas del ranking de equipos
+
+    | Columna | Descripción |
+    | --- | --- |
+    | Posición | Número ordinal dentro del ranking filtrado |
+    | Cambio de posición | Variación respecto al periodo anterior: subida, bajada o sin cambio |
+    | Equipo | Nombre del equipo con enlace a su ficha pública |
+    | Juego | Título para el cual se calcula el rating del equipo |
+    | Región | Región competitiva principal de la escuadra |
+    | Rating VANTS | Número entero del rating agregado del equipo en ese juego |
+    | Partidos | Total de partidos oficiales jugados en el periodo seleccionado |
+    | Win rate | Porcentaje de victorias sobre el total de partidos |
+    | Rendimiento reciente | Promedio ponderado de los últimos 10 partidos del equipo |
+    | Tendencia | Indicador visual de trayectoria en el periodo actual |
+
+    ### Bonus por torneos oficiales VANTS
+
+    Los equipos acumulan puntos de bonus según su desempeño en eventos oficiales de la plataforma. Este bonus se suma al rating base calculado por partidos individuales.
+
+    | Nivel de torneo | Bonus por participación | Bonus adicional por victoria en bracket |
+    | --- | --- | --- |
+    | Oficial VANTS | +50 VP | +25 VP por ronda ganada |
+    | Liga | +30 VP | +15 VP por ronda ganada |
+    | Clasificatorio | +10 VP | +5 VP por ronda ganada |
+
+    Los bonus se aplican al rating del equipo al finalizar el torneo y permanecen activos durante toda la temporada.
+
+    <Note>
+      El rating de equipo no es un promedio simple de los ratings individuales. VANTS usa un algoritmo ponderado que da más peso a los partidos jugados con la alineación principal y a los resultados contra equipos de mayor rating.
+    </Note>
   </Tab>
   <Tab title="Regiones">
     El ranking de regiones compara el nivel competitivo de cada zona geográfica sumando el rendimiento de sus jugadores y equipos top. Se pondera:
@@ -44,16 +95,52 @@ Usa los filtros superiores para evitar mezclar contextos que no son comparables:
 - **Temporada**: selecciona la temporada o split que quieres consultar.
 - **Contexto**: matchmaking (ranked individual) o torneo oficial. Los rankings de matchmaking y de torneo se calculan por separado porque miden habilidades diferentes.
 - **Región**: filtra el ranking global a una zona geográfica concreta.
+- **Periodo**: 7 días, 30 días, temporada completa o histórico.
+
+## Cálculo de rating VANTS
+
+El rating VANTS es un número entero que se calcula por separado para cada juego. Nunca se suma ni se compara el rating de un jugador entre títulos distintos. Un rating de 1.850 en VALORANT no equivale a 1.850 en CS2.
+
+<Warning>
+  No mezcles rating entre juegos. Cada título tiene su propia escala y algoritmo de cálculo. Las comparaciones cruzadas no reflejan el verdadero nivel relativo del competidor.
+</Warning>
+
+## Rangos VANTS
+
+Los competidores se ubican dentro de estos rangos con divisiones III, II y I (Escarlata no tiene divisiones):
+
+1. Hierro
+2. Bronce
+3. Plata
+4. Oro
+5. Platino
+6. Diamante
+7. Titán
+8. Escarlata
+
+Cada rango requiere una cantidad mínima de partidos jugados en la temporada para aparecer en el ranking público.
+
+## Puntos VP
+
+Los puntos VP (VANTS Points) se otorgan por victorias en partidos oficiales y torneos. Acumulan dentro de una temporada. Al inicio de la siguiente hay un reset parcial: se conserva el 30% del VP acumulado y el resto se recalibra. Sirven como desempate cuando dos jugadores o equipos tienen rating similar.
+
+## Requisitos mínimos de partidas
+
+Para aparecer en el ranking de una temporada, un jugador debe completar al menos 10 partidos oficiales en ese juego y región. Los competidores con menos partidos acumulados no se muestran en la tabla pública, aunque su rating sigue calculándose en segundo plano.
+
+Un equipo debe cumplir estos criterios para mostrarse en la tabla pública:
+
+- Tener al menos 5 jugadores activos en el roster.
+- Haber jugado 5 partidos oficiales como equipo en la temporada.
+- Tener una región asignada en la configuración del equipo.
+
+Solo los equipos con actividad reciente en torneos registrados en VANTS son elegibles. Los equipos inactivos por más de una temporada completa dejan de aparecer hasta que vuelvan a competir.
 
 ## Actualización y criterios de inclusión
 
 <Info>
   Los rankings se actualizan cada semana, generalmente los lunes, con los datos de la semana anterior completamente procesados.
 </Info>
-
-<Note>
-  El mínimo de partidas para aparecer varía por juego y contexto. Consulta la leyenda de cada tabla para ver el número exacto requerido en la temporada activa.
-</Note>
 
 <CardGroup cols={2}>
   <Card title="Ver torneos" icon="trophy" href="/competir/torneos">

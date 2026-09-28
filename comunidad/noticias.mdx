@@ -6,6 +6,23 @@ sidebarTitle: "Noticias"
 
 VANTS reúne toda la actualidad del ecosistema competitivo en un solo espacio editorial. Desde análisis técnicos de partidos hasta movimientos de plantillas, la sección de noticias te permite filtrar contenido por juego y categoría para encontrar exactamente lo que te interesa.
 
+## Categorías de contenido
+
+Los artículos se clasifican en las siguientes categorías:
+
+| Categoría | Descripción |
+| --- | --- |
+| Noticias | Información general sobre el ecosistema competitivo |
+| Análisis | Desglose táctico de partidos, series o metas |
+| Resultados | Resumen de partidos y torneos recientes |
+| Anuncios de torneo | Presentación de nuevos eventos en VANTS |
+| Cambios de formato | Actualizaciones en reglas, formatos de serie o clasificación |
+| Perfiles de jugadores | Historias y trayectorias de competidores |
+| Entrevistas | Conversaciones con jugadores, entrenadores y casters |
+| Recaps | Resumen semanal o mensual de la actividad en la plataforma |
+| Guías | Contenido educativo para mejorar en los juegos soportados |
+| Actualizaciones de plataforma | Novedades en funciones, diseño o reglas de VANTS |
+
 <CardGroup cols={2}>
   <Card title="Análisis" icon="chart-line">
     Desglose táctico de partidos destacados, decisiones de ronda clave y evolución de metajuegos en VALORANT, CS2 y LoL.
@@ -24,24 +41,44 @@ VANTS reúne toda la actualidad del ecosistema competitivo en un solo espacio ed
   </Card>
 </CardGroup>
 
-## Cómo navegar las noticias
-
-Cada artículo muestra el juego relacionado, la categoría editorial, el autor y la fecha de publicación. Usa los filtros superiores para reducir la vista:
-
-- **Por juego:** VALORANT, Counter-Strike 2, League of Legends o contenido multijuego.
-- **Por categoría:** Análisis, Resultados, Fichajes, Comunidad.
-- **Por torneo:** selecciona un evento activo o reciente para ver solo noticias vinculadas.
-
-Los artículos destacados aparecen en la parte superior con mayor visibilidad. El resto se ordena cronológicamente de más reciente a más antiguo.
-
-## Estructura de un artículo
+## Cómo leer un artículo
 
 Al abrir una noticia verás:
 
-1. **Encabezado editorial** con juego, categoría y fecha.
-2. **Cuerpo del artículo** con texto, datos de partidos incrustados y enlaces a perfiles de jugadores o equipos.
-3. **Etiquetas relacionadas** para saltar a más contenido del mismo tema.
-4. **Compartir** en redes sociales o copiar enlace directo.
+1. **Imagen de portada**: ancho completo con atribución si es licenciada.
+2. **Encabezado editorial**: título, autor, fecha de publicación y tiempo estimado de lectura.
+3. **Categoría y juego**: etiquetas clickeables que te llevan al listado filtrado de noticias.
+4. **Cuerpo del artículo**: texto, datos de partidos incrustados, tablas y enlaces a perfiles de jugadores o equipos.
+5. **Entidades relacionadas**: enlaces al torneo, equipo o jugador mencionados.
+6. **Etiquetas relacionadas**: para saltar a más contenido del mismo tema.
+7. **Artículos relacionados**: hasta 4 artículos del mismo juego o categoría, ordenados por fecha reciente.
+8. **Compartir**: botones para redes sociales o copiar enlace directo.
+
+VANTS selecciona artículos relacionados automáticamente usando este orden de prioridad:
+
+1. Mismo juego + misma categoría + fecha reciente
+2. Mismo juego + categoría diferente + fecha reciente
+3. Categoría igual + juego diferente + fecha reciente
+4. Cualquier artículo reciente si no hay coincidencias anteriores
+
+## Filtros disponibles
+
+La barra lateral del centro de noticias permite filtrar por:
+
+- **Categoría**: selección múltiple de las opciones anteriores
+- **Juego**: VALORANT, Counter-Strike 2, League of Legends o general
+- **Torneo**: eventos específicos relacionados con los artículos
+- **Fecha**: hoy, esta semana, este mes, año en curso
+
+Los artículos destacados aparecen en la parte superior con mayor visibilidad. El resto se ordena cronológicamente de más reciente a más antiguo.
+
+## Contenido patrocinado
+
+Algunos artículos pueden incluir contenido patrocinado o en colaboración con terceros. Cuando esto ocurre, el artículo muestra una etiqueta clara de "Contenido patrocinado" junto a la categoría. La editorial de VANTS mantiene independencia sobre el contenido publicado y las opiniones expresadas son responsabilidad del autor.
+
+<Tip>
+  Usa la combinación de filtros "Análisis" + juego específico para encontrar contenido táctico actualizado sobre el meta competitivo de tu título favorito.
+</Tip>
 
 <Info>
   Los artículos de Resultados incluyen tarjetas de partido enlazadas que te llevan al detalle completo del enfrentamiento.

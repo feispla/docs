@@ -4,48 +4,61 @@ description: "Explora tu perfil competitivo en VANTS. Revisa tu Rango VANTS, est
 sidebarTitle: "Resumen"
 ---
 
-Tu perfil en VANTS es tu carta de presentación dentro del ecosistema competitivo. Aquí se centraliza toda tu actividad, desde tu progreso en el Rango VANTS hasta tu rendimiento por juego y modo. Esta página explica cada seccion de la cabecera y como moverte entre las diferentes areas de tu perfil.
+Tu perfil en VANTS es tu carta de presentación dentro del ecosistema competitivo. Aquí se centraliza toda tu actividad, desde tu progreso en el Rango VANTS hasta tu rendimiento por juego y modo. Esta página explica cada sección de la cabecera y cómo moverte entre las diferentes áreas de tu perfil.
 
 ## Cabecera del perfil
 
-La parte superior de tu perfil muestra la informacion esencial de tu identidad competitiva:
+La parte superior de tu perfil muestra la información esencial de tu identidad competitiva:
 
 - **Avatar y nickname**: imagen de perfil y nombre de usuario visible para toda la comunidad.
-- **Pais**: bandera y region asociada a tu cuenta.
+- **País**: bandera y región asociada a tu cuenta.
 - **Equipo actual**: si perteneces a un equipo, aparece su nombre y logo con enlace directo.
-- **Rol**: tu posicion dentro del equipo (capitan, titular o suplente).
-- **Disponibilidad**: estado que indica si buscas equipo o estas comprometido.
-- **Boton compartir**: genera un enlace publico de tu perfil para compartir en redes o con reclutadores.
+- **Rol**: tu posición dentro del equipo (capitán, titular o suplente).
+- **Disponibilidad**: estado que indica si buscas equipo o estás comprometido.
+- **Botón compartir**: genera un enlace público de tu perfil para compartir en redes o con reclutadores.
+
+## Perfil público versus privado
+
+Tu perfil existe en dos modalidades: una vista pública que otros jugadores y equipos pueden consultar, y una vista privada con funciones de gestión solo para ti.
+
+| Característica | Perfil público | Perfil privado |
+| --- | --- | --- |
+| Avatar y nickname | Visible | Visible |
+| Rango y VP | Según tu configuración | Siempre visible para ti |
+| Historial de partidas | Según configuración de privacidad | Completo |
+| Estadísticas detalladas | Según configuración de privacidad | Completo |
+| Torneos | Visible | Completo con estado interno |
+| Ajustes | No visible | Solo para ti |
 
 ## Rango VANTS y progreso
 
-El sistema de rangos de VANTS se basa en **VP (VANTS Points)**. Tu rango actual se muestra con un icono representativo y una barra de progreso que indica cuantos VP necesitas para el siguiente nivel.
+El sistema de rangos de VANTS se basa en **VP (VANTS Points)**. Tu rango actual se muestra con un icono representativo y una barra de progreso que indica cuántos VP necesitas para el siguiente nivel.
 
-Los rangos, de menor a mayor, son: Bronce, Plata, Oro, Platino, Diamante, Ascendente, Elite y Radiante. Cada rango tiene tres divisiones: I, II y III. Gana partidas para acumular VP y ascender. Las derrotas pueden restar VP dependiendo del modo y la diferencia de rango con tus rivales.
+Los rangos, de menor a mayor, son: Hierro, Bronce, Plata, Oro, Platino, Diamante, Titán y Escarlata. Cada rango tiene tres divisiones (III, II y I, siendo I la más alta), excepto Escarlata, que no tiene divisiones. Gana partidas para acumular VP y ascender. Las derrotas pueden restar VP dependiendo del modo y la diferencia de rango con tus rivales.
 
 ## Resumen de rendimiento
 
-Debajo del bloque de rango encontraras tus estadisticas clave resumidas:
+Debajo del bloque de rango encontrarás tus estadísticas clave resumidas:
 
-- **Victorias / Derrotas**: balance de partidos en los ultimos 30 dias.
+- **Victorias / Derrotas**: balance de partidos en los últimos 30 días.
 - **Porcentaje de victorias**: winrate calculado sobre partidas finalizadas.
 - **K/D**: ratio de eliminaciones por muerte.
 - **KAST**: porcentaje de rondas con kill, asistencia, supervivencia o tradeo.
-- **ACS / ADR o equivalente**: dano promedio por ronda segun el juego activo.
+- **ACS / ADR o equivalente**: daño promedio por ronda según el juego activo.
 
-Estas metricas se actualizan en tiempo real tras cada partido finalizado.
+Estas métricas se actualizan en tiempo real tras cada partido finalizado.
 
-## Navegacion entre pestanas
+## Navegación entre pestañas
 
-Tu perfil se organiza en seis secciones principales. Usa las pestanas para explorar cada area:
+Tu perfil se organiza en seis secciones principales. Usa las pestañas para explorar cada área:
 
 <CardGroup cols={3}>
   <Card title="Partidas" icon="gamepad" href="/perfil/partidas">
     Revisa tu historial completo de enfrentamientos, filtros por juego y resultado.
   </Card>
 
-  <Card title="Estadisticas" icon="chart-line" href="/perfil/estadisticas">
-    Analiza tu evolucion de rating, metricas por mapa y desempeno por agente o campeon.
+  <Card title="Estadísticas" icon="chart-line" href="/perfil/estadisticas">
+    Analiza tu evolución de rating, métricas por mapa y desempeño por agente o campeón.
   </Card>
 
   <Card title="Torneos" icon="trophy" href="/perfil/torneos">
@@ -53,7 +66,7 @@ Tu perfil se organiza en seis secciones principales. Usa las pestanas para explo
   </Card>
 
   <Card title="Equipos" icon="people-group" href="/perfil/equipos">
-    Gestiona tus equipos actuales, roles y solicitudes de union pendientes.
+    Gestiona tus equipos actuales, roles y solicitudes de unión pendientes.
   </Card>
 
   <Card title="Logros" icon="medal" href="/perfil/logros">
@@ -61,6 +74,6 @@ Tu perfil se organiza en seis secciones principales. Usa las pestanas para explo
   </Card>
 
   <Card title="Privacidad" icon="lock" href="/perfil/privacidad">
-    Controla quien puede ver tu historial, estadisticas y progreso de rango.
+    Controla quién puede ver tu historial, estadísticas y progreso de rango.
   </Card>
 </CardGroup>

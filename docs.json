@@ -14,7 +14,7 @@
         "tab": "Visión",
         "groups": [
           {
-            "group": "Qué queremos lograr",
+            "group": "El proyecto",
             "icon": "bullseye",
             "pages": [
               "vision/index",
@@ -34,6 +34,7 @@
             "pages": [
               "index",
               "empezar/quickstart",
+              "empezar/recorrido",
               "empezar/crear-cuenta",
               "empezar/vincular-juegos"
             ]
@@ -69,25 +70,35 @@
             "pages": [
               "comunidad/noticias",
               "comunidad/estadisticas",
+              "comunidad/equipos-jugadores",
               "comunidad/comparador"
             ]
           },
           {
-            "group": "Acceso",
-            "icon": "right-to-bracket",
+            "group": "Cuenta y acceso",
+            "icon": "gear",
             "pages": [
               "acceso/index",
-              "acceso/iniciar-sesion",
               "acceso/registro",
+              "acceso/iniciar-sesion",
               "acceso/proveedores",
               "acceso/recuperar",
               "acceso/2fa",
               "acceso/sesiones",
-              "acceso/menores"
+              "acceso/menores",
+              "cuenta/ajustes",
+              "cuenta/notificaciones",
+              "cuenta/seguridad",
+              "cuenta/faq"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Planes",
+        "groups": [
           {
-            "group": "Planes y monetización",
+            "group": "Planes",
             "icon": "credit-card",
             "pages": [
               "monetizacion/index",
@@ -96,20 +107,16 @@
               "monetizacion/vants-pro",
               "monetizacion/organizadores",
               "monetizacion/patrocinios",
-              "monetizacion/premios",
-              "monetizacion/pagos",
-              "monetizacion/facturacion",
-              "monetizacion/reembolsos"
+              "monetizacion/premios"
             ]
           },
           {
-            "group": "Cuenta y ajustes",
-            "icon": "gear",
+            "group": "Pagos",
+            "icon": "wallet",
             "pages": [
-              "cuenta/ajustes",
-              "cuenta/notificaciones",
-              "cuenta/seguridad",
-              "cuenta/faq"
+              "monetizacion/pagos",
+              "monetizacion/facturacion",
+              "monetizacion/reembolsos"
             ]
           }
         ]
@@ -200,7 +207,8 @@
               "producto/profile/settings"
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       {
         "tab": "Ingeniería",
@@ -275,7 +283,8 @@
               "ingenieria/operaciones/entrega"
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       {
         "tab": "Juegos",
@@ -368,8 +377,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Únete al Discord",
-      "href": "https://discord.gg/rCHE7jvRS4"
+      "label": "Ir a la plataforma",
+      "href": "https://vantcall-esports.pplx.app/"
     }
   },
   "contextual": {
@@ -389,6 +398,27 @@
       "youtube": "https://youtube.com/@feispla"
     },
     "links": [
+      {
+        "header": "Plataforma",
+        "items": [
+          {
+            "label": "Ir a la plataforma",
+            "href": "https://vantcall-esports.pplx.app/"
+          },
+          {
+            "label": "Calendario",
+            "href": "https://vantcall-esports.pplx.app/"
+          },
+          {
+            "label": "Torneos",
+            "href": "https://vantcall-esports.pplx.app/"
+          },
+          {
+            "label": "Precios",
+            "href": "https://vantcall-esports.pplx.app/"
+          }
+        ]
+      },
       {
         "header": "Streaming",
         "items": [
@@ -442,7 +472,7 @@
   "background": {},
   "seo": {
     "metatags": {
-      "canonical": "https://docs.vants.gg"
+      "canonical": "https://ggo-df01a767.mintlify.app"
     }
   }
 }

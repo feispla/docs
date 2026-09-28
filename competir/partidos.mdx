@@ -1,38 +1,48 @@
 ---
 title: "Feed global de partidos en VANTS"
-description: "Explora partidos en vivo, próximos y finalizados en VANTS. Filtra por juego, región, torneo y formato para encontrar la acción competitiva que buscas."
+description: "Explora partidos en vivo, próximos y finalizados en VANTS. Filtra por juego, región, torneo y formato, alterna entre lista y calendario semanal, y comparte vistas filtradas."
 sidebarTitle: "Partidos"
 ---
 
-En VANTS el feed de partidos es tu centro de mando para seguir toda la acción competitiva de VALORANT, Counter-Strike 2 y League of Legends. Desde aquí puedes ver qué se juega ahora mismo, qué empieza pronto y qué ya terminó, con filtros precisos para no perderte nada.
+En VANTS el feed de partidos es tu centro de mando para seguir toda la acción competitiva de VALORANT, Counter-Strike 2 y League of Legends. Desde aquí puedes ver qué se juega ahora mismo, qué empieza pronto y qué ya terminó, con filtros precisos, dos modos de visualización y enlaces directos al detalle de cada enfrentamiento.
+
+## Vistas del calendario
+
+Elige el modo que mejor se adapte a cómo quieres planificar tu seguimiento competitivo.
+
+<CardGroup cols={2}>
+  <Card title="Vista lista" icon="list">
+    Muestra los partidos en orden cronológico con tarjetas verticales. Ideal para revisar muchos enfrentamientos rápidamente y aplicar filtros densos.
+  </Card>
+
+  <Card title="Vista calendario semanal" icon="calendar">
+    Presenta los partidos distribuidos por días de la semana. Útil para planificar tu seguimiento competitivo y detectar superposiciones de horarios.
+  </Card>
+</CardGroup>
+
+## Zona horaria local
+
+VANTS detecta automáticamente la zona horaria de tu navegador y muestra todos los horarios en tu hora local. Además, la plataforma reconoce los cambios de horario de verano para que los horarios de los partidos siempre sean precisos sin que necesites ajustar nada manualmente.
 
 ## Estados de partido
 
-Cada partido lleva una etiqueta de estado que te dice exactamente qué está pasando.
+Cada partido lleva una etiqueta de estado que te dice exactamente qué está pasando. Estos son todos los estados que puedes encontrar en el feed:
 
-<Info>
-  **En vivo**: el partido se está jugando en este momento. Entra para ver el marcador actualizado en tiempo real.
-</Info>
-
-<Note>
-  **Próximo**: está programado y aún no comienza. Revisa la hora de inicio y añade un recordatorio.
-</Note>
-
-<Info>
-  **Finalizado**: ya hay resultado oficial. Consulta estadísticas, MVP y desglose por mapa o ronda.
-</Info>
-
-<Note>
-  **Aplazado**: el inicio se retrasó por causas técnicas o de organización. VANTS actualizará la nueva fecha en cuanto esté confirmada.
-</Note>
-
-<Warning>
-  **Cancelado**: el enfrentamiento no se jugará. Los motivos pueden variar desde retirada de un equipo hasta problemas de servidor.
-</Warning>
+| Estado | Significado |
+| --- | --- |
+| **Programado** | Fecha y hora confirmadas, aún no comienza |
+| **Check-in** | Los equipos están confirmando asistencia antes del inicio |
+| **En vivo** | El enfrentamiento se está jugando ahora mismo |
+| **Pausado** | El partido está detenido temporalmente |
+| **Aplazado** | El inicio se retrasó por causas externas; VANTS actualizará la nueva fecha en cuanto esté confirmada |
+| **Finalizado** | Hay resultado oficial; consulta estadísticas, MVP y desglose |
+| **Cancelado** | El enfrentamiento no se jugará |
+| **W.O.** | Un equipo no se presentó o abandonó antes del inicio |
+| **En disputa** | Un equipo ha iniciado una reclamación sobre el resultado |
 
 ## Filtros disponibles
 
-Usa la barra de filtros para reducir la lista exactamente a lo que te interesa:
+Usa la barra de filtros para reducir la lista exactamente a lo que te interesa. Cada filtro que aplicas se refleja en la URL como parámetro de consulta, así que puedes compartir un enlace con filtros activos y quien lo abra verá exactamente la misma selección.
 
 - **Juego**: VALORANT, Counter-Strike 2 o League of Legends.
 - **Región**: Europa, Norteamérica, Latinoamérica, Asia-Pacífico, etc.
@@ -40,20 +50,60 @@ Usa la barra de filtros para reducir la lista exactamente a lo que te interesa:
 - **Estado**: En vivo, Próximo, Finalizado, Aplazado, Cancelado.
 - **Formato**: BO1, BO3 o BO5.
 
-## Tarjeta de partido
+## Tarjeta de partido en vivo
 
-Cada fila o tarjeta muestra:
+Cuando un partido está en curso, la tarjeta muestra un indicador visual propio de VANTS: un punto pulsante de color rojo junto a la etiqueta "En vivo". Además de los equipos y el marcador actualizado, cada tarjeta en vivo incluye:
 
-- Hora de inicio (o "En vivo" con indicador rojo).
-- Nombres de los equipos y sus logos.
-- Marcador actual o resultado final.
-- Juego, formato y estado.
-- Torneo al que pertenece.
+- **Marcador actual**: puntos o rondas ganadas por cada equipo en ese momento.
+- **Juego**: VALORANT, Counter-Strike 2 o League of Legends.
+- **Torneo**: nombre de la serie o competición.
+- **Formato de serie**: BO1, BO3 o BO5.
+- **Fase**: grupos, playoffs, final u otra fase del torneo.
+- **Mapa actual**: escenario o mapa en juego, cuando aplica.
+- **Ronda actual**: ronda o minuto aproximado del encuentro, cuando aplica.
 
-Haz clic en cualquier partido para abrir su [página de detalle](/competir/detalle-partido) y ver alineaciones, estadísticas por jugador, desglose por mapa y timeline.
+## Tarjeta de próximo partido
+
+Para los enfrentamientos que aún no han comenzado, la tarjeta muestra:
+
+- **Fecha y hora local**: adaptada automáticamente a tu zona horaria.
+- **Countdown**: temporizador que indica cuánto falta para el inicio.
+- **Equipos**: nombres de los participantes.
+- **Juego, torneo, formato y fase**.
+
+<Tip>
+  Activa el recordatorio en los partidos que más te interesan. VANTS te avisará con antelación para que no pierdas el inicio, incluso si el horario cambia por aplazamiento.
+</Tip>
+
+## Tarjeta de resultado finalizado
+
+Los partidos terminados aparecen ordenados del más reciente al más antiguo. Cada tarjeta de resultado incluye:
+
+- **Marcador final** con el desenlace de la serie.
+- **MVP**: nombre del jugador o equipo destacado, cuando corresponda.
+- **Juego, torneo, formato y fase**.
+- **W.O.**: cuando un equipo no se presentó, el marcador muestra una etiqueta distintiva y el equipo ausente recibe la derrota técnica.
+- **En disputa**: cuando hay una reclamación activa, aparece un indicador visual de alerta hasta que se resuelva.
+
+### Niveles de partido
+
+Cada resultado muestra el nivel competitivo para que contextualices la importancia del enfrentamiento:
+
+| Nivel | Descripción |
+| --- | --- |
+| Oficial VANTS | Partidos organizados directamente por la plataforma |
+| Comunidad | Enfrentamientos creados por la comunidad |
+| Clasificatorio | Partidos de rondas previas a torneos mayores |
+| Liga | Encuentros de temporadas o ligas regulares |
+| Showmatch | Partidos amistosos o exhibición |
 
 ## Acciones rápidas
 
 - **Seguir partido**: añádelo a tu lista de seguimiento para recibir notificaciones de cambios de marcador.
 - **Compartir**: copia el enlace directo al partido para enviarlo a tu equipo o comunidad.
 - **Ver VOD**: si el partido ya finalizó y hay grabación disponible, aparecerá el enlace correspondiente.
+
+## Navegación relacionada
+
+- [Detalle de partido](/competir/detalle-partido)
+- [Calendario de torneos](/competir/calendario)

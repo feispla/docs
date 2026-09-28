@@ -1,49 +1,66 @@
 ---
 title: "Proveedores de datos por juego en la plataforma VANTS"
-description: "Proveedores de datos de VANTS por juego: APIs oficiales con autorización y fuentes autorizadas. Nunca se scrapea HLTV, Liquipedia, FACEIT ni portales de VALORANT Esports."
+description: "Proveedores de datos de VANTS por juego: estado actual de las integraciones, datos previstos y requisitos de autorización. Proveedores oficiales pendientes."
 sidebarTitle: "Proveedores"
 ---
 
-VANTS conecta con proveedores de datos específicos para cada juego soportado. Esta página describe las fuentes válidas, los datos que aportan y los requisitos de autorización.
+VANTS conectará con proveedores de datos específicos para cada juego soportado. Todavía no hay proveedores oficiales confirmados: esta página recoge el estado de cada integración, los datos que queremos importar y los requisitos que debe cumplir cualquier fuente antes de activarse.
 
-## Tabla de proveedores
+<Note>
+  **Estado: pendiente de confirmación.** Ningún proveedor está firmado ni activo todavía. Los nombres, datos y frecuencias de esta página son objetivos de diseño y se actualizarán cuando tengamos los datos oficiales de cada proveedor.
+</Note>
 
-| Juego | Proveedor | Datos | Autorización requerida |
+## Estado de proveedores
+
+| Juego | Proveedor | Estado | Autorización requerida |
 | --- | --- | --- | --- |
-| VALORANT | API oficial de Riot Games | Resultados, estadísticas de partidos, información de equipos y jugadores | Sí, requiere clave de API y acuerdo de uso |
-| Counter-Strike 2 | Fuente autorizada por contrato | Resultados, brackets, estadísticas de series | Sí, requiere contrato con proveedor autorizado |
-| League of Legends | API oficial de Riot Games | Partidos, jugadores, equipos, ligas regionales | Sí, requiere clave de API y acuerdo de uso |
+| VALORANT | Por confirmar (candidato: API oficial de Riot Games) | Pendiente | Clave de API y acuerdo de uso |
+| Counter-Strike 2 | Por confirmar (fuente autorizada por contrato) | Pendiente | Contrato con proveedor autorizado |
+| League of Legends | Por confirmar (candidato: API oficial de Riot Games) | Pendiente | Clave de API y acuerdo de uso |
 
-## Datos importados por proveedor
+## Datos previstos por juego
 
-### VALORANT
+Esta es la lista de datos que queremos cubrir. El alcance final dependerá de lo que ofrezca y autorice cada proveedor.
 
-- Resultados de series con marcadores por mapa.
-- Información de equipos participantes en ligas oficiales.
-- Estadísticas agregadas de jugadores (rating, K/D, economía).
-- Calendario de partidos programados.
+<AccordionGroup>
+  <Accordion title="VALORANT" icon="crosshairs">
+    - Resultados de series con marcadores por mapa.
+    - Información de equipos participantes en ligas oficiales.
+    - Estadísticas agregadas de jugadores (rating, K/D, economía).
+    - Calendario de partidos programados.
+  </Accordion>
 
-### Counter-Strike 2
+  <Accordion title="Counter-Strike 2" icon="gun">
+    - Resultados de series con mapas jugados.
+    - Brackets de torneos con avance de equipos.
+    - Estadísticas de rendimiento por jugador.
+    - Datos de equipos y roster.
+  </Accordion>
 
-- Resultados de series con mapas jugados.
-- Brackets de torneos con avance de equipos.
-- Estadísticas de rendimiento por jugador.
-- Datos de equipos y roster.
-
-### League of Legends
-
-- Resultados de partidos de ligas regionales.
-- Información de campeones seleccionados.
-- Estadísticas de jugadores y equipos.
-- Calendario de temporadas y playoffs.
+  <Accordion title="League of Legends" icon="shield">
+    - Resultados de partidos de ligas regionales.
+    - Información de campeones seleccionados.
+    - Estadísticas de jugadores y equipos.
+    - Calendario de temporadas y playoffs.
+  </Accordion>
+</AccordionGroup>
 
 <Warning>
-  No se permite scrapear HLTV, Liquipedia, FACEIT ni portales de VALORANT Esports. Estos sitios no autorizan la extracción automatizada de sus datos. VANTS solo usa fuentes con contrato explícito o API oficial con permisos válidos.
+  No se permite scrapear HLTV, Liquipedia, FACEIT ni portales de VALORANT Esports. Estos sitios no autorizan la extracción automatizada de sus datos. VANTS solo usará fuentes con contrato explícito o API oficial con permisos válidos.
 </Warning>
 
-## Ciclo de sincronización
+## Requisitos para activar un proveedor
 
-Los datos se sincronizan según la frecuencia acordada con cada proveedor:
+Antes de conectar cualquier fuente, debe cumplirse lo siguiente:
+
+1. Acuerdo firmado o clave de API oficial con permisos válidos.
+2. Documentación de los datos que entrega y sus límites de uso.
+3. Frecuencia de actualización y límites de peticiones confirmados por el proveedor.
+4. Adaptador que cumpla el contrato interno de [Integraciones](/ingenieria/integraciones).
+
+## Ciclo de sincronización (objetivo)
+
+Frecuencias orientativas. Se ajustarán a lo que permita cada proveedor una vez confirmado:
 
 - Partidos en vivo: actualización cada 30-60 segundos durante el horario de competición.
 - Partidos programados: sincronización diaria.
@@ -52,7 +69,7 @@ Los datos se sincronizan según la frecuencia acordada con cada proveedor:
 
 ## Manejo de fallos
 
-Si un proveedor no responde:
+Cuando un proveedor esté activo y no responda:
 
 1. VANTS marca los datos como desactualizados.
 2. La interfaz muestra la última versión conocida con indicador de antigüedad.

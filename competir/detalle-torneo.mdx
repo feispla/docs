@@ -1,6 +1,6 @@
 ---
 title: "Detalle completo de un torneo en VANTS"
-description: "Explora un torneo en VANTS: reglas, participantes, bracket, partidos, resultados y estadísticas. Todo en una sola página con navegación por pestañas."
+description: "Explora un torneo en VANTS: reglas, participantes, bracket, partidos, resultados, estadísticas y noticias. Todo en una sola página con navegación por pestañas."
 sidebarTitle: "Detalle de torneo"
 ---
 
@@ -8,22 +8,165 @@ La página de detalle de un torneo en VANTS reúne toda la información que nece
 
 <Tabs>
   <Tab title="Resumen">
-    La pestaña Resumen muestra la portada del torneo, descripción breve, juego, formato, fechas de inicio y fin, y estado actual. También incluye un resumen de la fase en curso, los próximos partidos destacados y los equipos mejor clasificados hasta el momento. Desde aquí puedes saltar directamente al bracket o al calendario completo.
+    La pestaña Resumen muestra la portada del torneo, descripción breve, juego, formato, fechas de inicio y fin, estado actual y premio. También incluye un resumen de la fase en curso, los próximos partidos destacados y los equipos mejor clasificados hasta el momento.
+
+    Desde aquí puedes saltar directamente al bracket, al calendario completo o a cualquier otra pestaña del torneo.
+
+    VANTS soporta múltiples formatos de fase que pueden combinarse dentro de un mismo torneo:
+
+    - **Liga**: competición prolongada con calendario de jornadas.
+    - **Fase de grupos**: múltiples grupos con round robin interno.
+    - **Eliminación directa**: bracket de una sola eliminación.
+    - **Doble eliminación**: bracket con rama de ganadores y rama de perdedores.
+    - **Swiss**: sistema suizo con emparejamiento por récord.
+    - **Clasificatorio abierto**: inscripción libre para cualquier equipo.
+    - **Clasificatorio cerrado**: invitación o requisito de clasificación previa.
+    - **Playoffs**: fase final tras una clasificación previa.
+    - **Final**: enfrentamiento decisivo del torneo.
+    - **Showmatch**: partido de exhibición sin impacto en la clasificación.
+
+    Algunas pestañas pueden ocultarse si el formato de la competición no las requiere. Por ejemplo, Grupos solo aparece cuando el torneo incluye una fase de grupos.
   </Tab>
   <Tab title="Reglas">
     Aquí encuentras el reglamento oficial del torneo: formato de competición (liga, grupos, eliminación directa), sistema de desempate, política de sustituciones, reglas de pausas técnicas, conducta esperada y sanciones. Léelo antes de inscribirte o de disputar un partido para evitar penalizaciones.
+
+    También encontrarás los requisitos de elegibilidad del torneo:
+
+    | Requisito | Descripción |
+    | --- | --- |
+    | Edad mínima | Edad requerida para participar |
+    | Región | Restricciones geográficas de participación |
+    | Conducta | Cumplimiento del código de conducta de VANTS |
+    | Enlace de soporte | Contacto para dudas sobre elegibilidad |
+
+    Si tienes dudas sobre si tu equipo cumple los requisitos, usa el enlace de soporte antes de inscribirte.
   </Tab>
   <Tab title="Participantes">
     Lista completa de equipos inscritos con sus logos, roster de jugadores, región representada y estado de inscripción (confirmada o pendiente). Si el torneo usa grupos, aquí se muestra la asignación de cada equipo a su grupo correspondiente.
-  </Tab>
-  <Tab title="Bracket">
-    Visualización interactiva del cuadro de eliminación o de la fase de grupos. Los partidos finalizados muestran resultado y enlace a su [detalle](/competir/detalle-partido). Los partidos próximos muestran hora y equipos enfrentados. En torneos con bracket de winners y losers, ambos lados están claramente diferenciados.
+
+    También puedes ver el número total de equipos inscritos y el cupo máximo del torneo.
   </Tab>
   <Tab title="Partidos">
-    Feed cronológico de todos los enfrentamientos del torneo con estado, hora, equipos, resultado y formato. Usa los filtros para ver solo los partidos de una fase específica o de un equipo concreto. Cada fila enlaza a su página de detalle para profundizar en estadísticas y timeline.
+    Feed cronológico de todos los enfrentamientos del torneo. Los partidos se agrupan en dos niveles:
+
+    1. **Por fase**: cada fase del torneo (Clasificatorio, Grupos, Playoffs, Final) forma una sección independiente.
+    2. **Por fecha**: dentro de cada fase, los partidos se ordenan cronológicamente por día y hora local.
+
+    Cada partido muestra los equipos enfrentados, la hora programada o el tiempo transcurrido, el resultado parcial o final, y una etiqueta con su estado actual:
+
+    | Estado | Significado |
+    | --- | --- |
+    | Programado | Pendiente de disputar |
+    | Check-in | Ventana de confirmación previa al partido |
+    | En vivo | Se está jugando en este momento |
+    | Pausado | Partido temporalmente detenido |
+    | Aplazado | Reprogramado para otra fecha |
+    | Finalizado | Resultado confirmado |
+    | Cancelado | No se disputará |
+    | W.O. | Victoria por abandono o no presentación |
+    | En disputa | Bajo revisión administrativa |
+
+    Puedes filtrar los partidos por fase, por equipo o por estado para concentrarte en lo que te interesa. Cada fila enlaza a su página de detalle para profundizar en estadísticas y timeline.
+  </Tab>
+  <Tab title="Clasificación">
+    Tabla de posiciones con el rendimiento de todos los equipos participantes. Las columnas varían según el formato de la competición y pueden incluir:
+
+    | Columna | Descripción |
+    | --- | --- |
+    | Posición | Lugar actual en la tabla |
+    | Equipo | Nombre del equipo con logo |
+    | Series jugadas | Cantidad de series disputadas |
+    | Victorias | Series ganadas |
+    | Derrotas | Series perdidas |
+    | Empates | Series empatadas (cuando el formato lo permite) |
+    | Mapas a favor | Mapas ganados en total |
+    | Mapas en contra | Mapas perdidos en total |
+    | Diferencia | Mapas a favor menos mapas en contra |
+    | Puntos | Puntos acumulados según el sistema del torneo |
+    | Forma reciente | Resultados de los últimos 5 enfrentamientos (V, D, E) |
+    | Estado | Situación actual del equipo en la competición |
+
+    Cada fila muestra un indicador visual del estado del equipo:
+
+    - **Clasificado**: avanza a la siguiente fase.
+    - **Eliminado**: queda fuera de la competición.
+    - **En disputa**: aún puede clasificar dependiendo de resultados pendientes.
+    - **Playoffs**: aseguró su lugar en la fase de eliminación.
+
+    Cuando dos o más equipos empatan en puntos, el organizador aplica reglas de desempate en un orden predefinido. Las reglas habituales incluyen:
+
+    1. Resultado del enfrentamiento directo (head-to-head).
+    2. Diferencia de mapas.
+    3. Diferencia de rondas (cuando el juego lo permite).
+    4. Fuerza de calendario (dificultad acumulada de los oponentes).
+    5. Partida de desempate adicional.
+    6. Decisión administrativa documentada.
+
+    El orden exacto de aplicación se muestra públicamente en la página de reglas del torneo.
+  </Tab>
+  <Tab title="Bracket">
+    Visualización interactiva del cuadro de eliminación o de la fase de grupos. En torneos con doble eliminación, el bracket se divide en tres secciones:
+
+    - **Rama de ganadores**: los equipos que ganan avanzan hacia la derecha del árbol. Los que pierden descienden a la rama de perdedores.
+    - **Rama de perdedores**: los equipos que caen desde la rama de ganadores compiten por un lugar en la gran final.
+    - **Gran final**: enfrentamiento decisivo entre el ganador de la rama de ganadores y el ganador de la rama de perdedores.
+
+    En doble eliminación, si el ganador de la rama de perdedores derrota al invicto de la rama de ganadores, se activa un **reset de final**: un segundo partido de gran final se programa automáticamente para determinar al campeón.
+
+    Cada enfrentamiento del bracket muestra los nombres de los equipos, el score actual o final, la fecha y hora programada, y el estado del partido. Haz clic en cualquier partido para ver su detalle completo.
+
+    En escritorio puedes hacer zoom y arrastrar el árbol para recorrerlo. En móvil, desliza horizontalmente para navegar entre rondas.
   </Tab>
   <Tab title="Estadísticas">
-    Tabla de líderes estadísticos del torneo: jugadores con mejor rendimiento por métricas clave según el juego. En VALORANT se muestra ACS, K/D y KAST. En CS2, Rating 2.0 y ADR. En LoL, KDA y CS/min. Los datos se actualizan tras cada partido finalizado.
+    Tabla de líderes estadísticos del torneo. Antes de consultar las métricas, puedes aplicar filtros para limitar los resultados a una fase específica o a los jugadores de un equipo concreto.
+
+    <Tabs>
+      <Tab title="VALORANT">
+        | Métrica | Descripción |
+        | --- | --- |
+        | ACS | Average Combat Score: puntuación promedio de combate por ronda |
+        | K/D | Ratio de muertes por asesinato |
+        | ADR | Daño promedio por ronda |
+        | HS% | Porcentaje de disparos a la cabeza |
+
+        Cada métrica se muestra con el valor numérico, la posición en el ranking del torneo y la tendencia respecto a la fase anterior cuando aplica.
+      </Tab>
+      <Tab title="CS2">
+        | Métrica | Descripción |
+        | --- | --- |
+        | Rating 2.0 | Índice de rendimiento general del jugador |
+        | ADR | Daño promedio por ronda |
+        | KAST | Porcentaje de rondas con kill, assist, supervivencia o trade |
+
+        El Rating 2.0 es un número entero que representa el desempeño acumulado del jugador en el torneo.
+      </Tab>
+      <Tab title="LoL">
+        | Métrica | Descripción |
+        | --- | --- |
+        | KDA | Ratio de asesinatos, muertes y asistencias |
+        | CS/min | Minions eliminados por minuto |
+        | Damage/min | Daño infligido por minuto |
+        | Vision Score | Puntuación de control de visión en el mapa |
+
+        Estas métricas reflejan el impacto del jugador en la partida tanto en economía como en control del mapa.
+      </Tab>
+    </Tabs>
+
+    Para cada métrica, VANTS muestra una lista ordenada con los mejores valores del torneo. Cada entrada incluye la posición en el ranking, el nombre del jugador, el equipo al que pertenece, el valor de la métrica y la tendencia de mejora o descenso respecto a la fase previa.
+
+    Usa el filtro por fase para comparar el rendimiento de un jugador entre la fase de grupos y los playoffs.
+  </Tab>
+  <Tab title="Noticias">
+    Feed de contenido editorial asociado al torneo. Las publicaciones se ordenan cronológicamente de más reciente a más antigua, y las noticias marcadas como importantes se fijan temporalmente en la parte superior.
+
+    Los tipos de contenido que encontrarás son:
+
+    - **Anuncios**: comunicados oficiales sobre apertura o cierre de inscripciones, cambios en el calendario, actualizaciones del reglamento y decisiones administrativas.
+    - **Cambios de formato**: notificaciones cuando una fase modifica su estructura, como ajustes en el número de equipos clasificados o cambios en el formato de serie.
+    - **Recaps**: resúmenes de jornadas con resultados destacados, movimientos en la clasificación, estadísticas sobresalientes y momentos clave del bracket.
+    - **Entrevistas**: conversaciones con jugadores, entrenadores o personalidades del torneo sobre reacciones tras partidos decisivos, análisis de estrategia y expectativas.
+
+    Cada entrada muestra el título, la fecha de publicación con tu zona horaria local, la categoría, un extracto breve y un enlace al artículo completo.
   </Tab>
 </Tabs>
 
