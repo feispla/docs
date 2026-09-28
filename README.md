@@ -10,6 +10,8 @@ Sitio: [https://ggo-df01a767.mintlify.app](https://ggo-df01a767.mintlify.app)
 
 Este repositorio **no es de código abierto**. Que sea visible no te da permiso para copiarlo, reutilizarlo, modificarlo ni publicarlo en otro lugar. Consulta el archivo [LICENSE](./LICENSE).
 
+Las únicas fuentes oficiales autorizadas son el GitHub de Feispla ([github.com/feispla](https://github.com/feispla)) y esta documentación ([ggo-df01a767.mintlify.app](https://ggo-df01a767.mintlify.app)). Cualquier fork, espejo o copia fuera de ellas no está autorizado.
+
 Cualquier copia no autorizada se notificará a la plataforma donde se aloje, incluidas solicitudes de retirada DMCA en GitHub.
 
 Para pedir permiso de uso, contacta con VANTS:
