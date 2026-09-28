@@ -1,49 +1,53 @@
 ---
-title: "Métodos de pago aceptados en VANTS"
-description: "Consulta los métodos de pago de VANTS: tarjeta, SEPA, PayPal, Apple Pay y Google Pay. Tabla comparativa con soporte para suscripciones, cobro de premios y monedas."
+title: "Métodos de pago aceptados en VANTS: Stripe y PayPal"
 sidebarTitle: "Métodos de pago"
+description: "Cómo se pagan los planes de VANTS: pago mensual con Stripe, IVA incluido, con tarjeta y PayPal si está disponible. Pago anual próximamente."
 ---
 
-VANTS procesa pagos de suscripciones y premios a través de un proveedor de pagos autorizado, garantizando seguridad y cumplimiento normativo en todas las transacciones. Puedes usar distintos métodos según el tipo de operación y tu región.
+Los planes de VANTS (BASIC, PRO y ELITE) se pagan **cada mes** a través de **Stripe**, un proveedor de pagos certificado. VANTS nunca ve ni guarda los datos de tu tarjeta: todo el pago ocurre en la página segura de Stripe.
 
-<Warning>
-  **Próximamente.** VANTS todavía no procesa pagos y no hay un proveedor de pagos contratado. Los métodos listados son los previstos y pueden cambiar antes del lanzamiento.
-</Warning>
+## Métodos disponibles
 
-## Tabla de métodos de pago
+| Método | Disponible |
+| --- | --- |
+| Tarjeta de crédito o débito | Sí |
+| PayPal | Sí, si aparece en la página de pago de Stripe |
 
-| Método | Suscripciones | Cobro de premios | Moneda soportada |
-| --- | --- | --- | --- |
-| Tarjeta (Visa, Mastercard, American Express) | Sí | Sí | EUR, USD, GBP y otras principales |
-| SEPA | Sí | Sí | EUR |
-| PayPal | Sí | Sí | Múltiples |
-| Apple Pay | Sí | No | EUR, USD, GBP |
-| Google Pay | Sí | No | EUR, USD, GBP |
-
-## Detalles de cada método
-
-- **Tarjeta de crédito o débito**: la opción más universal. Acepta Visa, Mastercard y American Express. Funciona para suscripciones y cobro de premios en la mayoría de monedas principales.
-- **SEPA**: transferencia directa desde cuenta bancaria en zona euro. Ideal para suscripciones anuales y cobros de premios superiores a 100 €.
-- **PayPal**: disponible para suscripciones y cobro de premios. Útil si prefieres no compartir los datos de tarjeta directamente con la plataforma.
-- **Apple Pay y Google Pay**: métodos rápidos desde dispositivos móviles. Solo disponibles para pagos de suscripción, no para cobro de premios.
+Stripe muestra automáticamente los métodos disponibles para tu país en la página de pago.
 
 <Note>
-  En Europa, todos los pagos con tarjeta están sujetos a PSD2 y SCA (Strong Customer Authentication). Es posible que tu banco te pida un código adicional de confirmación durante el proceso de pago. Esto es normal y garantiza la seguridad de tu transacción.
+  En Europa, los pagos con tarjeta usan SCA (autenticación reforzada). Es posible que tu banco te pida un código de confirmación durante el pago. Es normal.
 </Note>
 
-## Cómo añadir o cambiar tu método de pago
+## Cómo pagar un plan
 
-1. Inicia sesión en VANTS y ve a **Configuración > Pagos**.
-2. Haz clic en **Añadir método de pago** y selecciona el tipo deseado.
-3. Introduce los datos requeridos. Para tarjeta, el sistema puede solicitar verificación 3D Secure.
-4. Guarda el método y asígnalo como predeterminado para suscripciones o cobros de premios.
+<Steps>
+  <Step title="Inicia sesión">
+    Necesitas una cuenta de VANTS para comprar. Entra con Discord o con tu correo en la [plataforma](https://vantcall-esports1.pplx.app/).
+  </Step>
+  <Step title="Elige tu plan">
+    Ve a **Precios** o pulsa **Mejorar plan** en **Mi cuenta** y elige VANT BASIC, VANT PRO o VANT ELITE.
+  </Step>
+  <Step title="Paga en Stripe">
+    Se abre la página segura de Stripe. Introduce tus datos y confirma. El precio ya incluye el IVA.
+  </Step>
+  <Step title="Plan activado">
+    Vuelves a VANTS y tu plan se activa automáticamente en cuanto Stripe confirma el pago. Lo verás en **Mi cuenta**.
+  </Step>
+</Steps>
 
-<Warning>
-  Si cambias tu método de pago predeterminado después de emitirse una factura, la siguiente renovación usará el nuevo método. Las facturas ya pagadas no se pueden modificar.
-</Warning>
+<Tip>
+  Si pasan unos minutos y tu plan sigue en FREE, abre un ticket en **Soporte** desde **Mi cuenta** o escríbenos en el [Discord oficial](https://discord.gg/rCHE7jvRS4) indicando el correo que usaste al pagar.
+</Tip>
+
+## Pago mensual y anual
+
+- **Mensual:** el plan se renueva cada mes en la fecha de compra con el mismo método de pago.
+- **Anual:** próximamente.
+- **Cancelar:** abre un ticket en **Soporte** desde **Mi cuenta**. Mantienes el plan hasta el final del mes pagado.
 
 ## Próximos pasos
 
-- [Facturación y descarga de facturas](/monetizacion/facturacion)
-- [Planes de suscripción](/monetizacion/planes)
-- [Reembolsos y política de devolución](/monetizacion/reembolsos)
+- [Comparativa de planes](/monetizacion/planes)
+- [Facturación](/monetizacion/facturacion)
+- [Reembolsos](/monetizacion/reembolsos)
