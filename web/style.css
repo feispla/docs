@@ -2175,3 +2175,4 @@ textarea.login-form-input { resize: vertical; font: inherit; }
   .history-list li { grid-template-columns: 1fr auto; }
   .history-list li span:last-child { display: none; }
 }
+.stats-strip { padding-inline: max(var(--space-6), calc((100% - 1160px) / 2)); }
