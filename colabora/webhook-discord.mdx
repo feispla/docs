@@ -12,21 +12,21 @@ VANTS canaliza las solicitudes de colaboración y programación a un canal priva
 
 ## Arquitectura
 
-```
+```text
 Formulario público (Tally / Fillout / propio)
         │  POST JSON
         ▼
 Webhook de Discord (URL secreta)
         │
         ▼
-Canal privado #leads-colaboradores
+Canal privado #leads-colab
 ```
 
 ## 1. Crear el canal privado
 
 <Steps>
   <Step title="Nuevo canal">
-    En tu servidor Discord, **Crear canal** con nombre `leads-colaboradores`. Marca **Canal privado**.
+    En tu servidor Discord, **Crear canal** con nombre `leads-colab`. Marca **Canal privado**.
   </Step>
   <Step title="Añade solo al equipo">
     Da acceso únicamente a los roles `@equipo VANTS`, `@Admin` y `@Moderador`. Nadie más debe leerlo.
@@ -40,14 +40,14 @@ Canal privado #leads-colaboradores
 
 <Steps>
   <Step title="Abre ajustes del canal">
-    Click derecho en `#leads-colaboradores` → **Editar canal** → **Integraciones** → **Webhooks**.
+    Click derecho en `#leads-colab` → **Editar canal** → **Integraciones** → **Webhooks**.
   </Step>
   <Step title="Nuevo webhook">
     Pulsa **Nuevo webhook**. Nombre sugerido: `VANTS Colaboradores`. Avatar: logo de VANTS.
   </Step>
   <Step title="Copia la URL">
     Pulsa **Copiar URL de webhook**. Formato:
-    ```
+    ```text
     https://discord.com/api/webhooks/<WEBHOOK_ID>/<WEBHOOK_TOKEN>
     ```
   </Step>
@@ -142,5 +142,5 @@ Usa un **embed** con el color primario de VANTS (`#E30613` → `14877715` en dec
 </AccordionGroup>
 
 <Note>
-  Coordinación diaria y dudas de implementación en el Discord oficial [discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4), canal `#programacion-web`.
+  Coordinación diaria y dudas de implementación en el Discord oficial [discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4), canal `#dev-web`.
 </Note>
