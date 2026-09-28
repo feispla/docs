@@ -1,39 +1,31 @@
 ---
 title: "Iniciar sesión en VANTS: flujo seguro y protección de cuenta"
-description: "Aprende a iniciar sesión en VANTS paso a paso, con qué métodos puedes acceder y cómo funciona la protección contra intentos fallidos y bloqueos temporales."
+description: "Aprende a iniciar sesión en VANTS paso a paso con email y contraseña o con Discord, cómo protegemos tu cuenta y qué hacer si olvidas tu contraseña."
 sidebarTitle: "Iniciar sesión"
 ---
 
-VANTS te permite acceder a tu cuenta de competidor desde cualquier dispositivo usando tu email, tu contraseña o un proveedor externo. En esta guía seguirás el flujo completo de inicio de sesión, conocerás las medidas de seguridad que protegen tu cuenta y aprenderás a gestionar tu sesión en entornos compartidos.
+VANTS te permite acceder a tu cuenta de competidor desde cualquier dispositivo con tu email y contraseña o con tu cuenta de Discord. En esta guía seguirás el flujo completo de inicio de sesión, conocerás cómo protegemos tu cuenta y aprenderás a gestionar tu sesión en entornos compartidos.
 
 <Steps>
   <Step title="Abre la página de login">
-    Abre la [página de login de VANTS](https://vantcall-esports.pplx.app/#/login). El sistema detectará si tienes una sesión activa y te redirigirá a tu panel en caso afirmativo.
+    Abre la [página de login de VANTS](https://vantcall-esports.pplx.app/#/login). Si ya tienes una sesión activa, entrarás directamente a tu panel.
   </Step>
   <Step title="Elige tu método de acceso">
-    Selecciona entre **email y contraseña** o **Discord**. Si entras con Discord por primera vez y comparte el mismo email con tu cuenta VANTS, se te ofrecerá vincularlo.
+    Selecciona entre **email y contraseña** o **Discord**. Si entras con Discord, el login se completa en la web oficial de Discord y vuelves a VANTS automáticamente.
   </Step>
-  <Step title="Completa la verificación 2FA si está activa">
-    Si tienes configurada la verificación en dos pasos, introduce el código de tu app autenticadora, usa tu llave de seguridad o ingresa un código de respaldo. Este paso es obligatorio para capitanes, organizadores y suscriptores Pro.
-  </Step>
-  <Step title="Accede a tu destino">
-    Tras la autenticación exitosa, VANTS te redirige a la página que intentabas visitar antes del login, o a tu panel principal si no había destino previo.
+  <Step title="Accede a tu panel">
+    Tras iniciar sesión, VANTS te lleva a tu panel principal.
   </Step>
 </Steps>
 
 ## Protección contra intentos fallidos
 
-Para proteger tu cuenta de accesos no autorizados, VANTS aplica estas reglas de rate limit:
-
-- **5 intentos fallidos** en 10 minutos desde la misma IP activan una pausa de 60 segundos.
-- **3 intentos fallidos consecutivos** activan un captcha que debes resolver antes de continuar.
-- **10 intentos fallidos** en una ventana corta bloquean temporalmente el acceso desde esa IP durante 30 minutos.
-- Si detectamos un patrón de fuerza bruta, notificamos por email al titular de la cuenta.
+Para proteger tu cuenta, VANTS limita los intentos de inicio de sesión fallidos. Si fallas la contraseña varias veces seguidas, tendrás que esperar un poco antes de volver a intentarlo.
 
 <Tip>
-  Marca la opción **Recordar sesión** para mantener el acceso durante 30 días en tu dispositivo personal. En ordenadores públicos o compartidos, nunca actives esta casilla y cierra sesión explícitamente antes de irte.
+  En ordenadores públicos o compartidos, cierra sesión explícitamente antes de irte.
 </Tip>
 
 ## ¿Qué ocurre si olvidas tu contraseña?
 
-Desde la pantalla de login puedes solicitar un enlace de recuperación. El enlace llega a tu email y tiene una validez de 30 minutos. Si también perdiste acceso a tu email, usa el [formulario de recuperación asistida](/acceso/recuperar).
+Desde la pantalla de login puedes solicitar un enlace de recuperación. El enlace llega a tu email y caduca pasado un tiempo, así que úsalo cuanto antes. Si también perdiste acceso a tu email, consulta [Recuperar acceso](/acceso/recuperar).
