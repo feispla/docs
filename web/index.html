@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VANTCALL Esports — Calendario Competitivo</title>
-  <meta name="description" content="VANTCALL Esports: calendario competitivo, ranked, torneos y eventos. Inicia sesión con Discord o correo. Planes BASIC, PRO y ELITE con Stripe.">
+  <meta name="description" content="VANTCALL Esports: ranked, torneos y calendario de VALORANT, CS2 y LoL con datos reales. Inicia sesión con Discord o correo.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,15 +103,18 @@
           <a href="mailto:feispla@hotmail.com">feispla@hotmail.com</a>
           <a href="https://x.com/feispla" target="_blank" rel="noopener noreferrer">X @feispla</a>
           <a href="https://kick.com/feispla" target="_blank" rel="noopener noreferrer">Kick / feispla</a>
+          <a href="https://discord.gg/rCHE7jvRS4" target="_blank" rel="noopener noreferrer">Discord oficial</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>VANTCALL — Plataforma competitiva · Pagos con Stripe · Auth con Discord y correo (Supabase)</p>
+        <p>VANTCALL — Plataforma competitiva · Datos y acceso con Supabase · Pagos con Stripe</p>
+        <p class="footer-legal">VANTCALL no está afiliada a Riot Games ni a Valve. VALORANT y League of Legends son marcas de Riot Games, Inc. Counter-Strike es una marca de Valve Corporation.</p>
       </div>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js" defer></script>
+  <script src="./db.js" defer></script>
   <script src="./app.js" defer></script>
   <script src="./auth.js" defer></script>
 </body>

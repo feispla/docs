@@ -1,254 +1,191 @@
 // ============================================
-// VANTCALL Esports — App & Router
+// VANTCALL Esports — App & Router (datos reales de Supabase)
 // ============================================
 
-// ============================================
-// CALENDAR DATA (VALORANT Esports style)
-// ============================================
+const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const DISCORD_INVITE = 'https://discord.gg/rCHE7jvRS4';
 
-const SEASON_EVENTS = [
-  { region: 'TODAS LAS REGIONES', name: 'Apertura', dates: '15 ENE - 15 FEB', active: false },
-  { region: 'INTERNACIONAL', name: 'Masters Santiago', dates: '28 FEB - 16 MAR', active: false },
-  { region: 'TODAS LAS REGIONES', name: 'Fase 1', dates: '11 ABR - 24 MAY', active: false },
-  { region: 'INTERNACIONAL', name: 'Masters London', dates: '6 JUN - 21 JUN', active: false },
-  { region: 'TODAS LAS REGIONES', name: 'Fase 2', dates: '30 JUN - 6 SEPT', active: false },
-  { region: 'INTERNACIONAL', name: 'Champions Shanghai', dates: '24 SEPT - 18 OCT', active: true },
+const GAMES = { valorant: 'VALORANT', cs2: 'Counter-Strike 2', lol: 'League of Legends' };
+
+// Rango VANTS: 8 niveles (vision/rangos). Umbrales orientativos por MMR.
+const VANTS_RANKS = [
+  { key: 'hierro', name: 'Hierro', min: 0, color: '#8a9099' },
+  { key: 'bronce', name: 'Bronce', min: 900, color: '#b87333' },
+  { key: 'plata', name: 'Plata', min: 1100, color: '#c9d1d9' },
+  { key: 'oro', name: 'Oro', min: 1300, color: '#e5b93c' },
+  { key: 'platino', name: 'Platino', min: 1500, color: '#2ec4b6' },
+  { key: 'diamante', name: 'Diamante', min: 1700, color: '#9b6bff' },
+  { key: 'titan', name: 'Titán', min: 1900, color: '#3ddc84' },
+  { key: 'escarlata', name: 'Escarlata', min: 2100, color: '#ff4655' },
 ];
+function rankFor(stat) {
+  if (!stat) return VANTS_RANKS[0];
+  const byName = stat.rank && VANTS_RANKS.find((r) => stat.rank.toLowerCase().startsWith(r.key.slice(0, 4)));
+  if (byName) return byName;
+  let r = VANTS_RANKS[0];
+  for (const x of VANTS_RANKS) if ((stat.mmr || 0) >= x.min) r = x;
+  return r;
+}
+function rankBadge(stat) {
+  const r = rankFor(stat);
+  return `<span class="rank-badge" style="--rank:${r.color}"><span class="rank-gem"></span>${esc(stat && stat.rank ? stat.rank : r.name)}</span>`;
+}
 
-const CALENDAR_FILTERS = ['TODAS', 'VCT AMERICAS', 'VCT PACIFIC', 'VCT EMEA', 'VCT CHINA', 'GAME CHANGERS'];
+const fmtDate = (d, opts) => d ? new Date(d).toLocaleDateString('es-ES', opts || { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+const fmtTime = (d) => d ? new Date(d).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }) : '';
+const fmtDay = (d) => new Date(d).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short' });
+const initials = (s) => esc(String(s || '?').replace(/[^A-Za-z0-9]/g, '').slice(0, 3).toUpperCase() || '?');
 
-const MATCH_DAYS = [
-  {
-    date: 'viernes 25 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'NS', name: 'NOVA ESPORTS' }, team2: { tag: 'NRG', name: 'NRG ESPORTS' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'KC', name: 'KARMINE CORP' }, team2: { tag: 'XLG', name: 'XLG' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-  {
-    date: 'sábado 26 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'GE', name: 'GIANTS' }, team2: { tag: 'VIT', name: 'VITALITY' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'LOUD', name: 'LOUD' }, team2: { tag: 'EDG', name: 'EDWARD GAMING' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-  {
-    date: 'domingo 27 sept',
-    isToday: true,
-    matches: [
-      { time: '18:00', team1: { tag: '100T', name: '100 THIEVES' }, team2: { tag: 'T1', name: 'T1' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'JDG', name: 'JD GAMING' }, team2: { tag: 'FUT', name: 'FUT ESPORTS' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-  {
-    date: 'martes 29 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-  {
-    date: 'miércoles 30 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-  {
-    date: 'jueves 1 oct',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-      { time: '21:00', team1: { tag: 'TBD', name: 'POR DETERMINAR' }, team2: { tag: 'TBD', name: 'POR DETERMINAR' }, score1: null, score2: null, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'upcoming' },
-    ]
-  },
-];
+const STATUS_LABEL = {
+  draft: 'Borrador', upcoming: 'Próximo', registration: 'Inscripción abierta', open: 'Inscripción abierta',
+  in_progress: 'En curso', live: 'En vivo', active: 'Activo', completed: 'Finalizado', finished: 'Finalizado',
+  cancelled: 'Cancelado', closed: 'Cerrado', scheduled: 'Programado', pending: 'Pendiente', registered: 'Inscrito',
+  checked_in: 'Check-in', withdrawn: 'Retirado', disqualified: 'Descalificado',
+};
+const statusLabel = (s) => STATUS_LABEL[s] || (s ? String(s) : '—');
+const statusPill = (s) => `<span class="pill pill-${esc(s || 'none')}">${esc(statusLabel(s))}</span>`;
 
-const PAST_RESULTS = [
-  {
-    date: 'jueves 24 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'FLY', name: 'FLYQUEST' }, team2: { tag: 'MVSK', name: 'MVSK' }, score1: 2, score2: 0, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'finished' },
-      { time: '21:00', team1: { tag: 'C9', name: 'CLOUD9' }, team2: { tag: 'SWIM', name: 'SWIM' }, score1: 2, score2: 0, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'finished' },
-    ]
-  },
-  {
-    date: 'miércoles 23 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: '100T', name: '100 THIEVES' }, team2: { tag: 'LOUD', name: 'LOUD' }, score1: 3, score2: 2, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'finished' },
-      { time: '21:00', team1: { tag: 'TLV', name: 'TEAM LIQUID' }, team2: { tag: 'EG', name: 'EVIL GENIUSES' }, score1: 3, score2: 1, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'finished' },
-    ]
-  },
-  {
-    date: 'martes 22 sept',
-    isToday: false,
-    matches: [
-      { time: '18:00', team1: { tag: 'GEN', name: 'GEN.G' }, team2: { tag: 'FL', name: 'FUNPLUS' }, score1: 3, score2: 2, comp: 'Champions', phase: 'Grupos', format: 'MEJOR DE 3', status: 'finished' },
-      { time: '21:00', team1: { tag: 'HER', name: 'HERETICS' }, team2: { tag: 'SRG', name: 'SURGE' }, score1: 2, score2: 0, comp: 'Game Changers', phase: 'Playoffs', format: 'MEJOR DE 3', status: 'finished' },
-    ]
-  },
-];
-
-const POWER_RANKINGS = [
-  { pos: 1, tag: 'GEN', name: 'GEN.G', points: 1850, region: 'PACIFIC' },
-  { pos: 2, tag: '100T', name: '100 THIEVES', points: 1720, region: 'AMERICAS' },
-  { pos: 3, tag: 'LOUD', name: 'LOUD', points: 1680, region: 'AMERICAS' },
-  { pos: 4, tag: 'EDG', name: 'EDWARD GAMING', points: 1610, region: 'CHINA' },
-  { pos: 5, tag: 'NRG', name: 'NRG ESPORTS', points: 1540, region: 'AMERICAS' },
-  { pos: 6, tag: 'T1', name: 'T1', points: 1490, region: 'PACIFIC' },
-  { pos: 7, tag: 'VIT', name: 'VITALITY', points: 1430, region: 'EMEA' },
-  { pos: 8, tag: 'FLY', name: 'FLYQUEST', points: 1380, region: 'AMERICAS' },
-  { pos: 9, tag: 'KC', name: 'KARMINE CORP', points: 1320, region: 'EMEA' },
-  { pos: 10, tag: 'JDG', name: 'JD GAMING', points: 1270, region: 'CHINA' },
-];
+function emptyState(title, text, cta) {
+  return `<div class="empty-state">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 10L12 16L16 10"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+    <h3>${esc(title)}</h3><p>${esc(text)}</p>${cta || ''}</div>`;
+}
+function errorState(err) {
+  console.error(err);
+  return `<div class="auth-msg auth-msg-error" role="alert">No se pudieron cargar los datos de Supabase. ${esc(err && err.message ? err.message : '')} <button type="button" class="link-btn" onclick="router()">Reintentar</button></div>`;
+}
+function skeleton(rows = 3) {
+  return `<div class="skeleton-list">${'<div class="skeleton-row"></div>'.repeat(rows)}</div>`;
+}
+function liveTag() {
+  return `<span class="live-data-tag" title="Datos en tiempo real desde Supabase"><span class="dot"></span>Datos en vivo</span>`;
+}
 
 // ============================================
-// PAGE CONTENT
+// BLOQUES REUTILIZABLES
+// ============================================
+
+function tournamentCard(t) {
+  return `<a class="t-card" href="#/torneo/${encodeURIComponent(t.slug)}">
+    <div class="t-card-top">${statusPill(t.status)}${t.tier ? `<span class="t-tier">${esc(String(t.tier).toUpperCase())}</span>` : ''}</div>
+    <h3>${esc(t.name)}</h3>
+    <p>${esc(t.description || 'Torneo VANTCALL')}</p>
+    <div class="t-card-meta">
+      <span>${esc(t.format || 'Formato por definir')}</span>
+      <span>${t.current_participants || 0}${t.max_participants ? ' / ' + t.max_participants : ''} jugadores</span>
+      <span>${fmtDate(t.starts_at)}</span>
+    </div>
+    ${t.prize_pool ? `<div class="t-prize">Premio: ${esc(t.prize_pool)}</div>` : ''}
+  </a>`;
+}
+
+function leaderboardRows(rows) {
+  return rows.map((r, i) => `
+    <a class="ranking-row" href="#/jugador/${encodeURIComponent(r.username)}">
+      <div class="ranking-pos${i === 0 ? ' top1' : i === 1 ? ' top2' : i === 2 ? ' top3' : ''}">${String(r.position || i + 1).padStart(2, '0')}</div>
+      <div class="ranking-team">
+        <div class="ranking-team-logo">${r.avatar_url ? `<img src="${esc(r.avatar_url)}" alt="" loading="lazy">` : initials(r.username)}</div>
+        <div><div class="ranking-team-name">${esc(r.display_name || r.username)}</div><div class="ranking-sub">@${esc(r.username)} · ${r.wins || 0}V ${r.losses || 0}D</div></div>
+      </div>
+      <div class="ranking-right">${rankBadge(r)}<div class="ranking-points">${r.mmr || 0} MMR</div></div>
+    </a>`).join('');
+}
+
+function matchRow(m) {
+  const n1 = m.p1 ? (m.p1.display_name || m.p1.username) : 'Por determinar';
+  const n2 = m.p2 ? (m.p2.display_name || m.p2.username) : 'Por determinar';
+  const has = m.player1_score !== null && m.player1_score !== undefined && m.player2_score !== null && m.player2_score !== undefined;
+  const w1 = m.winner_id && m.winner_id === m.player1_id;
+  const w2 = m.winner_id && m.winner_id === m.player2_id;
+  const live = m.status === 'in_progress' || m.status === 'live';
+  return `<div class="match-card">
+    <div class="match-time${live ? ' live' : ''}">${live ? '<span class="live-indicator">LIVE</span>' : fmtTime(m.scheduled_at)}</div>
+    <div class="match-team"><div class="match-team-logo">${initials(n1)}</div><span class="match-team-name${m.p1 ? '' : ' tbd'}">${esc(n1)}</span></div>
+    <div class="match-score">${has ? `<span class="match-score-num${w1 ? ' winner' : ''}">${m.player1_score}</span><span class="match-score-sep">:</span><span class="match-score-num${w2 ? ' winner' : ''}">${m.player2_score}</span>` : '<span class="match-score-sep">VS</span>'}</div>
+    <div class="match-team right"><span class="match-team-name${m.p2 ? '' : ' tbd'}">${esc(n2)}</span><div class="match-team-logo">${initials(n2)}</div></div>
+    <div class="match-format">
+      ${m.tournament ? `<a class="match-comp" href="#/torneo/${encodeURIComponent(m.tournament.slug)}">${esc(m.tournament.name)}</a>` : ''}
+      <span class="match-phase">Ronda ${m.round || 1} · Partida ${m.match_number || 1}</span>
+      <span class="match-format-tag">${esc(statusLabel(m.status))}</span>
+    </div>
+  </div>`;
+}
+
+function eventRow(e) {
+  return `<div class="match-card event-card" data-event="${esc(e.id)}">
+    <div class="match-time">${fmtTime(e.starts_at)}</div>
+    <div class="event-body">
+      <div class="event-title">${esc(e.title)}</div>
+      <div class="event-sub">${esc(e.event_type || 'Evento')}${e.location ? ' · ' + esc(e.location) : ''}${e.max_attendees ? ` · ${e.current_attendees || 0}/${e.max_attendees} plazas` : ''}</div>
+    </div>
+    <div class="match-format">${statusPill(e.status)}<button type="button" class="btn btn-secondary btn-sm" data-rsvp="${esc(e.id)}">Asistiré</button></div>
+  </div>`;
+}
+
+function groupByDay(items, dateKey) {
+  const groups = new Map();
+  for (const it of items) {
+    const d = new Date(it[dateKey]);
+    const k = d.toISOString().slice(0, 10);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(it);
+  }
+  return [...groups.entries()];
+}
+
+const RANKS_STRIP = `<div class="ranks-strip">${VANTS_RANKS.map((r, i) => `
+  <div class="rank-tile" style="--rank:${r.color}">
+    <div class="rank-emblem"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L35 12 L35 28 L20 37 L5 28 L5 12 Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 16 L20 26 L27 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>${i >= 6 ? '<circle cx="20" cy="10" r="2" fill="currentColor"/>' : ''}</svg></div>
+    <div class="rank-name">${r.name}</div><div class="rank-min">${i === 7 ? 'Top global' : r.min + '+ MMR'}</div>
+  </div>`).join('')}</div>`;
+
+const DISCORD_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>';
+
+// ============================================
+// PÁGINAS
 // ============================================
 
 const DOC_CONTENT = {
-  // ---- INICIO (HOME) ----
   'inicio': {
-    title: 'VANTCALL Esports — Calendario Competitivo',
-    group: 'Inicio',
+    title: 'VANTCALL Esports — Plataforma competitiva',
     isHome: true,
     content: `
       <section class="valorant-hero">
-        <div class="hero-badge"><span class="live-dot"></span> CHAMPIONS SHANGHAI · EN VIVO</div>
+        <div class="hero-badge"><span class="live-dot"></span> BETA ABIERTA · VALORANT · CS2 · LOL</div>
         <h1>VANTCALL</h1>
-        <p class="hero-tagline">El calendario competitivo definitivo. Ranked, torneos, eventos y la elite del esports en una sola plataforma.</p>
+        <p class="hero-tagline">Ranked, torneos y eventos con datos reales. Inicia sesión con Discord o con tu correo y compite en la plataforma.</p>
         <div class="hero-cta">
-          <a href="#/login" class="btn btn-primary btn-lg">JUGAR GRATIS</a>
-          <a href="#/calendario" class="btn btn-secondary btn-lg">VER CALENDARIO</a>
+          <a href="#/login" class="btn btn-primary btn-lg" data-auth-cta>JUGAR GRATIS</a>
+          <a href="#/torneos" class="btn btn-secondary btn-lg">VER TORNEOS</a>
         </div>
       </section>
 
-      <!-- Season Strip -->
-      <div class="season-strip">
-        ${SEASON_EVENTS.map(e => `
-          <div class="season-event${e.active ? ' active' : ''}">
-            <div class="season-event-region">${e.region}</div>
-            <div class="season-event-name">${e.name}</div>
-            <div class="season-event-dates">${e.dates}</div>
-          </div>
-        `).join('')}
-      </div>
+      <div class="stats-strip" data-async="home-stats">${skeleton(1)}</div>
 
-      <!-- Calendar Section -->
-      <section class="calendar-section">
-        <div class="calendar-header">
-          <div class="calendar-title">
-            <h2>CALENDARIO</h2>
+      <section class="valorant-section home-grid-section">
+        <div class="home-grid">
+          <div>
+            <div class="section-head"><h2>PRÓXIMOS TORNEOS</h2><a href="#/torneos">Ver todos</a></div>
+            <div data-async="home-tournaments">${skeleton(3)}</div>
           </div>
-          <div class="calendar-filters">
-            ${CALENDAR_FILTERS.map((f, i) => `
-              <button class="calendar-filter${i === 0 ? ' active' : ''}" data-filter="${f}">${f}</button>
-            `).join('')}
+          <div>
+            <div class="section-head"><h2>TOP RANKED</h2><a href="#/ranked">Leaderboard</a></div>
+            <div class="rankings-list" data-async="home-leaderboard">${skeleton(5)}</div>
           </div>
-        </div>
-
-        ${renderMatchDays(MATCH_DAYS, 'upcoming')}
-      </section>
-
-      <!-- Power Rankings -->
-      <section class="power-rankings">
-        <div class="rankings-header">
-          <h2>GLOBAL POWER RANKINGS</h2>
-        </div>
-        <div class="rankings-list">
-          ${POWER_RANKINGS.map(t => `
-            <div class="ranking-row">
-              <div class="ranking-pos${t.pos === 1 ? ' top1' : t.pos === 2 ? ' top2' : t.pos === 3 ? ' top3' : ''}">${String(t.pos).padStart(2, '0')}</div>
-              <div class="ranking-team">
-                <div class="ranking-team-logo">${t.tag}</div>
-                <div class="ranking-team-name">${t.name}</div>
-              </div>
-              <div class="ranking-points">${t.points} pts</div>
-            </div>
-          `).join('')}
         </div>
       </section>
 
-      <!-- News Section -->
       <section class="valorant-section">
-        <div class="section-header">
-          <h2>NOVEDADES</h2>
-        </div>
-        <div class="news-list">
-          <a href="#/calendario" class="news-item">
-            <div class="news-num">01</div>
-            <div class="news-content">
-              <div class="news-meta"><span class="news-cat">Champions</span></div>
-              <h3>Champions Shanghai 2026 — Fase de grupos</h3>
-              <p>Los mejores 16 equipos del mundo se enfrentan en Shanghai. Sigue todos los partidos en el calendario.</p>
-            </div>
-          </a>
-          <a href="#/torneos" class="news-item">
-            <div class="news-num">02</div>
-            <div class="news-content">
-              <div class="news-meta"><span class="news-cat">Torneos</span></div>
-              <h3>VANT Open — Inscripciones abiertas</h3>
-              <p>Torneo público para jugadores BASIC+. Inscríbete desde la web o con /torneo registrar en Discord.</p>
-            </div>
-          </a>
-          <a href="#/precios" class="news-item">
-            <div class="news-num">03</div>
-            <div class="news-content">
-              <div class="news-meta"><span class="news-cat">Plataforma</span></div>
-              <h3>Planes BASIC, PRO y ELITE disponibles</h3>
-              <p>Pago único con Stripe. El plan se activa en tu cuenta en cuanto Stripe confirma el pago.</p>
-            </div>
-          </a>
-        </div>
+        <div class="section-header"><h2>RANGO VANTS</h2></div>
+        <p class="section-lead">Ocho niveles, un recorrido por juego. Ganas VP por victoria, MVP y clutches; cada temporada conservas el 30% del VP acumulado.</p>
+        ${RANKS_STRIP}
       </section>
 
-      <!-- Banner -->
       <section class="valorant-banner">
         <div class="banner-content">
-          <h2>VANT CHAMPIONSHIP</h2>
-          <p>El torneo competitivo definitivo de VANTCALL. Llega a la cima y demuestra tu nivel.</p>
-          <a href="#/torneos" class="btn btn-primary btn-lg">VER AHORA</a>
-        </div>
-      </section>
-
-      <!-- Feature Blocks -->
-      <section class="valorant-section">
-        <div class="section-header">
-          <h2>SOMOS VANTCALL</h2>
-        </div>
-
-        <div class="feature-block">
-          <div class="feature-block-num">01</div>
-          <h3>DESAFÍA LOS LÍMITES</h3>
-          <p>Sistema ranked con MMR, placement, temporadas y leaderboard. Entra a la cola, gana partidas y escala posiciones. Todos los comandos se sincronizan entre la web y el bot de Discord en tiempo real.</p>
-          <a href="#/ranked" class="btn btn-secondary">DESCUBRE EL RANKED</a>
-        </div>
-
-        <div class="feature-block">
-          <div class="feature-block-num">02</div>
-          <h3>TUS AGENTES</h3>
-          <p>Perfiles de jugador vinculados a Discord con estadísticas competitivas, historial de partidas y verificación de identidad. Compara jugadores y consulta el directorio completo.</p>
-          <a href="#/jugadores" class="btn btn-secondary">VER JUGADORES</a>
-        </div>
-
-        <div class="feature-block">
-          <div class="feature-block-num">03</div>
-          <h3>TUS TORNEOS</h3>
-          <p>Torneos públicos y privados con inscripción, bracket en tiempo real y resultados. VANT Open, Pro Series y Elite Invitational según tu plan.</p>
-          <a href="#/torneos" class="btn btn-secondary">VER TORNEOS</a>
-        </div>
-
-        <div class="feature-block">
-          <div class="feature-block-num">04</div>
-          <h3>CALENDARIO EN VIVO</h3>
-          <p>Sigue todos los partidos del circuito competitivo en tiempo real. Horarios, resultados, bracket y Power Rankings actualizados al instante.</p>
-          <a href="#/calendario" class="btn btn-secondary">VER CALENDARIO</a>
+          <h2>ÚNETE AL DISCORD</h2>
+          <p>Avisos oficiales, salas de VALORANT y CS2, postulaciones y el bot de VANTCALL sincronizado con la web.</p>
+          <a href="${DISCORD_INVITE}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">ENTRAR AL SERVIDOR</a>
         </div>
       </section>
 
@@ -343,174 +280,159 @@ const DOC_CONTENT = {
           </a>
         </div>
       </section>
-    `
+
+    `,
+    async load(main) {
+      const DB = window.VantDB;
+      const set = (k, html) => { const el = main.querySelector(`[data-async="${k}"]`); if (el) el.innerHTML = html; };
+      DB.stats().then((s) => set('home-stats', `
+        <div class="stat"><div class="stat-num">${s.players}</div><div class="stat-label">Jugadores registrados</div></div>
+        <div class="stat"><div class="stat-num">${s.tournaments}</div><div class="stat-label">Torneos</div></div>
+        <div class="stat"><div class="stat-num">${s.events}</div><div class="stat-label">Eventos próximos</div></div>
+        <div class="stat"><div class="stat-num">${s.matches}</div><div class="stat-label">Partidas ranked</div></div>
+        <div class="stat stat-live">${liveTag()}</div>`)).catch((e) => set('home-stats', errorState(e)));
+      DB.tournaments().then((ts) => {
+        const up = ts.filter((t) => !['completed', 'finished', 'cancelled', 'draft'].includes(t.status)).slice(0, 3);
+        set('home-tournaments', up.length ? `<div class="t-grid t-grid-stack">${up.map(tournamentCard).join('')}</div>` : emptyState('Sin torneos abiertos', 'Aún no hay torneos publicados. Los anunciamos primero en Discord.', `<a class="btn btn-secondary" href="${DISCORD_INVITE}" target="_blank" rel="noopener noreferrer">Avisarme en Discord</a>`));
+      }).catch((e) => set('home-tournaments', errorState(e)));
+      DB.activeSeason().then(async (s) => {
+        const rows = s ? await DB.leaderboard(s.id, 5) : [];
+        set('home-leaderboard', rows.length ? leaderboardRows(rows) : emptyState('Leaderboard vacío', s ? 'Juega tus partidas de placement para aparecer aquí.' : 'La primera temporada ranked aún no ha comenzado.', '<a class="btn btn-secondary" href="#/ranked">Cómo funciona</a>'));
+      }).catch((e) => set('home-leaderboard', errorState(e)));
+    },
   },
 
-  // ---- CALENDARIO ----
   'calendario': {
     title: 'Calendario — VANTCALL Esports',
-    group: 'Plataforma',
     content: `
-      <h1>Calendario Competitivo</h1>
-      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Calendario</p>
-
-      <div class="season-strip" style="border-radius: var(--radius-lg); margin-bottom: var(--space-8);">
-        ${SEASON_EVENTS.map(e => `
-          <div class="season-event${e.active ? ' active' : ''}">
-            <div class="season-event-region">${e.region}</div>
-            <div class="season-event-name">${e.name}</div>
-            <div class="season-event-dates">${e.dates}</div>
-          </div>
-        `).join('')}
+      <h1>Calendario</h1>
+      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Calendario ${liveTag()}</p>
+      <div class="calendar-filters" role="tablist">
+        <button class="calendar-filter active" data-filter="all">TODO</button>
+        <button class="calendar-filter" data-filter="match">PARTIDAS</button>
+        <button class="calendar-filter" data-filter="event">EVENTOS</button>
+        <button class="calendar-filter" data-filter="tournament">TORNEOS</button>
       </div>
-
-      <div class="calendar-header" style="margin-bottom: var(--space-6);">
-        <div class="calendar-title">
-          <h2 style="border:none; margin:0; padding:0;">PRÓXIMOS PARTIDOS</h2>
-        </div>
-        <div class="calendar-filters">
-          ${CALENDAR_FILTERS.map((f, i) => `
-            <button class="calendar-filter${i === 0 ? ' active' : ''}" data-filter="${f}">${f}</button>
-          `).join('')}
-        </div>
-      </div>
-
-      ${renderMatchDays(MATCH_DAYS, 'upcoming')}
-
-      <h2 style="margin-top: var(--space-16);">RESULTADOS RECIENTES</h2>
-
-      ${renderMatchDays(PAST_RESULTS, 'finished')}
-    `
+      <div class="auth-msg" data-page-msg role="status" aria-live="polite" hidden></div>
+      <div data-async="calendar">${skeleton(5)}</div>`,
+    async load(main) {
+      const DB = window.VantDB;
+      const box = main.querySelector('[data-async="calendar"]');
+      try {
+        const [matches, events, tournaments] = await Promise.all([DB.scheduledMatches(), DB.events(), DB.tournaments()]);
+        const items = [
+          ...matches.map((m) => ({ kind: 'match', at: m.scheduled_at, html: matchRow(m) })),
+          ...events.filter((e) => e.starts_at).map((e) => ({ kind: 'event', at: e.starts_at, html: eventRow(e) })),
+          ...tournaments.filter((t) => t.starts_at).map((t) => ({ kind: 'tournament', at: t.starts_at, html: `<div class="match-card"><div class="match-time">${fmtTime(t.starts_at)}</div><div class="event-body"><div class="event-title">Inicio: ${esc(t.name)}</div><div class="event-sub">${esc(t.format || '')}</div></div><div class="match-format">${statusPill(t.status)}<a class="btn btn-secondary btn-sm" href="#/torneo/${encodeURIComponent(t.slug)}">Ver</a></div></div>` })),
+        ].sort((a, b) => new Date(a.at) - new Date(b.at));
+        const render = (f) => {
+          const list = items.filter((i) => f === 'all' || i.kind === f);
+          if (!list.length) { box.innerHTML = emptyState('Calendario vacío', 'No hay partidas, eventos ni torneos programados todavía.'); return; }
+          const today = new Date().toISOString().slice(0, 10);
+          box.innerHTML = groupByDay(list, 'at').map(([k, arr]) => `
+            <div class="match-day"><div class="match-day-header"><span class="match-day-date">${fmtDay(arr[0].at)}</span>${k === today ? '<span class="match-day-badge">HOY</span>' : ''}</div>
+            ${arr.map((i) => i.html).join('')}</div>`).join('');
+          bindRsvp(main);
+        };
+        render('all');
+        main.querySelectorAll('.calendar-filter').forEach((b) => b.addEventListener('click', () => {
+          main.querySelectorAll('.calendar-filter').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active'); render(b.dataset.filter);
+        }));
+      } catch (e) { box.innerHTML = errorState(e); }
+    },
   },
 
-  // ---- RANKED ----
   'ranked': {
     title: 'Ranked — VANTCALL Esports',
-    group: 'Plataforma',
     content: `
       <h1>Ranked</h1>
-      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Ranked</p>
-
-      <div class="dash-grid">
-        <div class="dash-card"><div class="label">Temporada</div><div class="value">T1</div><div class="sub">Activa</div></div>
-        <div class="dash-card"><div class="label">Jugadores en cola</div><div class="value">0</div><div class="sub">Esperando</div></div>
-        <div class="dash-card"><div class="label">Partidas hoy</div><div class="value">0</div><div class="sub">Registradas</div></div>
-        <div class="dash-card"><div class="label">MMR medio</div><div class="value">—</div><div class="sub">Sin datos</div></div>
-      </div>
-
-      <h2>Estado del sistema</h2>
-      <p>El sistema Ranked está sincronizado entre la web y el bot de Discord. Todos los comandos ejecutados en Discord se reflejan en la plataforma web en tiempo real.</p>
-
+      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Ranked ${liveTag()}</p>
+      <div class="dash-grid" data-async="ranked-season">${skeleton(1)}</div>
+      <h2>Rango VANTS</h2>
+      ${RANKS_STRIP}
+      <h2>Leaderboard</h2>
+      <div class="rankings-list rankings-full" data-async="ranked-lb">${skeleton(6)}</div>
+      <h2>Reglas vigentes</h2>
+      <div data-async="ranked-rules">${skeleton(2)}</div>
       <div class="bot-panel">
-        <div class="bot-status">
-          <div class="dot"></div>
-          <div><div class="text">Bot conectado</div><div class="sub">Supabase · sincronización activa</div></div>
-        </div>
-        <h3>Comandos — Ranked</h3>
+        <h3>Comandos del bot en Discord</h3>
         <div class="bot-commands">
           <div class="bot-cmd"><code>/ranked entrar</code><span class="desc">Unirse a la cola</span></div>
           <div class="bot-cmd"><code>/ranked placement</code><span class="desc">Partidas de calibración</span></div>
           <div class="bot-cmd"><code>/ranked perfil</code><span class="desc">Perfil competitivo</span></div>
-          <div class="bot-cmd"><code>/ranked estado</code><span class="desc">Estado de la cola</span></div>
-          <div class="bot-cmd"><code>/ranked leaderboard</code><span class="desc">Clasificación global</span></div>
-          <div class="bot-cmd"><code>/ranked historial</code><span class="desc">Historial de partidas</span></div>
-          <div class="bot-cmd"><code>/ranked partida</code><span class="desc">Partida actual</span></div>
-          <div class="bot-cmd"><code>/ranked cancelar</code><span class="desc">Salir de la cola</span></div>
+          <div class="bot-cmd"><code>/ranked leaderboard</code><span class="desc">Clasificación</span></div>
           <div class="bot-cmd"><code>/ranked resultado</code><span class="desc">Reportar resultado</span></div>
-          <div class="bot-cmd"><code>/ranked reglas</code><span class="desc">Reglas vigentes</span></div>
+          <div class="bot-cmd"><code>/ranked cancelar</code><span class="desc">Salir de la cola</span></div>
         </div>
-      </div>
-
-      <h2>Tablas de Supabase</h2>
-      <ul>
-        <li><code>seasons</code> — Temporadas activas y cerradas</li>
-        <li><code>season_player_stats</code> — MMR, rangos, wins y losses por jugador</li>
-        <li><code>ranked_matches</code> — Partidas registradas</li>
-        <li><code>ranked_queue</code> — Cola de emparejamiento</li>
-        <li><code>ranked_rules</code> — Reglas configurables</li>
-        <li><code>ranked_history</code> — Historial completo de MMR</li>
-      </ul>
-    `
+        <p class="login-note">La cola ranked se gestiona desde el bot. Vincula Discord a tu cuenta para que tus partidas aparezcan aquí.</p>
+      </div>`,
+    async load(main) {
+      const DB = window.VantDB;
+      const set = (k, h) => { const el = main.querySelector(`[data-async="${k}"]`); if (el) el.innerHTML = h; };
+      const RULE_LABEL = { placement_matches: 'Partidas de placement', mmr_per_win: 'MMR por victoria', mmr_per_loss: 'MMR por derrota', queue_timeout: 'Tiempo máximo en cola (s)', min_players_per_match: 'Jugadores mínimos por partida' };
+      DB.rules().then((rs) => set('ranked-rules', rs.length ? `<div class="rules-grid">${rs.map((r) => `<div class="rule"><div class="rule-val">${esc(r.rule_value)}</div><div class="rule-key">${esc(RULE_LABEL[r.rule_key] || r.description || r.rule_key)}</div></div>`).join('')}</div>` : emptyState('Sin reglas', 'Las reglas se publicarán al abrir la temporada.'))).catch((e) => set('ranked-rules', errorState(e)));
+      try {
+        const s = await DB.activeSeason();
+        set('ranked-season', s ? `
+          <div class="dash-card"><div class="label">Temporada</div><div class="value">${esc(s.name || 'T' + s.season_number)}</div><div class="sub">${statusPill(s.status)}</div></div>
+          <div class="dash-card"><div class="label">Inicio</div><div class="value">${fmtDate(s.start_date, { day: 'numeric', month: 'short' })}</div><div class="sub">${fmtDate(s.start_date)}</div></div>
+          <div class="dash-card"><div class="label">Fin</div><div class="value">${fmtDate(s.end_date, { day: 'numeric', month: 'short' })}</div><div class="sub">${fmtDate(s.end_date)}</div></div>`
+          : `<div class="dash-card dash-card-wide"><div class="label">Temporada</div><div class="value">Próximamente</div><div class="sub">La temporada 1 se anunciará en Discord.</div></div>`);
+        const rows = s ? await DB.leaderboard(s.id, 50) : [];
+        set('ranked-lb', rows.length ? leaderboardRows(rows) : emptyState('Aún no hay jugadores clasificados', 'Completa las partidas de placement desde el bot de Discord para entrar en el leaderboard.', `<a class="btn btn-secondary" href="${DISCORD_INVITE}" target="_blank" rel="noopener noreferrer">Abrir Discord</a>`));
+      } catch (e) { set('ranked-season', errorState(e)); set('ranked-lb', ''); }
+    },
   },
 
-  // ---- JUGADORES ----
-  'jugadores': {
-    title: 'Jugadores — VANTCALL Esports',
-    group: 'Plataforma',
-    content: `
-      <h1>Jugadores</h1>
-      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Jugadores</p>
-
-      <p>Directorio de jugadores de VANTCALL. Los perfiles están vinculados a cuentas de Discord y sincronizados con Supabase.</p>
-
-      <div class="bot-panel">
-        <div class="bot-status">
-          <div class="dot"></div>
-          <div><div class="text">Bot conectado</div><div class="sub">Perfiles sincronizados</div></div>
-        </div>
-        <h3>Comandos — Jugadores</h3>
-        <div class="bot-commands">
-          <div class="bot-cmd"><code>/jugador perfil</code><span class="desc">Ver perfil de un jugador</span></div>
-          <div class="bot-cmd"><code>/jugador buscar</code><span class="desc">Buscar por nombre</span></div>
-          <div class="bot-cmd"><code>/jugador estadisticas</code><span class="desc">Stats competitivas</span></div>
-          <div class="bot-cmd"><code>/jugador comparar</code><span class="desc">Comparar dos jugadores</span></div>
-          <div class="bot-cmd"><code>/jugador verificar</code><span class="desc">Verificación de identidad</span></div>
-          <div class="bot-cmd"><code>/jugador desconectar</code><span class="desc">Desvincular jugador</span></div>
-          <div class="bot-cmd"><code>/jugadores activos</code><span class="desc">Jugadores en línea</span></div>
-        </div>
-      </div>
-
-      <h2>Tablas de Supabase</h2>
-      <ul>
-        <li><code>players</code> — Datos de jugadores</li>
-        <li><code>player_discord_accounts</code> — Vinculación con Discord</li>
-        <li><code>profiles</code> — Perfiles públicos y privados</li>
-        <li><code>bot_admins</code> — Administradores del bot</li>
-      </ul>
-    `
-  },
-
-  // ---- TORNEOS ----
   'torneos': {
     title: 'Torneos — VANTCALL Esports',
-    group: 'Plataforma',
     content: `
       <h1>Torneos</h1>
-      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Torneos</p>
+      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Torneos ${liveTag()}</p>
+      <div data-async="tournaments">${skeleton(4)}</div>`,
+    async load(main) {
+      const box = main.querySelector('[data-async="tournaments"]');
+      try {
+        const ts = await window.VantDB.tournaments();
+        if (!ts.length) { box.innerHTML = emptyState('Todavía no hay torneos', 'Los organizadores publicarán aquí los torneos de VALORANT, CS2 y LoL. Inscríbete desde la web o con /torneo registrar en Discord.', `<a class="btn btn-primary" href="${DISCORD_INVITE}" target="_blank" rel="noopener noreferrer">Seguir en Discord</a>`); return; }
+        const open = ts.filter((t) => ['registration', 'open', 'upcoming', 'in_progress', 'live', 'active'].includes(t.status));
+        const past = ts.filter((t) => ['completed', 'finished', 'cancelled', 'closed'].includes(t.status));
+        const other = ts.filter((t) => !open.includes(t) && !past.includes(t));
+        const sec = (title, arr) => arr.length ? `<h2>${title}</h2><div class="t-grid">${arr.map(tournamentCard).join('')}</div>` : '';
+        box.innerHTML = sec('Abiertos y en curso', open) + sec('Próximamente', other) + sec('Finalizados', past);
+      } catch (e) { box.innerHTML = errorState(e); }
+    },
+  },
 
-      <p>Torneos públicos y privados de VANTCALL. La inscripción, bracket y resultados se sincronizan entre la web y el bot de Discord.</p>
-
-      <div class="dash-grid">
-        <div class="dash-card"><div class="label">VANT Open</div><div class="value">Inscripción</div><div class="sub">BASIC+</div></div>
-        <div class="dash-card"><div class="label">Pro Series</div><div class="value">Activo</div><div class="sub">PRO+</div></div>
-        <div class="dash-card"><div class="label">Elite Invitational</div><div class="value">Próximamente</div><div class="sub">ELITE</div></div>
-      </div>
-
-      <div class="bot-panel">
-        <div class="bot-status">
-          <div class="dot"></div>
-          <div><div class="text">Bot conectado</div><div class="sub">Torneos sincronizados</div></div>
-        </div>
-        <h3>Comandos — Torneos</h3>
-        <div class="bot-commands">
-          <div class="bot-cmd"><code>/torneo lista</code><span class="desc">Torneos disponibles</span></div>
-          <div class="bot-cmd"><code>/torneo ver</code><span class="desc">Ficha del torneo</span></div>
-          <div class="bot-cmd"><code>/torneo registrar</code><span class="desc">Inscribirse</span></div>
-          <div class="bot-cmd"><code>/torneo cancelar</code><span class="desc">Cancelar inscripción</span></div>
-          <div class="bot-cmd"><code>/torneo participantes</code><span class="desc">Lista de inscritos</span></div>
-          <div class="bot-cmd"><code>/torneo bracket</code><span class="desc">Bracket actual</span></div>
-          <div class="bot-cmd"><code>/torneo partida</code><span class="desc">Info de partida</span></div>
-          <div class="bot-cmd"><code>/torneo resultado</code><span class="desc">Reportar resultado</span></div>
-        </div>
-      </div>
-
-      <h2>Tablas de Supabase</h2>
-      <ul>
-        <li><code>tournaments</code> — Torneos públicos y privados</li>
-        <li><code>tournament_entries</code> — Inscripciones</li>
-        <li><code>tournament_matches</code> — Partidas del bracket</li>
-      </ul>
-    `
+  'jugadores': {
+    title: 'Jugadores — VANTCALL Esports',
+    content: `
+      <h1>Jugadores</h1>
+      <p class="breadcrumb"><a href="#/inicio">VANTCALL</a> <span>/</span> Jugadores ${liveTag()}</p>
+      <form class="search-bar" data-player-search role="search">
+        <input class="login-form-input" name="q" type="search" placeholder="Buscar por nombre de jugador" aria-label="Buscar jugador" autocomplete="off">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
+      <div data-async="players">${skeleton(6)}</div>`,
+    async load(main) {
+      const box = main.querySelector('[data-async="players"]');
+      const run = async (qs) => {
+        box.innerHTML = skeleton(6);
+        try {
+          const ps = await window.VantDB.players(qs);
+          box.innerHTML = ps.length ? `<div class="player-grid">${ps.map((p) => `
+            <a class="player-card" href="#/jugador/${encodeURIComponent(p.username)}">
+              <div class="player-avatar">${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="" loading="lazy">` : initials(p.username)}</div>
+              <div class="player-info"><div class="player-name">${esc(p.display_name || p.username)}${p.verified ? ' <span class="verified" title="Verificado">✓</span>' : ''}</div>
+              <div class="player-sub">@${esc(p.username)}${p.region ? ' · ' + esc(p.region) : ''}${p.main_game ? ' · ' + esc(GAMES[p.main_game] || p.main_game) : ''}</div></div>
+            </a>`).join('')}</div>`
+            : emptyState(qs ? 'Sin resultados' : 'Aún no hay jugadores', qs ? 'Prueba con otro nombre.' : 'Sé el primero: crea tu cuenta con Discord o correo.', qs ? '' : '<a class="btn btn-primary" href="#/registro">Crear cuenta</a>');
+        } catch (e) { box.innerHTML = errorState(e); }
+      };
+      main.querySelector('[data-player-search]').addEventListener('submit', (e) => { e.preventDefault(); run(e.target.q.value.trim()); });
+      run('');
+    },
   },
 
   // ---- PRECIOS (Enhanced Monetization) ----
@@ -615,128 +537,150 @@ const DOC_CONTENT = {
 
 };
 
-// ============================================
-// RENDER HELPERS
-// ============================================
-
-function renderMatchDays(days, type) {
-  return days.map(day => `
-    <div class="match-day">
-      <div class="match-day-header">
-        <span class="match-day-date">${day.date}</span>
-        ${day.isToday ? '<span class="match-day-badge">HOY</span>' : ''}
-      </div>
-      ${day.matches.map(m => renderMatchCard(m, type)).join('')}
-    </div>
-  `).join('');
+// ---- rutas dinámicas ----
+function tournamentPage(slug) {
+  return {
+    title: 'Torneo — VANTCALL Esports',
+    content: `<p class="breadcrumb"><a href="#/torneos">Torneos</a> <span>/</span> <span data-crumb>…</span></p><div data-async="t">${skeleton(5)}</div>`,
+    async load(main) {
+      const box = main.querySelector('[data-async="t"]');
+      try {
+        const t = await window.VantDB.tournament(slug);
+        if (!t) { box.innerHTML = emptyState('Torneo no encontrado', 'Puede que el enlace sea antiguo.', '<a class="btn btn-secondary" href="#/torneos">Ver torneos</a>'); return; }
+        document.title = t.name + ' — VANTCALL Esports';
+        main.querySelector('[data-crumb]').textContent = t.name;
+        const rounds = {};
+        for (const m of t.matches) (rounds[m.round || 1] = rounds[m.round || 1] || []).push(m);
+        const canRegister = ['registration', 'open', 'upcoming'].includes(t.status);
+        box.innerHTML = `
+          <div class="t-hero">
+            <div>${statusPill(t.status)}${t.tier ? `<span class="t-tier">${esc(String(t.tier).toUpperCase())}</span>` : ''}</div>
+            <h1>${esc(t.name)}</h1>
+            <p>${esc(t.description || '')}</p>
+            <div class="auth-msg" data-page-msg role="status" aria-live="polite" hidden></div>
+            ${canRegister ? `<div class="t-actions"><button type="button" class="btn btn-primary" data-register="${esc(t.id)}">Inscribirme</button><button type="button" class="btn btn-secondary" data-unregister="${esc(t.id)}" hidden>Cancelar inscripción</button></div>` : ''}
+          </div>
+          <div class="dash-grid">
+            <div class="dash-card"><div class="label">Formato</div><div class="value value-sm">${esc(t.format || '—')}</div></div>
+            <div class="dash-card"><div class="label">Participantes</div><div class="value">${t.entries.length}${t.max_participants ? ' / ' + t.max_participants : ''}</div></div>
+            <div class="dash-card"><div class="label">Inicio</div><div class="value value-sm">${fmtDate(t.starts_at)}</div><div class="sub">${fmtTime(t.starts_at)}</div></div>
+            <div class="dash-card"><div class="label">Premio</div><div class="value value-sm">${esc(t.prize_pool || '—')}</div></div>
+          </div>
+          ${t.registration_closes_at ? `<p class="login-note" style="text-align:left">Inscripción hasta el ${fmtDate(t.registration_closes_at)} a las ${fmtTime(t.registration_closes_at)}.</p>` : ''}
+          <h2>Bracket</h2>
+          ${Object.keys(rounds).length ? `<div class="bracket">${Object.entries(rounds).map(([r, ms]) => `<div class="bracket-round"><div class="bracket-title">Ronda ${esc(r)}</div>${ms.map(matchRow).join('')}</div>`).join('')}</div>` : emptyState('Bracket pendiente', 'El bracket se genera cuando se cierra la inscripción.')}
+          <h2>Inscritos</h2>
+          ${t.entries.length ? `<div class="player-grid">${t.entries.map((e) => e.player ? `<a class="player-card" href="#/jugador/${encodeURIComponent(e.player.username)}"><div class="player-avatar">${e.player.avatar_url ? `<img src="${esc(e.player.avatar_url)}" alt="" loading="lazy">` : initials(e.player.username)}</div><div class="player-info"><div class="player-name">${e.seed ? '#' + e.seed + ' ' : ''}${esc(e.player.display_name || e.player.username)}</div><div class="player-sub">${esc(statusLabel(e.status))}</div></div></a>` : '').join('')}</div>` : emptyState('Nadie inscrito aún', 'Sé el primero en inscribirte.')}
+          ${t.rules ? `<h2>Reglas</h2><div class="rules-text">${esc(t.rules).replace(/\n/g, '<br>')}</div>` : ''}`;
+        if (window.VantAuth) window.VantAuth.bindTournament(main, t);
+      } catch (e) { box.innerHTML = errorState(e); }
+    },
+  };
 }
 
-function renderMatchCard(match, type) {
-  const isTBD = match.team1.tag === 'TBD';
-  const isFinished = type === 'finished' && match.score1 !== null;
-  const hasScore = match.score1 !== null && match.score2 !== null;
-  const team1Win = hasScore && match.score1 > match.score2;
-  const team2Win = hasScore && match.score2 > match.score1;
+function playerPage(username) {
+  return {
+    title: 'Jugador — VANTCALL Esports',
+    content: `<p class="breadcrumb"><a href="#/jugadores">Jugadores</a> <span>/</span> @${esc(username)}</p><div data-async="p">${skeleton(5)}</div>`,
+    async load(main) {
+      const box = main.querySelector('[data-async="p"]');
+      try {
+        const p = await window.VantDB.player(username);
+        if (!p) { box.innerHTML = emptyState('Jugador no encontrado', 'Revisa el nombre de usuario.', '<a class="btn btn-secondary" href="#/jugadores">Ver jugadores</a>'); return; }
+        document.title = (p.display_name || p.username) + ' — VANTCALL Esports';
+        const cur = p.stats.find((s) => s.season && s.season.status === 'active') || p.stats[0];
+        const total = p.stats.reduce((a, s) => ({ w: a.w + (s.wins || 0), l: a.l + (s.losses || 0) }), { w: 0, l: 0 });
+        const wr = total.w + total.l ? Math.round((total.w / (total.w + total.l)) * 100) : 0;
+        box.innerHTML = `
+          <div class="profile-head">
+            <div class="player-avatar player-avatar-lg">${p.avatar_url ? `<img src="${esc(p.avatar_url)}" alt="">` : initials(p.username)}</div>
+            <div>
+              <h1>${esc(p.display_name || p.username)}${p.verified ? ' <span class="verified" title="Verificado">✓</span>' : ''}</h1>
+              <div class="player-sub">@${esc(p.username)}${p.region ? ' · ' + esc(p.region) : ''}${p.main_game ? ' · ' + esc(GAMES[p.main_game] || p.main_game) : ''} · Desde ${fmtDate(p.created_at, { month: 'short', year: 'numeric' })}</div>
+              ${cur ? `<div style="margin-top:var(--space-3)">${rankBadge(cur)}</div>` : ''}
+            </div>
+          </div>
+          ${p.profile && p.profile.bio ? `<p class="profile-bio">${esc(p.profile.bio)}</p>` : ''}
+          <div class="dash-grid">
+            <div class="dash-card"><div class="label">MMR actual</div><div class="value">${cur ? cur.mmr : '—'}</div><div class="sub">${cur && cur.season ? esc(cur.season.name || 'Temporada ' + cur.season.season_number) : 'Sin temporada'}</div></div>
+            <div class="dash-card"><div class="label">Victorias</div><div class="value">${total.w}</div></div>
+            <div class="dash-card"><div class="label">Derrotas</div><div class="value">${total.l}</div></div>
+            <div class="dash-card"><div class="label">Winrate</div><div class="value">${wr}%</div></div>
+          </div>
+          <h2>Historial ranked</h2>
+          ${p.matches.length ? `<ul class="history-list">${p.matches.map((m) => {
+            const isP1 = m.player1_id === p.id;
+            const won = (m.result === 'player1_win' && isP1) || (m.result === 'player2_win' && !isP1);
+            const delta = isP1 ? m.mmr_change_p1 : m.mmr_change_p2;
+            const label = m.result === 'draw' ? 'Empate' : m.status !== 'completed' ? statusLabel(m.status) : won ? 'Victoria' : 'Derrota';
+            return `<li class="${won ? 'win' : m.status === 'completed' && m.result !== 'draw' ? 'loss' : ''}"><span>${label}</span><span>${delta != null ? (delta > 0 ? '+' : '') + delta + ' MMR' : ''}</span><span>${fmtDate(m.completed_at || m.created_at)}</span></li>`;
+          }).join('')}</ul>` : emptyState('Sin partidas', 'Este jugador aún no ha jugado ranked.')}
+          <h2>Torneos</h2>
+          ${p.entries.length ? `<ul class="history-list">${p.entries.map((e) => e.tournament ? `<li><a href="#/torneo/${encodeURIComponent(e.tournament.slug)}">${esc(e.tournament.name)}</a><span>${esc(statusLabel(e.status))}</span><span>${fmtDate(e.tournament.starts_at)}</span></li>` : '').join('')}</ul>` : emptyState('Sin torneos', 'Todavía no se ha inscrito en ningún torneo.')}`;
+      } catch (e) { box.innerHTML = errorState(e); }
+    },
+  };
+}
 
-  return `
-    <div class="match-card">
-      <div class="match-time${match.status === 'live' ? ' live' : ''}">
-        ${match.status === 'live' ? '<span class="live-indicator">LIVE</span>' : match.time}
-      </div>
-      <div class="match-team">
-        <div class="match-team-logo">${match.team1.tag}</div>
-        <span class="match-team-name${isTBD ? ' tbd' : ''}">${match.team1.name}</span>
-      </div>
-      <div class="match-score">
-        ${hasScore ? `
-          <span class="match-score-num${team1Win ? ' winner' : ''}">${match.score1}</span>
-          <span class="match-score-sep">:</span>
-          <span class="match-score-num${team2Win ? ' winner' : ''}">${match.score2}</span>
-        ` : `
-          <span class="match-score-sep">VS</span>
-        `}
-      </div>
-      <div class="match-team right">
-        <span class="match-team-name${isTBD ? ' tbd' : ''}">${match.team2.name}</span>
-        <div class="match-team-logo">${match.team2.tag}</div>
-      </div>
-      <div class="match-format">
-        <span class="match-comp">${match.comp}</span>
-        <span class="match-phase">${match.phase}</span>
-        <span class="match-format-tag">${match.format}</span>
-      </div>
-    </div>
-  `;
+function bindRsvp(main) {
+  main.querySelectorAll('[data-rsvp]').forEach((b) => {
+    if (b.dataset.bound) return;
+    b.dataset.bound = '1';
+    b.addEventListener('click', () => window.VantAuth && window.VantAuth.rsvp(b.dataset.rsvp, b, main.querySelector('[data-page-msg]')));
+  });
 }
 
 // ============================================
 // ROUTER
 // ============================================
 
-function renderPage(pageId) {
-  const page = DOC_CONTENT[pageId];
-  if (!page) {
-    renderPage('inicio');
-    return;
-  }
+function resolvePage(pageId) {
+  if (DOC_CONTENT[pageId]) return DOC_CONTENT[pageId];
+  const [head, ...rest] = pageId.split('/');
+  const arg = decodeURIComponent(rest.join('/'));
+  if (head === 'torneo' && arg) return tournamentPage(arg);
+  if (head === 'jugador' && arg) return playerPage(arg);
+  return null;
+}
 
+function renderPage(pageId) {
+  const page = resolvePage(pageId);
+  if (!page) { window.location.hash = '#/inicio'; return; }
   const main = document.getElementById('main');
   document.title = page.title;
-
   main.innerHTML = `
     <div class="content-wrapper${page.isHome ? ' content-wrapper-home' : ''}">
       <div class="content${page.isHome ? ' content-home' : ''}">${page.content}</div>
-    </div>
-  `;
-
-  // Update active nav items
-  document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === `#/${pageId}`);
+    </div>`;
+  const section = pageId.split('/')[0];
+  const navKey = section === 'torneo' ? 'torneos' : section === 'jugador' ? 'jugadores' : pageId;
+  document.querySelectorAll('.nav-item, .mobile-nav-item').forEach((link) => {
+    link.classList.toggle('active', link.getAttribute('href') === `#/${navKey}`);
   });
-
-  // Close mobile nav
   const mobileNav = document.getElementById('mobile-nav');
   if (mobileNav) mobileNav.classList.remove('show');
-
-  // Init calendar filters if present
-  initCalendarFilters();
-
-  // Auth / checkout bindings (auth.js)
+  window.scrollTo(0, 0);
+  if (typeof page.load === 'function') {
+    if (!window.VantDB || !window.VantDB.client) {
+      main.querySelectorAll('[data-async]').forEach((el) => { el.innerHTML = errorState(new Error('No se pudo cargar el cliente de Supabase.')); });
+    } else {
+      page.load(main);
+    }
+  }
   if (window.VantAuth) window.VantAuth.afterRender(pageId);
 }
 
-function initCalendarFilters() {
-  document.querySelectorAll('.calendar-filter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.calendar-filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  // Season event clicks
-  document.querySelectorAll('.season-event').forEach(evt => {
-    evt.addEventListener('click', () => {
-      document.querySelectorAll('.season-event').forEach(e => e.classList.remove('active'));
-      evt.classList.add('active');
-    });
-  });
-}
-
-// Router
 function router() {
   const hash = window.location.hash.replace('#/', '').split('?')[0];
-  const pageId = hash || 'inicio';
-  renderPage(pageId);
+  renderPage(hash || 'inicio');
 }
 
-// Theme toggle
 function initTheme() {
   const toggle = document.querySelector('[data-theme-toggle]');
   const root = document.documentElement;
-  let theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  let theme = 'dark';
   root.setAttribute('data-theme', theme);
   updateThemeIcon(toggle, theme);
-
   toggle && toggle.addEventListener('click', () => {
     theme = theme === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', theme);
@@ -752,20 +696,13 @@ function updateThemeIcon(toggle, theme) {
     : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 }
 
-// Mobile menu
 function initMobileMenu() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   if (!menuToggle || !mobileNav) return;
-  menuToggle.addEventListener('click', () => {
-    mobileNav.classList.toggle('show');
-  });
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileNav.classList.remove('show'));
-  });
+  menuToggle.addEventListener('click', () => mobileNav.classList.toggle('show'));
 }
 
-// Init
 function init() {
   initTheme();
   initMobileMenu();
