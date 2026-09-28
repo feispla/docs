@@ -29,10 +29,27 @@ Este es el roadmap público de VANTS. Se actualiza cada trimestre en el canal `#
 ## Fase 3: Rangos y estadísticas propias
 
 - Sistema de Rango VANTS (Hierro a Escarlata) con puntos VP.
-- Cálculo por partidas jugadas dentro de VANTS, sin depender de la API oficial de cada juego.
+- Cálculo por partidas jugadas dentro de VANTS, verificadas con los datos oficiales del juego cuando estén disponibles.
 - Estadísticas por mapa, agente o campeón según el juego.
 - Comparador entre dos jugadores o equipos.
 - Rankings regionales y globales por temporada.
+
+## Bot de Discord: próximas funciones
+
+Estas mejoras del bot oficial se desarrollan en paralelo a las fases y conectan tu cuenta de juego con el servidor de Discord.
+
+| Función | Qué hará |
+| --- | --- |
+| Vincular y verificar Riot ID | Asocia tu cuenta de Riot a tu perfil VANTS y confirma que es tuya. Evita suplantaciones y smurfs en torneos. |
+| Roles automáticos | Asigna en Discord tu rol de Rango VANTS (Hierro a Escarlata) y de región, y lo actualiza solo. |
+| Resultados verificados | Comprueba el resultado de las partidas de ranked y torneo con los datos del juego, sin capturas manuales. |
+| Estadísticas ampliadas | Añade a `/jugador estadisticas` datos por agente, arma y mapa. |
+| Partidos en directo | Publica los partidos de torneo en curso en un canal elegido del servidor. |
+| Buscar equipo | Comando para encontrar jugadores o equipos que buscan compañeros, conectado con los tryouts. |
+
+<Note>
+  La verificación de Riot ID y los datos de partidas dependen de la aprobación de VANTS en el programa de desarrolladores de Riot Games. Las fechas se anunciarán en `#roadmap`.
+</Note>
 
 ## Fase 4: Apertura a desarrolladores
 
@@ -48,8 +65,8 @@ Este es el roadmap público de VANTS. Se actualiza cada trimestre en el canal `#
   <Step title="Vota en Discord">
     Cada propuesta en `#ideas` recibe reacciones. Las más votadas suben en prioridad.
   </Step>
-  <Step title="Aporta código">
-    Los pull requests que resuelven una tarea del roadmap se revisan antes que el resto.
+  <Step title="Propón mejoras">
+    Comparte ideas, textos o correcciones en Discord. El equipo revisa antes las propuestas que resuelven una tarea del roadmap.
   </Step>
   <Step title="Patrocina una fase">
     Los socios pueden patrocinar el desarrollo de una fase completa. Se marca de forma explícita en el changelog.
