@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VANTCALL Esports — Calendario Competitivo</title>
+  <meta name="description" content="VANTCALL Esports: calendario competitivo, ranked, torneos y eventos. Inicia sesión con Discord o correo. Planes BASIC, PRO y ELITE con Stripe.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,600,700,800,900&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0c'/%3E%3Cpath d='M8 10L16 22L24 10' stroke='%23FF0D2E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a href="#content-area" class="skip-link">Saltar al contenido</a>
+
+  <div class="layout">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <button class="menu-toggle" aria-label="Abrir menú" id="menu-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="#/inicio" class="logo">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#0a0a0c"/>
+            <path d="M8 10L16 22L24 10" stroke="#FF0D2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="22" r="1.5" fill="#FF0D2E"/>
+          </svg>
+          VANTCALL
+        </a>
+      </div>
+
+      <!-- Main horizontal nav -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#/inicio" class="nav-item"><span class="nav-number">01</span> INICIO</a>
+        <a href="#/calendario" class="nav-item"><span class="nav-number">02</span> CALENDARIO</a>
+        <a href="#/ranked" class="nav-item"><span class="nav-number">03</span> RANKED</a>
+        <a href="#/torneos" class="nav-item"><span class="nav-number">04</span> TORNEOS</a>
+        <a href="#/jugadores" class="nav-item"><span class="nav-number">05</span> JUGADORES</a>
+        <a href="#/precios" class="nav-item"><span class="nav-number">06</span> PRECIOS</a>
+      </nav>
+
+      <!-- Mobile nav -->
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil">
+        <a href="#/inicio" class="mobile-nav-item"><span class="mobile-nav-number">01</span> INICIO</a>
+        <a href="#/calendario" class="mobile-nav-item"><span class="mobile-nav-number">02</span> CALENDARIO</a>
+        <a href="#/ranked" class="mobile-nav-item"><span class="mobile-nav-number">03</span> RANKED</a>
+        <a href="#/torneos" class="mobile-nav-item"><span class="mobile-nav-number">04</span> TORNEOS</a>
+        <a href="#/jugadores" class="mobile-nav-item"><span class="mobile-nav-number">05</span> JUGADORES</a>
+        <a href="#/precios" class="mobile-nav-item"><span class="mobile-nav-number">06</span> PRECIOS</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="#/login" class="header-link" id="auth-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+          <span id="auth-link-label">Login</span>
+        </a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema"></button>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="main" id="main" tabindex="-1">
+      <!-- Content rendered by app.js -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#0a0a0c"/>
+              <path d="M8 10L16 22L24 10" stroke="#FF0D2E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="16" cy="22" r="1.5" fill="#FF0D2E"/>
+            </svg>
+            <span>VANTCALL</span>
+          </div>
+          <p>VANTCALL · circuito competitivo.<br>Ranked, torneos, calendario y eventos.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-heading">ESCENAS</div>
+          <a href="#/calendario">Calendario</a>
+          <a href="#/jugadores">Jugadores</a>
+          <a href="#/ranked">Ranked</a>
+          <a href="#/inicio">Acerca</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-heading">PLATAFORMA</div>
+          <a href="#/login">Iniciar sesión</a>
+          <a href="#/precios">Precios</a>
+          <a href="#/torneos">Torneos</a>
+          <a href="#/registro">Registro</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-heading">SEÑAL</div>
+          <a href="mailto:feispla@hotmail.com">feispla@hotmail.com</a>
+          <a href="https://x.com/feispla" target="_blank" rel="noopener noreferrer">X @feispla</a>
+          <a href="https://kick.com/feispla" target="_blank" rel="noopener noreferrer">Kick / feispla</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>VANTCALL — Plataforma competitiva · Pagos con Stripe · Auth con Discord y correo (Supabase)</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/dist/umd/supabase.min.js" defer></script>
+  <script src="./app.js" defer></script>
+  <script src="./auth.js" defer></script>
+</body>
+</html>
