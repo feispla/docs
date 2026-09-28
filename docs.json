@@ -424,15 +424,15 @@
         "header": "Streaming",
         "items": [
           {
-            "label": "Twitch VANTS",
+            "label": "Twitch",
             "href": "https://twitch.tv/vantcall"
           },
           {
-            "label": "Kick Feispla",
+            "label": "Kick",
             "href": "https://kick.com/feispla"
           },
           {
-            "label": "YouTube Feispla",
+            "label": "YouTube",
             "href": "https://youtube.com/@feispla"
           }
         ]
@@ -445,15 +445,15 @@
             "href": "https://discord.gg/rCHE7jvRS4"
           },
           {
-            "label": "Twitter VANTS",
+            "label": "X",
             "href": "https://x.com/vantcall"
           },
           {
-            "label": "Instagram VANTS",
+            "label": "Instagram",
             "href": "https://instagram.com/vantcalls"
           },
           {
-            "label": "Twitter CEO (Feispla)",
+            "label": "X del CEO",
             "href": "https://x.com/feispla"
           },
           {

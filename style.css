@@ -1,0 +1,32 @@
+/* Logos de redes sociales en las columnas del pie de página */
+footer a[href*="twitch.tv"]:not(:has(svg, img))::before,
+footer a[href*="kick.com"]:not(:has(svg, img))::before,
+footer a[href*="youtube.com"]:not(:has(svg, img))::before,
+footer a[href*="discord.gg"]:not(:has(svg, img))::before,
+footer a[href*="x.com"]:not(:has(svg, img))::before,
+footer a[href*="instagram.com"]:not(:has(svg, img))::before,
+footer a[href*="github.com"]:not(:has(svg, img))::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  -webkit-mask: var(--vants-icon) center / contain no-repeat;
+  mask: var(--vants-icon) center / contain no-repeat;
+  transition: background-color 0.2s ease;
+}
+
+footer a[href*="twitch.tv"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/twitch.svg"); --vants-brand: #9146FF; }
+footer a[href*="kick.com"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/kick.svg"); --vants-brand: #53FC18; }
+footer a[href*="youtube.com"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/youtube.svg"); --vants-brand: #FF0000; }
+footer a[href*="discord.gg"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/discord.svg"); --vants-brand: #5865F2; }
+footer a[href*="x.com"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/x.svg"); --vants-brand: currentColor; }
+footer a[href*="instagram.com"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/instagram.svg"); --vants-brand: #E4405F; }
+footer a[href*="github.com"] { --vants-icon: url("https://cdn.jsdelivr.net/npm/simple-icons@13/icons/github.svg"); --vants-brand: currentColor; }
+
+/* Al pasar el ratón, el logo toma el color de la marca */
+footer a:hover::before {
+  background-color: var(--vants-brand, currentColor);
+}
