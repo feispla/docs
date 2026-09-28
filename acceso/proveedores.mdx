@@ -1,34 +1,25 @@
 ---
-title: "Proveedores OAuth en VANTS: login con cuentas externas"
-description: "Consulta qué proveedores OAuth soporta VANTS, qué datos lee de cada uno, cómo desvincularlos y qué juegos se desbloquean al vincular Steam o Riot ID."
+title: "Iniciar sesión con Discord en VANTS: cuentas externas"
+description: "Entra en VANTS con tu cuenta de Discord: qué datos se leen, cómo desvincularla y qué otros proveedores de acceso llegarán próximamente a la plataforma."
 sidebarTitle: "Proveedores"
 ---
 
-VANTS te permite acceder y vincular tu cuenta mediante proveedores de identidad externos. Esto simplifica el login, reduce contraseñas y desbloquea funcionalidades específicas según el proveedor que conectes. En esta página verás qué datos lee VANTS de cada proveedor, cómo gestionar los enlaces y qué ventajas obtienes al vincular perfiles de juego.
+Además de email y contraseña, VANTS te permite entrar con tu cuenta de **Discord**. Es el único proveedor externo disponible en la beta. En esta página verás qué datos lee VANTS de Discord, cómo gestionar el enlace y qué proveedores llegarán más adelante.
 
-## Proveedores soportados
+## Proveedor disponible
 
 | Proveedor | Scope | Datos que se leen | Se puede desvincular |
 | --- | --- | --- | --- |
-| Google | email, profile | Email público, nombre y foto de perfil | Sí, desde configuración de cuenta |
 | Discord | identify, email | ID de Discord, email, nombre de usuario y avatar | Sí, desde configuración de cuenta |
-| Apple | name, email | Email privado o público, nombre | Sí, desde configuración de cuenta |
-| Steam | identity | Steam ID público, nombre de perfil, avatar | Sí, desde configuración de cuenta |
-| Riot ID | account | PUUID de Riot, nombre de invocador | Sí, desde configuración de cuenta |
 
-## Desbloqueo automático de juegos
-
-Al vincular ciertos proveedores, VANTS detecta automáticamente tus perfiles de juego y los asocia a tu cuenta:
-
-- **Steam**: desbloquea automáticamente tu perfil de **CS2** para inscripciones y estadísticas.
-- **Riot ID**: desbloquea simultáneamente tus perfiles de **VALORANT** y **League of Legends**.
-
-Para otros juegos o si prefieres vincular manualmente, visita la guía de [vinculación de juegos](/empezar/vincular-juegos).
+<Info>
+  **Próximamente:** acceso con Steam y Riot ID. Cuando estén disponibles, vincularlos desbloqueará automáticamente tus perfiles de CS2 (Steam) y de VALORANT y League of Legends (Riot ID). Mientras tanto, vincula tus juegos a mano desde la guía de [vinculación de juegos](/empezar/vincular-juegos).
+</Info>
 
 <Warning>
-  VANTS nunca te pedirá la contraseña de tus cuentas de Google, Discord, Steam o cualquier otro proveedor. El login siempre ocurre en el dominio oficial del proveedor. Si recibes un mensaje solicitando credenciales de terceros, repórtalo inmediatamente: es phishing.
+  VANTS nunca te pedirá la contraseña de tu cuenta de Discord ni de ningún otro servicio. El login siempre ocurre en el dominio oficial de Discord. Si recibes un mensaje solicitando credenciales de terceros, repórtalo inmediatamente: es phishing.
 </Warning>
 
-## Gestión de proveedores vinculados
+## Gestión del proveedor vinculado
 
-Desde tu panel de configuración puedes ver todos los proveedores activos, añadir nuevos o desvincular los existentes. Para mantener el acceso a tu cuenta, asegúrate de conservar al menos un método de login activo: email con contraseña o cualquier proveedor vinculado.
+Desde tu panel de configuración puedes ver si Discord está vinculado, vincularlo o desvincularlo. Para mantener el acceso a tu cuenta, conserva al menos un método de login activo: email con contraseña o Discord.
