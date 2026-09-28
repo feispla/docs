@@ -6,25 +6,45 @@ description: "Hoja de ruta pública de VANTS por fases: MVP, torneos comunitario
 
 Este es el roadmap público de VANTS. Se actualiza cada trimestre en el canal `#roadmap` del Discord oficial. Los tiempos son orientativos y dependen del avance de la comunidad y del equipo.
 
+✅ = disponible · ⏳ = en desarrollo
+
 ## Fase 1: Calendario y perfil (MVP)
 
-<Card title="En construcción" icon="hammer" horizontal>
-  Foco actual del equipo. Objetivo: cerrar el MVP antes de la primera copa comunitaria.
+<Card title="Casi terminada" icon="hammer" horizontal>
+  La mayor parte del MVP ya está disponible en la plataforma. Quedan el login con Steam y Riot ID y los avisos de partido.
 </Card>
 
-- Calendario competitivo unificado para VALORANT, CS2 y LoL.
-- Perfil de jugador con rango, historial y estadísticas básicas.
-- Login con Discord, Steam y Riot ID.
-- Página pública compartible por perfil.
-- Notificaciones de partido por Discord.
+- ✅ Login con Discord y con correo y contraseña.
+- ✅ Mi cuenta con plan, correo, Discord y métodos de acceso.
+- ✅ Perfil de competidor con nombre visible, país, región, juego principal y bio.
+- ✅ Página pública compartible por perfil (**Ver perfil público**).
+- ✅ Calendario en vivo con filtros por partidas, eventos y torneos. Se llena automáticamente con los torneos en los que se inscriben los jugadores y las partidas que juegan en VANTS.
+- ⏳ Añadir automáticamente al calendario las partidas de VALORANT jugadas fuera de VANTS, al vincular el Riot ID.
+- ✅ Perfil Ranked, historial y estadísticas básicas con el bot de Discord (`/ranked` y `/jugador`).
+- ✅ Jugadores identificados por su ID y nombre de Discord, con el rango de VALORANT leído desde su rol de rango en el servidor. No hace falta Riot ID. La vinculación con Riot ID llegará próximamente.
+- ⏳ Login con Steam y Riot ID.
+- ⏳ Notificaciones de partido por Discord.
+
+## Planes de jugador
+
+<Card title="Disponible" icon="circle-check" horizontal>
+  Los planes de pago ya están activos en la plataforma.
+</Card>
+
+- ✅ Plan [FREE](/monetizacion/free) al registrarte.
+- ✅ [VANT BASIC](/monetizacion/vant-basic) (9 €), [VANT PRO](/monetizacion/vant-pro) (19 €) y [VANT ELITE](/monetizacion/vant-elite) (39 €) en pago único con Stripe.
+- ✅ Activación automática del plan al confirmarse el pago.
+- ✅ **Mejorar plan** desde Mi cuenta.
 
 ## Fase 2: Torneos comunitarios
 
-- Panel de organizador Community y Studio.
-- Brackets automáticos BO1, BO3 y BO5.
-- Check-in de equipos, standings y resultados verificados.
-- Overlays de stream con marcador en vivo.
-- Página pública de torneo con reglas, participantes y bracket.
+- ✅ Torneos oficiales por plan: VANT Open (BASIC) y Pro Series (PRO), activos.
+- ✅ Inscripción, participantes, bracket y resultados con el bot de Discord (`/torneo`).
+- ✅ Sección de torneos en la plataforma.
+- ⏳ Elite Invitational (ELITE).
+- ⏳ Panel de organizador Community y Studio.
+- ⏳ Check-in de equipos y resultados verificados automáticamente.
+- ⏳ Overlays de stream con marcador en vivo.
 
 ## Fase 3: Rangos y estadísticas propias
 
@@ -40,7 +60,7 @@ Estas mejoras del bot oficial se desarrollan en paralelo a las fases y conectan 
 
 | Función | Qué hará |
 | --- | --- |
-| Vincular y verificar Riot ID | Asocia tu cuenta de Riot a tu perfil VANTS y confirma que es tuya. Evita suplantaciones y smurfs en torneos. |
+| Vincular y verificar Riot ID | Asocia tu cuenta de Riot a tu perfil VANTS y confirma que es tuya. Tus partidas de VALORANT aparecen en el calendario y en tu perfil, y se evitan suplantaciones y smurfs en torneos. |
 | Roles automáticos | Asigna en Discord tu rol de Rango VANTS (Hierro a Escarlata) y de región, y lo actualiza solo. |
 | Resultados verificados | Comprueba el resultado de las partidas de ranked y torneo con los datos del juego, sin capturas manuales. |
 | Estadísticas ampliadas | Añade a `/jugador estadisticas` datos por agente, arma y mapa. |

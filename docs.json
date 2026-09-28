@@ -103,8 +103,10 @@
             "pages": [
               "monetizacion/index",
               "monetizacion/planes",
-              "monetizacion/vants-plus",
-              "monetizacion/vants-pro",
+              "monetizacion/free",
+              "monetizacion/vant-basic",
+              "monetizacion/vant-pro",
+              "monetizacion/vant-elite",
               "monetizacion/organizadores",
               "monetizacion/patrocinios",
               "monetizacion/premios"
@@ -459,5 +461,17 @@
     "metatags": {
       "canonical": "https://ggo-df01a767.mintlify.app"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/monetizacion/vants-plus",
+      "destination": "/monetizacion/vant-basic",
+      "permanent": true
+    },
+    {
+      "source": "/monetizacion/vants-pro",
+      "destination": "/monetizacion/vant-pro",
+      "permanent": true
+    }
+  ]
 }
