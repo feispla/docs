@@ -381,7 +381,7 @@
     "primary": {
       "type": "button",
       "label": "Ir a la plataforma",
-      "href": "https://vantcall-esports.pplx.app/"
+      "href": "https://vantcall-esports1.pplx.app/"
     }
   },
   "contextual": {
@@ -406,19 +406,19 @@
         "items": [
           {
             "label": "Ir a la plataforma",
-            "href": "https://vantcall-esports.pplx.app/"
+            "href": "https://vantcall-esports1.pplx.app/"
           },
           {
             "label": "Calendario",
-            "href": "https://vantcall-esports.pplx.app/"
+            "href": "https://vantcall-esports1.pplx.app/"
           },
           {
             "label": "Torneos",
-            "href": "https://vantcall-esports.pplx.app/"
+            "href": "https://vantcall-esports1.pplx.app/"
           },
           {
             "label": "Precios",
-            "href": "https://vantcall-esports.pplx.app/"
+            "href": "https://vantcall-esports1.pplx.app/"
           }
         ]
       },
