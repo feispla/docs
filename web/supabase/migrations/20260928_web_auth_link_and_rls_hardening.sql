@@ -179,3 +179,7 @@ select s.season_id, p.id as player_id, p.username, p.display_name, p.avatar_url,
 from public.season_player_stats s
 join public.players p on p.id = s.player_id;
 grant select on public.leaderboard to anon, authenticated;
+
+-- players_hide_auth_user_id (aplicada aparte): ocultar auth_user_id al público
+revoke select on public.players from anon, authenticated;
+grant select (id, username, display_name, avatar_url, region, summoner_name, verified, created_at, updated_at, main_game, country) on public.players to anon, authenticated;

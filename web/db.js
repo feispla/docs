@@ -100,7 +100,7 @@
     }),
 
     player: (username) => cached('p:' + username, async () => {
-      const p = await q(client.from('players').select('*').eq('username', username).maybeSingle());
+      const p = await q(client.from('players').select('id, username, display_name, avatar_url, region, summoner_name, verified, created_at, main_game, country').eq('username', username).maybeSingle());
       if (!p) return null;
       const [profile, stats, matches, entries] = await Promise.all([
         q(client.from('profiles').select('bio, visibility, stats').eq('player_id', p.id).maybeSingle()),

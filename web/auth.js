@@ -11,6 +11,7 @@
     elite: { name: 'VANT ELITE', price: 39, link: 'https://buy.stripe.com/aFa4gz7Ff6ti68u7fLebu03' },
   };
   const PLAN_RANK = { free: 0, basic: 1, pro: 2, elite: 3 };
+  const PLAYER_COLS = 'id, username, display_name, avatar_url, region, summoner_name, verified, created_at, main_game, country';
   const USERNAME_RE = /^[A-Za-z0-9_.\-]{3,16}$/;
 
   const sb = window.VantDB && window.VantDB.client;
@@ -73,8 +74,8 @@
 
   async function loadMe() {
     if (!sb || !session) { me = null; return null; }
-    const uid = session.user.id;
-    const { data: player } = await sb.from('players').select('*').eq('auth_user_id', uid).maybeSingle();
+    const { data: pid } = await sb.rpc('current_player_id');
+    const { data: player } = pid ? await sb.from('players').select(PLAYER_COLS).eq('id', pid).maybeSingle() : { data: null };
     if (!player) { me = { player: null, discord: null, plan: 'free', profile: null }; return me; }
     const [disc, prof, ent] = await Promise.all([
       sb.from('player_discord_accounts').select('discord_id, discord_username, avatar_url').eq('player_id', player.id).maybeSingle(),
