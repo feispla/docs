@@ -1,53 +1,68 @@
 ---
-title: "Métodos de pago aceptados en VANTS: Stripe y PayPal"
-sidebarTitle: "Métodos de pago"
-description: "Cómo se pagan los planes de VANTS: pago único con Stripe, IVA incluido, con tarjeta y PayPal si está disponible. Sin renovaciones automáticas."
+title: "Métodos de pago y facturación en VANTS"
+sidebarTitle: "Pagos"
+description: "Conocé los métodos de pago disponibles en VANTS: tarjeta, Apple Pay, Google Pay y SEPA. Procesamiento seguro con Stripe y ciclos mensuales o anuales."
 ---
 
 Los planes de VANTS (VANT BASIC, VANT PRO y VANT ELITE) se pagan con un **pago único** a través de **Stripe**, un proveedor de pagos certificado. VANTS nunca ve ni guarda los datos de tu tarjeta: todo el pago ocurre en la página segura de Stripe.
 
-## Métodos disponibles
+VANTS procesa todos los pagos a través de **Stripe**, una plataforma segura y certificada PCI DSS. Podés pagar tu suscripción con tarjeta de crédito o débito, Apple Pay, Google Pay o transferencia SEPA (solo plan Elite). Elegís entre facturación mensual o anual, y el cobro se realiza de forma automática al inicio de cada ciclo.
 
-| Método | Disponible |
-| --- | --- |
-| Tarjeta de crédito o débito | Sí |
-| PayPal | Sí, si aparece en la página de pago de Stripe |
+<Tabs>
+  <Tab title="Tarjeta">
+    Aceptamos Visa, Mastercard, American Express y tarjetas de débito con banda. El pago es inmediato y la suscripción se activa al instante.
+  </Tab>
+  <Tab title="Apple Pay">
+    Disponible en dispositivos Apple compatibles. Confirmá el pago con Face ID, Touch ID o código. La activación es instantánea.
+  </Tab>
+  <Tab title="Google Pay">
+    Usá Google Pay desde Android o Chrome. El proceso es rápido, sin necesidad de ingresar datos de tarjeta manualmente.
+  </Tab>
+  <Tab title="SEPA (solo Elite)">
+    Transferencia bancaria directa disponible exclusivamente para suscriptores VANT Elite. Se activa tras coordinar con soporte.
+  </Tab>
+</Tabs>
 
-Stripe muestra automáticamente los métodos disponibles para tu país en la página de pago.
-
-<Note>
-  En Europa, los pagos con tarjeta usan SCA (autenticación reforzada). Es posible que tu banco te pida un código de confirmación durante el pago. Es normal.
-</Note>
-
-## Cómo pagar un plan
+## Cómo realizar un pago
 
 <Steps>
-  <Step title="Inicia sesión">
-    Necesitas una cuenta de VANTS para comprar. Entra con Discord o con tu correo en la [plataforma](https://vantcall-esports1.pplx.app/).
-  </Step>
-  <Step title="Elige tu plan">
+  <Step title="Iniciá sesión en VANTS">
     Ve a **Precios** o pulsa **MEJORAR PLAN** en **Mi cuenta** y elige VANT BASIC, VANT PRO o VANT ELITE.
+
+    Entrá a tu cuenta en [https://vantcall-esports1.pplx.app/](https://vantcall-esports1.pplx.app/).
   </Step>
-  <Step title="Paga en Stripe">
-    Se abre la página segura de Stripe. Introduce tus datos y confirma. El precio ya incluye el IVA.
+  <Step title="Andá a Planes">
+    Desde el menú de perfil, seleccioná la sección de suscripciones.
   </Step>
-  <Step title="Plan activado">
-    Vuelves a VANTS y tu plan se activa automáticamente en cuanto Stripe confirma el pago. Lo verás en **Mi cuenta**.
+  <Step title="Elegí tu plan y ciclo">
+    Seleccioná Free, Basic, Pro o Elite. Elegí facturación mensual o anual (2 meses gratis).
+  </Step>
+  <Step title="Completá el pago con Stripe">
+    Ingresá tu método de pago preferido. Stripe procesa la transacción de forma segura y encriptada.
+  </Step>
+  <Step title="Recibí la confirmación">
+    Vas a recibir un email de confirmación con los detalles de tu suscripción y el acceso inmediato a las features del plan.
   </Step>
 </Steps>
 
-<Tip>
-  Si pasan unos minutos y tu plan sigue en FREE, abre un ticket en **Soporte** desde **Mi cuenta** o escríbenos en el [Discord oficial](https://discord.gg/rCHE7jvRS4) indicando el correo que usaste al pagar.
-</Tip>
+## Monedas soportadas
 
-## Tipo de pago
+<Warning>
+  La moneda principal de VANTS es el **euro (EUR)**. Si pagás desde una región con otra moneda, Stripe realiza la conversión automática a EUR. Podés haber diferencias menores en el monto final debido al tipo de cambio y comisiones bancarias.
+</Warning>
 
-- **Pago único:** pagas una sola vez. No hay renovaciones ni cobros automáticos, así que no tienes que cancelar nada.
-- **Recibo:** Stripe te lo envía por correo al pagar.
-- **Soporte:** para dudas o problemas con un pago, abre un ticket en **Soporte** desde **Mi cuenta**.
+| Moneda | Soportada | Notas |
+| --- | --- | --- |
+| EUR | Sí | Moneda principal. Sin conversión. |
+| USD | Conversión automática | El monto final depende del tipo de cambio del día. |
+| Otras | Conversión automática | Stripe aplica conversión según la moneda de tu tarjeta. |
 
-## Próximos pasos
+## Seguridad de pagos
 
-- [Comparativa de planes](/monetizacion/planes)
-- [Facturación](/monetizacion/facturacion)
-- [Reembolsos](/monetizacion/reembolsos)
+- Todos los datos de tarjeta se procesan directamente en Stripe. VANTS no almacena números de tarjeta.
+- Las transacciones utilizan encriptación TLS 1.3.
+- Podés gestionar o eliminar tus métodos de pago desde los ajustes de cuenta en cualquier momento.
+
+<Info>
+  ¿Necesitás una factura de tu pago? Andá a [Facturación](/monetizacion/facturacion) para descargar tus comprobantes en PDF.
+</Info>

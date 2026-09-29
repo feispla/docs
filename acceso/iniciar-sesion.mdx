@@ -1,31 +1,59 @@
 ---
-title: "Iniciar sesión en VANTS: acceso seguro y protección"
-description: "Aprende a iniciar sesión en VANTS paso a paso con email y contraseña o con Discord, cómo protegemos tu cuenta y qué hacer si olvidas tu contraseña."
-sidebarTitle: "Iniciar sesión"
+title: "Iniciar sesion y recuperar acceso en VANTCALL"
+description: "Accede a VANTCALL por email, Discord, Google, Riot ID o Steam. Aprende a recuperar tu contraseña y activar 2FA obligatorio para rangos Platino+."
+sidebarTitle: "Iniciar sesion"
 ---
 
-VANTS te permite acceder a tu cuenta de competidor desde cualquier dispositivo con tu email y contraseña o con tu cuenta de Discord. En esta guía seguirás el flujo completo de inicio de sesión, conocerás cómo protegemos tu cuenta y aprenderás a gestionar tu sesión en entornos compartidos.
+VANTCALL ofrece multiples formas de iniciar sesion para adaptarse a tu flujo habitual como jugador. Podes acceder con credenciales propias o aprovechar la sincronizacion con plataformas de juego y redes sociales.
+
+<Tabs>
+  <Tab title="Email">
+    Ingresa tu direccion de email y contraseña en el formulario principal. Si olvidaste la contraseña, hace clic en **Recuperar contraseña** y recibiras un enlace de restablecimiento valido por 1 hora.
+  </Tab>
+  <Tab title="Discord">
+    Hace clic en el boton de Discord. Te redirige a la autorizacion oficial de Discord donde podes elegir a que servidor perteneces. Si ya autorizaste VANTCALL, el acceso es inmediato.
+  </Tab>
+  <Tab title="Google">
+    Selecciona tu cuenta de Google del listado. Recomendado para quienes prefieren no recordar contraseñas adicionales. La cuenta queda vinculada para futuros accesos.
+  </Tab>
+  <Tab title="Riot ID">
+    Usa tus credenciales de Riot Games para ingresar. Este metodo es ideal si ya vinculaste tu cuenta de VALORANT o LoL: el login sincroniza stats y verifica tu perfil competitivo automaticamente.
+  </Tab>
+  <Tab title="Steam">
+    Te redirige a Steam Community para autorizar el acceso. Perfecto para jugadores de Counter-Strike 2 que quieren centralizar su identidad en la plataforma.
+  </Tab>
+</Tabs>
+
+## Recuperar contraseña
 
 <Steps>
-  <Step title="Abre la página de login">
-    Abre la [página de login de VANTS](https://vantcall-esports.pplx.app/#/login). Si ya tienes una sesión activa, entrarás directamente a tu panel.
+  <Step title="Solicitar restablecimiento">
+    En la pantalla de login, hace clic en **Olvide mi contraseña**. Ingresa el email asociado a tu cuenta.
   </Step>
-  <Step title="Elige tu método de acceso">
-    Selecciona entre **email y contraseña** o **Discord**. Si entras con Discord, el login se completa en la web oficial de Discord y vuelves a VANTS automáticamente.
+  <Step title="Revisar tu correo">
+    Recibiras un email con un enlace unico valido por 60 minutos. Si no llega, revisa spam y verifica que la direccion sea la correcta.
   </Step>
-  <Step title="Accede a tu panel">
-    Tras iniciar sesión, VANTS te lleva a tu panel principal.
+  <Step title="Definir nueva contraseña">
+    Elegi una contraseña nueva con al menos 8 caracteres, una mayuscula y un numero. No repitas contraseñas usadas anteriormente.
+  </Step>
+  <Step title="Confirmar y acceder">
+    Ingresa con tu email y la nueva contraseña. Te recomendamos activar 2FA para evitar bloqueos futuros.
   </Step>
 </Steps>
 
-## Protección contra intentos fallidos
+## Autenticacion de dos factores (2FA)
 
-Para proteger tu cuenta, VANTS limita los intentos de inicio de sesión fallidos. Si fallas la contraseña varias veces seguidas, tendrás que esperar un poco antes de volver a intentarlo.
+<Warning>
+  A partir del rango **Platino**, el **2FA es obligatorio**. Si intentas subir a Platino sin activarlo, el sistema bloqueara tu progreso hasta que configures un autenticador TOTP.
+</Warning>
 
-<Tip>
-  En ordenadores públicos o compartidos, cierra sesión explícitamente antes de irte.
-</Tip>
+Para activar 2FA:
 
-## ¿Qué ocurre si olvidas tu contraseña?
+1. Entra a **Cuenta > Seguridad > Autenticador TOTP**
+2. Escanea el codigo QR con Google Authenticator, Authy o similar
+3. Ingresa el codigo de 6 digitos para confirmar
+4. Guarda los codigos de respaldo en un lugar seguro
 
-Desde la pantalla de login puedes solicitar un enlace de recuperación. El enlace llega a tu email y caduca pasado un tiempo, así que úsalo cuanto antes. Si también perdiste acceso a tu email, escribe en el [Discord oficial](https://discord.gg/rCHE7jvRS4).
+<Info>
+  Si perdes acceso a tu autenticador y no tenes los codigos de respaldo, tendras que contactar a soporte a traves de [Discord](https://discord.gg/rCHE7jvRS4). El proceso de recuperacion puede demorar hasta 48 horas por verificacion manual de identidad.
+</Info>

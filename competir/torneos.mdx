@@ -1,27 +1,78 @@
 ---
-title: "Torneos por plan y comandos de Discord de VANTS"
-description: "Qué torneos de VANTS incluye cada plan (VANT Open, Pro Series, Elite Invitational) y cómo usar los comandos /ranked, /jugador y /torneo en Discord."
-sidebarTitle: "Torneos y Comandos"
+title: "Torneos y ligas en VANTCALL: formatos y premios"
+sidebarTitle: "Torneos"
+description: "Descubre los formatos de competicion disponibles en VANTCALL: ligas semanales, torneos BO1, finales BO3/BO5 y copas mensuales con prize pool."
 ---
 
-En VANTS el acceso a los torneos depende de tu plan. Además, en el servidor de Discord tienes comandos para consultar rankings, jugadores y torneos, sincronizados con la web en tiempo real.
+VANTCALL ofrece multiples formatos de competicion para que jugadores de todos los rangos encuentren su nivel. Desde ligas semanales con progresion constante hasta copas mensuales con premio en efectivo, la plataforma esta disenada para mantener un calendario activo y accesible.
 
-## Torneos por plan
+## Formatos de competicion
 
-| Torneo | Plan necesario |
-| --- | --- |
-| VANT Open | VANT BASIC o superior |
-| Pro Series | VANT PRO o superior |
-| Elite Invitational | VANT ELITE |
+| Formato | Frecuencia | Estructura | Rango minimo | Premio |
+| --- | --- | --- | --- | --- |
+| Liga semanal | Semanal | Round-robin + playoff | Hierro | Puntos VP |
+| Torneo del dia | Diario | BO1, eliminacion simple | Bronce | Puntos VP |
+| Torneo Weekend | Fines de semana | BO3 / BO5, bracket doble | Plata | Puntos VP + cosmeticos |
+| Copa mensual | Mensual | Qualifier + Final presencial/online | Oro | Premio en efectivo |
 
-Consulta los precios en [Planes](/monetizacion/planes).
+## Detalles de cada formato
 
-## Discord
+<CardGroup cols={2}>
+  <Card title="Liga semanal" icon="calendar-days">
+    Competicion de ritmo constante con partidas programadas. Sumas puntos por victoria y acumulas posicion en la tabla general. Ideal para quienes buscan practica regular sin la presion de eliminacion directa.
+  </Card>
 
-| Comando | Qué hace |
-| --- | --- |
-| `/ranked` | Consulta el ranking |
-| `/jugador` | Consulta el perfil de un jugador |
-| `/torneo` | Consulta información de un torneo |
+  <Card title="Torneo del dia (BO1)" icon="flag-checkered">
+    Entrada inmediata, una sola partida por duelo. Formato rapidisimo pensado para dias con poco tiempo. Anotacion abierta hasta 30 minutos antes del inicio.
+  </Card>
 
-Los datos se sincronizan con la web en tiempo real. Únete al servidor en [discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4).
+  <Card title="Torneo Weekend (BO3/BO5)" icon="trophy">
+    Mayores exigencias y mejores recompensas. Los brackets dobles dan una segunda oportunidad tras una derrota. La final se juega a mejor de 5 en juegos seleccionados.
+  </Card>
+
+  <Card title="Copa mensual" icon="crown">
+    El evento mas importante del calendario. Incluye qualifiers publicos, fase de grupos y final con transmision. El prize pool varia segun patrocinadores e inscripciones.
+  </Card>
+</CardGroup>
+
+## Politica de premios en efectivo
+
+<Tip>
+  Todos los torneos con premio en dinero aplican un **fee del 5%** sobre el monto total del prize pool. Este porcentaje financia la infraestructura de la plataforma y la transmision de finales.
+</Tip>
+
+<Warning>
+  El **KYC (Know Your Customer) es obligatorio** a partir de **100 € acumulados en premios**. Sin verificacion de identidad no se procesan retiros. Este limite aplica al total ganado, no por torneo individual.
+</Warning>
+
+## Acciones rapidas
+
+<CardGroup cols={2}>
+  <Card title="Crear torneo" icon="users" href="https://vantcall-esports1.pplx.app/">
+    Organizadores e instituciones pueden armar torneos privados desde la plataforma web.
+  </Card>
+
+  <Card title="Ver calendario" icon="calendar-days" href="https://vantcall-esports1.pplx.app/">
+    Consulta todos los eventos activos, horarios y registros abiertos directo en la web.
+  </Card>
+</CardGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Que pasa si un rival no se presenta?">
+    Si el rival no aparece en los 10 minutos de tolerancia, se marca W.O. (walkover) a favor del jugador presente. Tres W.O. consecutivos acarrean suspension temporal del ranking.
+  </Accordion>
+
+  <Accordion title="Como se resuelven disputas de resultado?">
+    Abri un ticket en Discord con screenshot del marcador final y el ID de la sala. El equipo de arbitraje revisa en un plazo de 24 horas. En partidas con premium se graban replays automaticos.
+  </Accordion>
+
+  <Accordion title="Cuando se abonan los premios?">
+    Los premios en puntos VP se acreditan al finalizar el torneo. Los premios en efectivo se procesan dentro de los 7 dias habiles luego del cierre del evento, siempre que el jugador completo KYC.
+  </Accordion>
+
+  <Accordion title="Puedo participar en varios juegos a la vez?">
+    Si. Tu Rango VANTS es independiente por titulo. Podes estar inscripto en torneos de VALORANT y CS2 simultaneamente, siempre que los horarios no se superpongan.
+  </Accordion>
+</AccordionGroup>

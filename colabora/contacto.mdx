@@ -1,46 +1,105 @@
 ---
-title: "Contacto y soporte oficial de VANTS por Discord"
+title: "Soporte y contacto oficial de VANTCALLSoporte y contacto oficial de VANTCALL"
 sidebarTitle: "Contacto"
-description: "Cómo contactar con VANTS: Discord oficial como canal principal y tickets de Soporte desde Mi cuenta para pagos, planes y problemas de acceso."
+description: "Contacta al equipo de VANTCALL por Discord, email o redes sociales. Tiempo de respuesta 24-48h. Discord es el canal principal para soporte comunitariontacta al equipo de VANTCALL por Discord, email o redes sociales. Tiempo de respuesta 24-48h. Discord es el canal principal para soporte comunitario."
 ---
 
-export const DiscordOnline = () => {
-  const [online, setOnline] = useState(null);
-  useEffect(() => {
-    fetch("https://discord.com/api/guilds/1546641331927908472/widget.json")
-      .then((r) => r.json())
-      .then((d) => setOnline(d.presence_count))
-      .catch(() => setOnline("–"));
-  }, []);
-  return (
-    <div className="not-prose flex items-center gap-3 p-4 rounded-2xl border border-zinc-950/10 dark:border-white/10">
-      <span className="h-3 w-3 rounded-full bg-green-500"></span>
-      <span className="text-zinc-950 dark:text-white font-semibold">
-        {online === null ? "…" : online} en línea ahora
-      </span>
-      <a href="https://discord.gg/rCHE7jvRS4" target="_blank" rel="noopener" className="ml-auto px-4 py-1.5 rounded-lg bg-[#E30613] text-white font-bold no-underline">
-        Unirse
-      </a>
-    </div>
-  );
-};
+VANTCALL mantiene canales de comunicacion claros para que la comunidad pueda resolver dudas, reportar problemas y proponer mejoras. El soporte esta organizado por prioridad: consultas generales por Discord, incidencias formales por email.
 
-VANTS atiende a los jugadores por dos vías: el Discord oficial y los tickets de Soporte dentro de tu cuenta en VANTCALL.
+## Canales de contacto
+
+VANTCALL mantiene canales de comunicacion claros para que la comunidad pueda resolver dudas, reportar problemas y proponer mejoras. El soporte esta organizado por prioridad: consultas generales por Discord, incidencias formales por email.
+
+## Canales de contacto
 
 <CardGroup cols={2}>
-  <Card title="Discord oficial" icon="discord" href="https://discord.gg/rCHE7jvRS4">
-    discord.gg/rCHE7jvRS4
+  <Card title="Discord" icon="discord" href="https://discord.gg/rCHE7jvRS4">
+    Canal principal de soporte. Atencion en tiempo real por parte del equipo y la comunidad. Ideal para dudas rapidas, busqueda de equipo y reportes de bugs. [Unite aca](https://discord.gg/rCHE7jvRS4).Canal principal de soporte. Atencion en tiempo real por parte del equipo y la comunidad. Ideal para dudas rapidas, busqueda de equipo y reportes de bugs. [Unite aca](https://discord.gg/rCHE7jvRS4).
   </Card>
 
-  <Card title="Ticket de Soporte" icon="life-ring" href="/cuenta/ajustes">
-    Desde Mi cuenta, sección Soporte. Úsalo si tu plan tarda en activarse tras el pago.
+  <Card title="Email de sEmail de soporte" icon="envelope">
+    Usa el formulario de contacto en la plataforma web para incidencias formales, disputas de torneos, problemas de facturacion y solicitudes de KYC. Tiempo de respuesta: 24-48 horas habilesUsa el formulario de contacto en la plataforma web para incidencias formales, disputas de torneos, problemas de facturacion y solicitudes de KYC. Tiempo de respuesta: 24-48 horas habiles.
+  </Card>
+
+  <Card title="X / Twitter" icon="x" href="https://x.com/vantcall">
+    Segui [@vantcall](https://x.com/vantcall) para anuncios oficiales, calendarios de torneos y actualizaciones de la plataforma. No apto para soporte tecnico.
+  </Card>
+
+  <Card title="Instagram" icon="instagram" href="https://instagram.com/vantcalls">
+    Contenido visual, highlights de torneos y presentacion de jugadores destacados. Segui [@vantcalls](https://instagram.com/vantcalls) para mantenerte al dia.
+  </Card>
+
+  <Card title="X / Twitter" icon="x" href="https://x.com/vantcall">
+    Segui [@vantcall](https://x.com/vantcall) para anuncios oficiales, calendarios de torneos y actualizaciones de la plataforma. No apto para soporte tecnico.
+  </Card>
+
+  <Card title="Instagram" icon="instagram" href="https://instagram.com/vantcalls">
+    Contenido visual, highlights de torneos y presentacion de jugadores destacados. Segui [@vantcalls](https://instagram.com/vantcalls) para mantenerte al dia.
   </Card>
 </CardGroup>
 
-## Servidor de Discord
+## Tiempos de respuesta esperadosTiempos de respuesta esperados
 
-<DiscordOnline />
+| Canal | Tipo de consulta | Tiempo estimado |
+| --- | --- | --- |
+| Discord | Preguntas generales, LFT, bugs | Minutos a horas (comunidad) |
+| Email | Incidencias formales, KYC, pagos | 24-48 horas habiles |
+| Redes sociales | Anuncios, contenido, no soporte | No aplica |
+
+| Canal | Tipo de consulta | Tiempo estimado |
+| --- | --- | --- |
+| Discord | Preguntas generales, LFT, bugs | Minutos a horas (comunidad) |
+| Email | Incidencias formales, KYC, pagos | 24-48 horas habiles |
+| Redes sociales | Anuncios, contenido, no soporte | No aplica |
+
+<Note>
+  Discord es el canal recomendado como **primer punto de contacto**. La comunidad y los moderadores suelen resolver la mayoria de dudas antes de que sea necesario elevar un ticket por emailDiscord es el canal recomendado como **primer punto de contacto**. La comunidad y los moderadores suelen resolver la mayoria de dudas antes de que sea necesario elevar un ticket por email.
+</Note>
+
+## Antes de contactar
+
+Para agilizar la respuesta, tenes a mano:
+
+1. Tu **nickname de VANTCALL**
+2. El **juego y rango** afectado (si aplica)
+3. **Fecha y hora** del incidente
+4. **Capturas de pantalla** o IDs de sala, si es un problema de torneo
+5. Tu **sistema operativo y navegador** en caso de bugs tecnicos
+
+<Tip>
+  Si tu consulta es sobre un torneo en curso, usa el canal **#soporte-torneos** de Discord para respuesta inmediata. Los arbitros online estan atentos durante los horarios de competicion.
+</Tip>
+
+## Otras redes oficiales
+
+- **YouTube**: [@feispla](https://youtube.com/@feispla) - VODs, tutoriales y transmisiones de finales
+- **Twitch**: [vantcall](https://twitch.tv/vantcall) - Streams en vivo de eventos y ligas
+- **Kick**: [feispla](https://kick.com/feispla) - Contenido alternativo y reacciones
 
 <Warning>
-  VANTS nunca te pedirá contraseñas ni códigos de verificación. Si alguien lo hace, repórtalo en Discord.
+  Solo los canales listados arriba son oficiales. VANTCALL no solicita contraseñas ni datos de pago por mensaje privado. Desconfia de cuentas que pidan informacion sensible.
+</Warning>
+
+## Antes de contactar
+
+Para agilizar la respuesta, tenes a mano:
+
+1. Tu **nickname de VANTCALL**
+2. El **juego y rango** afectado (si aplica)
+3. **Fecha y hora** del incidente
+4. **Capturas de pantalla** o IDs de sala, si es un problema de torneo
+5. Tu **sistema operativo y navegador** en caso de bugs tecnicos
+
+<Tip>
+  Si tu consulta es sobre un torneo en curso, usa el canal **#soporte-torneos** de Discord para respuesta inmediata. Los arbitros online estan atentos durante los horarios de competicion.
+</Tip>
+
+## Otras redes oficiales
+
+- **YouTube**: [@feispla](https://youtube.com/@feispla) - VODs, tutoriales y transmisiones de finales
+- **Twitch**: [vantcall](https://twitch.tv/vantcall) - Streams en vivo de eventos y ligas
+- **Kick**: [feispla](https://kick.com/feispla) - Contenido alternativo y reacciones
+
+<Warning>
+  Solo los canales listados arriba son oficiales. VANTCALL no solicita contraseñas ni datos de pago por mensaje privado. Desconfia de cuentas que pidan informacion sensible.
 </Warning>

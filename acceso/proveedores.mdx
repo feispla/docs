@@ -1,24 +1,63 @@
 ---
-title: "Login con Discord en VANTS y próximos proveedores"
-description: "Entra en VANTS con Discord (OAuth con PKCE, scopes identify y email) y conoce qué funciones de acceso llegarán próximamente, como Google y 2FA."
+title: "Login con proveedores OAuth en VANTCALL"
+description: "Conecta Discord, Google, Riot ID o Steam para iniciar sesion en VANTCALL. Descubre que datos se leen y como se usan para verificar tu perfil de jugador."
 sidebarTitle: "Proveedores"
 ---
 
-Además de email y contraseña, VANTCALL te permite entrar con tu cuenta de **Discord**. Es el único proveedor externo implementado.
+VANTCALL permite iniciar sesion a traves de plataformas de confianza para simplificar el registro y enriquecer tu perfil competitivo con datos verificables. Cada proveedor OAuth lee solo la informacion necesaria para su funcion especifica.
 
-## Proveedor disponible
-
-| Proveedor | Método | Scopes |
-| --- | --- | --- |
-| Discord | OAuth con PKCE | `identify email` |
+## Proveeders disponibles
 
 ## Próximamente
 
-- Login con Google.
-- Verificación en dos pasos (2FA).
-- Reautenticación reciente (10 minutos) para acciones sensibles.
-- Bloqueo al desvincular el último método de acceso.
+<CardGroup cols={2}>
+  <Card title="Discord" icon="discord">
+    Sincroniza tu usuario, avatar y roles de servidores. Se usa para vinculacion con la comunidad oficial y acceso a canales exclusivos por rango. [Unite al Discord](https://discord.gg/rCHE7jvRS4).
+  </Card>
+
+  <Card title="Google" icon="user-plus">
+    Accede rapido con tu cuenta de Gmail. Solo se lee tu email publico y nombre para facilitar el registro. No accedemos a Drive, Calendar ni ningun otro servicio.
+  </Card>
+
+  <Card title="Riot ID" icon="crosshairs">
+    Verifica tu cuenta de VALORANT o League of Legends. Se leen tu nombre de invocador, tagline, region y estadisticas publicas recientes para contrastar con tu rendimiento en VANTCALL.
+  </Card>
+
+  <Card title="Steam" icon="gamepad">
+    Conecta tu perfil de Counter-Strike 2. Se consulta tu Steam ID publico, nivel de cuenta y datos de CS2 para validar horas de juego y vincular resultados competitivos.
+  </Card>
+</CardGroup>
+
+## Tabla de datos y usos
+
+| Proveedor | Datos leidos | Uso en VANTCALL |
+| --- | --- | --- |
+| Discord | Usuario, avatar, roles de servidor | Vinculo con comunidad, canales por rango |
+| Google | Email, nombre de perfil | Registro rapido, recuperacion de cuenta |
+| Riot ID | Nombre de invocador, tagline, stats publicas | Verificacion de cuenta de juego, importacion de stats |
+| Steam | Steam ID, nivel, stats de CS2 | Validacion de horas, perfil competitivo de CS2 |
+
+## Seguridad y privacidad
+
+<Info>
+  VANTCALL **nunca almacena las contraseñas** de tus cuentas de juego. El flujo OAuth te redirige al sitio oficial del proveedor para autenticarte, y solo recibimos un token de acceso limitado.
+</Info>
 
 <Warning>
-  VANTS nunca te pedirá la contraseña de tu cuenta de Discord. El login siempre ocurre en el dominio oficial de Discord.
+  Si revocas el acceso de VANTCALL desde Discord, Google, Riot o Steam, tu cuenta seguira activa pero perderas la sincronizacion automatica de stats. Para desvincular sin perder el acceso, primero configura una contraseña propia desde los ajustes de cuenta.
 </Warning>
+
+<Tip>
+  Podes tener **varios proveedores vinculados** simultaneamente. Por ejemplo: usa Discord para la comunidad, Riot ID para VALORANT y Steam para CS2, todo bajo la misma cuenta de VANTCALL.
+</Tip>
+
+## Desvincular un proveedor
+
+1. Entra a **Cuenta > Proveedores vinculados**
+2. Busca el proveedor que queres remover
+3. Hace clic en **Desvincular**
+4. Confirma con tu contraseña actual o 2FA si esta activo
+
+<Note>
+  Tenés que tener al menos **un metodo de acceso activo** en todo momento. Si solo tenes un proveedor y queres desvincularlo, primero agrega un email con contraseña o vincula otro proveedor.
+</Note>
