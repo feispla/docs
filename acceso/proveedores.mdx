@@ -1,25 +1,24 @@
 ---
-title: "Iniciar sesión con Discord en VANTS: cuentas externas"
-description: "Entra en VANTS con tu cuenta de Discord: qué datos se leen, cómo desvincularla y qué otros proveedores de acceso llegarán próximamente a la plataforma."
+title: "Iniciar sesión con Discord en VANTS y proveedores pendientes"
+description: "Entra en VANTS con Discord (OAuth con PKCE, scopes identify y email) y conoce qué funciones de acceso están pendientes, como Google y 2FA."
 sidebarTitle: "Proveedores"
 ---
 
-Además de email y contraseña, VANTS te permite entrar con tu cuenta de **Discord**. Es el único proveedor externo disponible en la beta. En esta página verás qué datos lee VANTS de Discord, cómo gestionar el enlace y qué proveedores llegarán más adelante.
+Además de email y contraseña, VANTCALL te permite entrar con tu cuenta de **Discord**. Es el único proveedor externo implementado.
 
 ## Proveedor disponible
 
-| Proveedor | Scope | Datos que se leen | Se puede desvincular |
-| --- | --- | --- | --- |
-| Discord | identify, email | ID de Discord, email, nombre de usuario y avatar | Sí, desde configuración de cuenta |
+| Proveedor | Método | Scopes |
+| --- | --- | --- |
+| Discord | OAuth con PKCE | `identify email` |
 
-<Info>
-  **Próximamente:** acceso con Steam y Riot ID. Cuando estén disponibles, vincularlos desbloqueará automáticamente tus perfiles de CS2 (Steam) y de VALORANT y League of Legends (Riot ID). Mientras tanto, vincula tus juegos a mano desde la guía de [vinculación de juegos](/empezar/vincular-juegos).
-</Info>
+## Pendiente
+
+- Login con Google.
+- Verificación en dos pasos (2FA).
+- Reautenticación reciente (10 minutos) para acciones sensibles.
+- Bloqueo al desvincular el último método de acceso.
 
 <Warning>
-  VANTS nunca te pedirá la contraseña de tu cuenta de Discord ni de ningún otro servicio. El login siempre ocurre en el dominio oficial de Discord. Si recibes un mensaje solicitando credenciales de terceros, repórtalo inmediatamente: es phishing.
+  VANTS nunca te pedirá la contraseña de tu cuenta de Discord. El login siempre ocurre en el dominio oficial de Discord.
 </Warning>
-
-## Gestión del proveedor vinculado
-
-Desde tu panel de configuración puedes ver si Discord está vinculado, vincularlo o desvincularlo. Para mantener el acceso a tu cuenta, conserva al menos un método de login activo: email con contraseña o Discord.

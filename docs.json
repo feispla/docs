@@ -11,21 +11,6 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Visión",
-        "groups": [
-          {
-            "group": "El proyecto",
-            "icon": "bullseye",
-            "pages": [
-              "vision/index",
-              "vision/problema",
-              "vision/roadmap",
-              "vision/rangos"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Plataforma",
         "groups": [
           {
@@ -34,44 +19,8 @@
             "pages": [
               "index",
               "empezar/quickstart",
-              "empezar/recorrido",
-              "empezar/crear-cuenta",
-              "empezar/vincular-juegos"
-            ]
-          },
-          {
-            "group": "Mi perfil",
-            "icon": "user",
-            "pages": [
-              "perfil/resumen",
-              "perfil/partidas",
-              "perfil/estadisticas",
-              "perfil/torneos",
-              "perfil/equipos",
-              "perfil/logros",
-              "perfil/privacidad"
-            ]
-          },
-          {
-            "group": "Competir",
-            "icon": "trophy",
-            "pages": [
-              "competir/partidos",
-              "competir/calendario",
               "competir/torneos",
-              "competir/detalle-torneo",
-              "competir/detalle-partido",
-              "competir/rankings"
-            ]
-          },
-          {
-            "group": "Comunidad",
-            "icon": "newspaper",
-            "pages": [
-              "comunidad/noticias",
-              "comunidad/estadisticas",
-              "comunidad/equipos-jugadores",
-              "comunidad/comparador"
+              "vision/roadmap"
             ]
           },
           {
@@ -82,13 +31,16 @@
               "acceso/registro",
               "acceso/iniciar-sesion",
               "acceso/proveedores",
-              "acceso/recuperar",
-              "acceso/sesiones",
-              "acceso/menores",
               "cuenta/ajustes",
-              "cuenta/notificaciones",
-              "cuenta/seguridad",
-              "cuenta/faq"
+              "cuenta/seguridad"
+            ]
+          },
+          {
+            "group": "Ayuda y legal",
+            "icon": "scale-balanced",
+            "pages": [
+              "colabora/contacto",
+              "colabora/derechos-de-autor"
             ]
           }
         ]
@@ -100,16 +52,11 @@
             "group": "Planes",
             "icon": "credit-card",
             "pages": [
-              "monetizacion/index",
               "monetizacion/planes",
               "monetizacion/free",
               "monetizacion/vant-basic",
               "monetizacion/vant-pro",
-              "monetizacion/vant-elite",
-              "monetizacion/organizaciones",
-              "monetizacion/organizadores",
-              "monetizacion/patrocinios",
-              "monetizacion/premios"
+              "monetizacion/vant-elite"
             ]
           },
           {
@@ -119,244 +66,6 @@
               "monetizacion/pagos",
               "monetizacion/facturacion",
               "monetizacion/reembolsos"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Producto",
-        "groups": [
-          {
-            "group": "Visión general",
-            "icon": "compass",
-            "pages": [
-              "producto/index",
-              "producto/navegacion",
-              "producto/homepage"
-            ]
-          },
-          {
-            "group": "Partidos",
-            "icon": "calendar",
-            "pages": [
-              "producto/matches/index",
-              "producto/matches/live",
-              "producto/matches/upcoming",
-              "producto/matches/results",
-              "producto/matches/detalle"
-            ]
-          },
-          {
-            "group": "Torneos",
-            "icon": "trophy",
-            "pages": [
-              "producto/tournaments/index",
-              "producto/tournaments/detalle",
-              "producto/tournaments/overview",
-              "producto/tournaments/matches",
-              "producto/tournaments/standings",
-              "producto/tournaments/bracket",
-              "producto/tournaments/stats",
-              "producto/tournaments/news"
-            ]
-          },
-          {
-            "group": "Rankings",
-            "icon": "list-ol",
-            "pages": [
-              "producto/rankings/index",
-              "producto/rankings/players",
-              "producto/rankings/teams"
-            ]
-          },
-          {
-            "group": "Estadísticas",
-            "icon": "chart-line",
-            "pages": [
-              "producto/stats/index",
-              "producto/stats/players",
-              "producto/stats/teams",
-              "producto/stats/maps",
-              "producto/stats/agents-or-champions"
-            ]
-          },
-          {
-            "group": "Noticias",
-            "icon": "newspaper",
-            "pages": [
-              "producto/news/index",
-              "producto/news/articulo"
-            ]
-          },
-          {
-            "group": "Equipos y jugadores",
-            "icon": "people-group",
-            "pages": [
-              "producto/teams/index",
-              "producto/teams/detalle",
-              "producto/players/index",
-              "producto/players/detalle"
-            ]
-          },
-          {
-            "group": "Perfil competitivo",
-            "icon": "id-badge",
-            "pages": [
-              "producto/profile/index",
-              "producto/profile/matches",
-              "producto/profile/stats",
-              "producto/profile/tournaments",
-              "producto/profile/settings"
-            ]
-          }
-        ],
-        "hidden": true
-      },
-      {
-        "tab": "Ingeniería",
-        "groups": [
-          {
-            "group": "Arquitectura",
-            "icon": "diagram-project",
-            "pages": [
-              "ingenieria/index",
-              "ingenieria/rutas",
-              "ingenieria/tiempo-real",
-              "ingenieria/rendimiento"
-            ]
-          },
-          {
-            "group": "Modelo de datos",
-            "icon": "database",
-            "pages": [
-              "ingenieria/datos/index",
-              "ingenieria/datos/entidades",
-              "ingenieria/datos/matches",
-              "ingenieria/datos/tournaments",
-              "ingenieria/datos/news",
-              "ingenieria/datos/favorites"
-            ]
-          },
-          {
-            "group": "Design system",
-            "icon": "swatchbook",
-            "pages": [
-              "ingenieria/design/index",
-              "ingenieria/design/componentes",
-              "ingenieria/design/estados",
-              "ingenieria/design/responsive",
-              "ingenieria/design/accesibilidad"
-            ]
-          },
-          {
-            "group": "Datos y demo",
-            "icon": "flask",
-            "pages": [
-              "ingenieria/demo/index",
-              "ingenieria/demo/equipos",
-              "ingenieria/demo/torneos",
-              "ingenieria/demo/matches"
-            ]
-          },
-          {
-            "group": "Integraciones",
-            "icon": "plug",
-            "pages": [
-              "ingenieria/integraciones/index",
-              "ingenieria/integraciones/proveedores",
-              "ingenieria/integraciones/nuevo-juego"
-            ]
-          },
-          {
-            "group": "Legal e IP",
-            "icon": "scale-balanced",
-            "pages": [
-              "ingenieria/legal/marcas",
-              "ingenieria/legal/contenido",
-              "ingenieria/legal/datos"
-            ]
-          },
-          {
-            "group": "Operaciones",
-            "icon": "wrench",
-            "pages": [
-              "ingenieria/operaciones/seo",
-              "ingenieria/operaciones/pruebas",
-              "ingenieria/operaciones/entrega"
-            ]
-          }
-        ],
-        "hidden": true
-      },
-      {
-        "tab": "Juegos",
-        "groups": [
-          {
-            "group": "VALORANT",
-            "icon": "crosshairs",
-            "pages": [
-              "juegos/valorant/index",
-              "juegos/valorant/rangos",
-              "juegos/valorant/estadisticas",
-              "juegos/valorant/torneos"
-            ]
-          },
-          {
-            "group": "Counter-Strike 2",
-            "icon": "gun",
-            "pages": [
-              "juegos/cs2/index",
-              "juegos/cs2/rangos",
-              "juegos/cs2/estadisticas",
-              "juegos/cs2/torneos"
-            ]
-          },
-          {
-            "group": "League of Legends",
-            "icon": "chess-rook",
-            "pages": [
-              "juegos/lol/index",
-              "juegos/lol/rangos",
-              "juegos/lol/estadisticas",
-              "juegos/lol/torneos"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Colabora",
-        "groups": [
-          {
-            "group": "Socios y desarrolladores",
-            "icon": "handshake",
-            "pages": [
-              "colabora/index",
-              "colabora/socios",
-              "colabora/desarrolladores",
-              "colabora/contribuir",
-              "colabora/contacto",
-              "colabora/contacto-programacion",
-              "colabora/faq-beta",
-              "colabora/webhook-discord",
-              "colabora/derechos-de-autor"
-            ]
-          },
-          {
-            "group": "Streamers y creadores",
-            "icon": "video",
-            "pages": [
-              "colabora/streamers/index",
-              "colabora/streamers/programa",
-              "colabora/streamers/kit"
-            ]
-          },
-          {
-            "group": "Apoya el proyecto",
-            "icon": "heart",
-            "pages": [
-              "colabora/donaciones/index",
-              "colabora/donaciones/metodos",
-              "colabora/donaciones/transparencia"
             ]
           }
         ]
@@ -372,10 +81,6 @@
       {
         "href": "https://discord.gg/rCHE7jvRS4",
         "label": "Discord"
-      },
-      {
-        "href": "/colabora/index",
-        "label": "Socios y desarrolladores"
       }
     ],
     "primary": {
@@ -406,14 +111,6 @@
         "items": [
           {
             "label": "Ir a la plataforma",
-            "href": "https://vantcall-esports1.pplx.app/"
-          },
-          {
-            "label": "Calendario",
-            "href": "https://vantcall-esports1.pplx.app/"
-          },
-          {
-            "label": "Torneos",
             "href": "https://vantcall-esports1.pplx.app/"
           },
           {
