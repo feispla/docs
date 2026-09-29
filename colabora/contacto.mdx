@@ -4,6 +4,27 @@ sidebarTitle: "Contacto"
 description: "Cómo contactar con VANTS: Discord oficial como canal principal y tickets de Soporte desde Mi cuenta para pagos, planes y problemas de acceso."
 ---
 
+export const DiscordOnline = () => {
+  const [online, setOnline] = useState(null);
+  useEffect(() => {
+    fetch("https://discord.com/api/guilds/1546641331927908472/widget.json")
+      .then((r) => r.json())
+      .then((d) => setOnline(d.presence_count))
+      .catch(() => setOnline("–"));
+  }, []);
+  return (
+    <div className="not-prose flex items-center gap-3 p-4 rounded-2xl border border-zinc-950/10 dark:border-white/10">
+      <span className="h-3 w-3 rounded-full bg-green-500"></span>
+      <span className="text-zinc-950 dark:text-white font-semibold">
+        {online === null ? "…" : online} en línea ahora
+      </span>
+      <a href="https://discord.gg/rCHE7jvRS4" target="_blank" rel="noopener" className="ml-auto px-4 py-1.5 rounded-lg bg-[#E30613] text-white font-bold no-underline">
+        Unirse
+      </a>
+    </div>
+  );
+};
+
 VANTS atiende a los jugadores por dos vías: el Discord oficial y los tickets de Soporte dentro de tu cuenta en VANTCALL.
 
 <CardGroup cols={2}>
@@ -15,6 +36,10 @@ VANTS atiende a los jugadores por dos vías: el Discord oficial y los tickets de
     Desde Mi cuenta, sección Soporte. Úsalo si tu plan tarda en activarse tras el pago.
   </Card>
 </CardGroup>
+
+## Servidor de Discord
+
+<DiscordOnline />
 
 <Warning>
   VANTS nunca te pedirá contraseñas ni códigos de verificación. Si alguien lo hace, repórtalo en Discord.
