@@ -83,7 +83,6 @@
               "acceso/iniciar-sesion",
               "acceso/proveedores",
               "acceso/recuperar",
-              "acceso/2fa",
               "acceso/sesiones",
               "acceso/menores",
               "cuenta/ajustes",
