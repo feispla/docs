@@ -1,20 +1,53 @@
-# Documentación oficial de VANTS
+# 🎮 VANTS · VANTCALL
 
-Documentación de VANTS, la plataforma competitiva de esports para VALORANT, CS2 y League of Legends.
+Plataforma competitiva de **VALORANT**, **CS2** y **League of Legends**.
 
-Sitio: [https://ggo-df01a767.mintlify.app](https://ggo-df01a767.mintlify.app)
+- 🌐 Web: [vantcall-esports1.pplx.app](https://vantcall-esports1.pplx.app/)
+- 📖 Documentación: [ggo-df01a767.mintlify.app](https://ggo-df01a767.mintlify.app)
+- 💬 Discord: [discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4)
 
-## Derechos de autor
+## 🔐 Acceso
 
-© 2026 VANTS (Feispla). **Todos los derechos reservados.**
+- Entra con **Discord** o con **email y contraseña**.
+- Usuario de 3 a 24 caracteres, contraseña de mínimo 8.
+- Verificación de email obligatoria.
 
-Este repositorio **no es de código abierto**. Que sea visible no te da permiso para copiarlo, reutilizarlo, modificarlo ni publicarlo en otro lugar. Consulta el archivo [LICENSE](./LICENSE).
+## 👤 Mi cuenta
 
-Las únicas fuentes oficiales autorizadas son el GitHub de Feispla ([github.com/feispla](https://github.com/feispla)) y esta documentación ([ggo-df01a767.mintlify.app](https://ggo-df01a767.mintlify.app)). Cualquier fork, espejo o copia fuera de ellas no está autorizado.
+Plan, email verificado, Discord, métodos de acceso y perfil de competidor (nombre visible, país, región, juego principal, bio, perfil público o privado).
 
-Cualquier copia no autorizada se notificará a la plataforma donde se aloje, incluidas solicitudes de retirada DMCA en GitHub.
+## 💳 Planes (pago único, IVA incluido)
 
-Para pedir permiso de uso, contacta con VANTS:
+| Plan | Precio |
+| --- | --- |
+| VANT BASIC | 9 € |
+| VANT PRO | 19 € |
+| VANT ELITE | 39 € |
 
-- Discord: [https://discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4)
-- Correo: [feispla@hotmail.com](mailto:feispla@hotmail.com)
+Pago con Stripe (PayPal si aparece en el checkout). El plan se activa al confirmarse el pago.
+
+## 🏆 Torneos por plan
+
+| Torneo | Plan |
+| --- | --- |
+| VANT Open | BASIC o superior |
+| Pro Series | PRO o superior |
+| Elite Invitational | Solo ELITE |
+
+## 💬 Discord
+
+`/ranked` · `/jugador` · `/torneo`, sincronizado con la web en tiempo real.
+
+## ⏳ Próximamente
+
+Login con Google · 2FA · Más seguridad en acciones sensibles.
+
+## 🆘 Soporte
+
+¿Tu plan no se activa? Abre un ticket en **Mi cuenta → Soporte** o escríbenos en [Discord](https://discord.gg/rCHE7jvRS4).
+
+## ⚖️ Aviso legal y derechos de autor
+
+VANTCALL no está afiliado a Riot Games ni a Valve. VALORANT y League of Legends son marcas de Riot Games, Inc. Counter-Strike es marca de Valve Corporation.
+
+© 2026 VANTS (Feispla). **Todos los derechos reservados.** Este repositorio no es de código abierto. Consulta el archivo [LICENSE](./LICENSE). Para pedir permiso de uso, escribe en [Discord](https://discord.gg/rCHE7jvRS4).
