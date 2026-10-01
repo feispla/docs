@@ -19,6 +19,8 @@
               "index",
               "empezar/quickstart",
               "competir/torneos",
+              "competir/ranked",
+              "competir/bot-discord",
               "vision/roadmap"
             ]
           },
@@ -67,6 +69,7 @@
             "group": "Planes",
             "pages": [
               "monetizacion/planes",
+              "monetizacion/zona-vip",
               {
                 "group": "Niveles",
                 "pages": [

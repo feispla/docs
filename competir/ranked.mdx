@@ -1,0 +1,106 @@
+---
+title: "Sistema Ranked de VANTS: rangos, temporadas y leaderboard"
+sidebarTitle: "Ranked"
+description: "Conoce el sistema de rangos VANTS con 8 niveles por MMR, temporadas con recompensas y leaderboard en tiempo real para VALORANT, CS2 y LoL."
+---
+
+VANTS utiliza un sistema de rangos propio basado en MMR (Matchmaking Rating) para medir tu nivel competitivo. Cada juego tiene su propio rango: juega partidas, gana MMR y sube desde Hierro hasta Escarlata, el top global de la plataforma.
+
+## Los 8 rangos de VANTS
+
+Cada rango tiene un umbral mínimo de MMR. Ganas MMR por victoria y pierdes por derrota según las reglas de la temporada activa.
+
+| Rango | Mínimo MMR | Color |
+| --- | --- | --- |
+| Hierro | 0+ | #8a9099 |
+| Bronce | 900+ | #b87333 |
+| Plata | 1100+ | #c9d1d9 |
+| Oro | 1300+ | #e5b93c |
+| Platino | 1500+ | #2ec4b6 |
+| Diamante | 1700+ | #9b6bff |
+| Titán | 1900+ | #3ddc84 |
+| Escarlata | 2100+ (Top global) | #ff4655 |
+
+<Frame caption="Rango Hierro">
+  ![Rango Hierro](/images/rangos/hierro.svg)
+</Frame>
+
+<Frame caption="Rango Bronce">
+  ![Rango Bronce](/images/rangos/bronce.svg)
+</Frame>
+
+<Frame caption="Rango Plata">
+  ![Rango Plata](/images/rangos/plata.svg)
+</Frame>
+
+<Frame caption="Rango Oro">
+  ![Rango Oro](/images/rangos/oro.svg)
+</Frame>
+
+<Frame caption="Rango Platino">
+  ![Rango Platino](/images/rangos/platino.svg)
+</Frame>
+
+<Frame caption="Rango Diamante">
+  ![Rango Diamante](/images/rangos/diamante.svg)
+</Frame>
+
+<Frame caption="Rango Titán">
+  ![Rango Titán](/images/rangos/titan.svg)
+</Frame>
+
+<Frame caption="Rango Escarlata">
+  ![Rango Escarlata](/images/rangos/escarlata.svg)
+</Frame>
+
+## Temporadas y recompensas
+
+Las temporadas tienen fecha de inicio y fin definidas. Al final de cada temporada se aplica un **reset parcial**: conservas el **30% de tus puntos MMR** como base para la siguiente. Esto mantiene la competencia dinámica sin invalidar el progreso logrado.
+
+<Note>
+  El staff publica las reglas de cada temporada antes del inicio: partidas de placement, MMR por victoria, MMR por derrota, tiempo máximo en cola y jugadores mínimos por partida.
+</Note>
+
+## Leaderboard en tiempo real
+
+El leaderboard se actualiza en tiempo real desde Supabase. Consulta tu posición en la web o usa `/ranking` en Discord para ver el **top 10 de la temporada activa**.
+
+<CardGroup cols={2}>
+  <Card title="Ver leaderboard" icon="chart-bar" href="https://vantsbetaa.pplx.app/">
+    Consulta la clasificación completa desde la web, filtrada por temporada activa.
+  </Card>
+
+  <Card title="Comando /ranking en Discord" icon="discord" href="https://discord.gg/rCHE7jvRS4">
+    Escribe `/ranking` en el servidor oficial para ver el top 10 directamente en Discord.
+  </Card>
+</CardGroup>
+
+## Partidas de placement
+
+Al inicio de cada temporada, juega tus **partidas de placement** desde el bot de Discord. El sistema calcula tu MMR inicial en función de tu rendimiento y te asigna un rango de partida.
+
+<Steps>
+  <Step title="Entra al Discord oficial">
+    Únete a [https://discord.gg/rCHE7jvRS4](https://discord.gg/rCHE7jvRS4) y vincula tu cuenta con `/vincular`.
+  </Step>
+  <Step title="Usa el bot para placement">
+    El bot de Discord gestiona las partidas de placement. Sigue las instrucciones del staff en el canal de ranked.
+  </Step>
+  <Step title="Consulta tu rango">
+    Tras completar las placement, usa `/perfil` en Discord o visita tu perfil en la web para ver tu rango inicial.
+  </Step>
+</Steps>
+
+## Reglas vigentes por temporada
+
+El staff publica las reglas de cada temporada antes del inicio. Estas incluyen:
+
+- **Partidas de placement**: cuántas debes jugar para obtener rango
+- **MMR por victoria**: puntos ganados al ganar una partida
+- **MMR por derrota**: puntos perdidos al perder
+- **Tiempo máximo en cola**: límite de espera para emparejamiento
+- **Jugadores mínimos por partida**: requisito para que una partida sea válida
+
+<Warning>
+  Las reglas pueden variar entre temporadas y entre juegos. Revisa siempre las reglas publicadas antes de empezar una nueva temporada.
+</Warning>
