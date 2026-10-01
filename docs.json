@@ -89,7 +89,7 @@
     "primary": {
       "type": "button",
       "label": "Ir a la plataforma",
-      "href": "https://vantcall-esports1.pplx.app/"
+      "href": "https://vantsbetaa.pplx.app/"
     }
   },
   "contextual": {
@@ -114,11 +114,11 @@
         "items": [
           {
             "label": "Ir a la plataforma",
-            "href": "https://vantcall-esports1.pplx.app/"
+            "href": "https://vantsbetaa.pplx.app/"
           },
           {
             "label": "Precios",
-            "href": "https://vantcall-esports1.pplx.app/"
+            "href": "https://vantsbetaa.pplx.app/"
           }
         ]
       },
