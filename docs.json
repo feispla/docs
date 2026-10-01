@@ -41,7 +41,9 @@
             "icon": "scale-balanced",
             "pages": [
               "colabora/contacto",
-              "colabora/derechos-de-autor"
+              "colabora/derechos-de-autor",
+              "colabora/privacidad",
+              "colabora/terminos"
             ]
           }
         ]
@@ -143,6 +145,14 @@
           {
             "label": "© 2026 VANTS. Todos los derechos reservados",
             "href": "/colabora/derechos-de-autor"
+          },
+          {
+            "label": "Política de privacidad",
+            "href": "/colabora/privacidad"
+          },
+          {
+            "label": "Condiciones del servicio",
+            "href": "/colabora/terminos"
           }
         ]
       }
