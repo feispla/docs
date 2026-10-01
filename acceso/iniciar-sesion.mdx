@@ -1,28 +1,29 @@
 ---
-title: "Iniciar sesión y recuperar acceso en VANTCALL"
-description: "Accede a VANTCALL por email, Discord, Google, Riot ID o Steam. Aprende a recuperar tu contraseña y activar 2FA obligatorio para rangos Platino+."
+title: "Iniciar sesión y recuperar acceso en VANTS"
+description: "Accede a VANTS por email, Discord, Google o Steam. Aprende a recuperar tu contraseña y gestionar tu sesión de forma segura."
 sidebarTitle: "Iniciar sesión"
 ---
 
-VANTCALL ofrece múltiples formas de iniciar sesión para adaptarse a tu flujo habitual como jugador. Puedes acceder con credenciales propias o aprovechar la sincronización con plataformas de juego y redes sociales.
+VANTS ofrece múltiples formas de iniciar sesión para adaptarse a tu flujo habitual como jugador. Puedes acceder con credenciales propias o aprovechar la sincronización con plataformas de juego y redes sociales.
 
 <Tabs>
   <Tab title="Email">
-    Ingresa tu dirección de email y contraseña en el formulario principal. Si olvidaste la contraseña, pulsa **Recuperar contraseña** y recibirás un enlace de restablecimiento válido por 1 hora.
+    Ingresa tu dirección de email y contraseña en el formulario principal. Si olvidaste la contraseña, pulsa **Recuperar contraseña** y recibirás un enlace de restablecimiento.
   </Tab>
   <Tab title="Discord">
-    Pulsa el botón de Discord. Te redirige a la autorización oficial de Discord, donde puedes elegir a qué servidor perteneces. Si ya autorizaste VANTCALL, el acceso es inmediato.
+    Pulsa el botón de Discord. Te redirige a la autorización oficial de Discord. Si ya autorizaste VANTS, el acceso es inmediato. El bot de VANTS usa tu cuenta de Discord para mostrar tu perfil competitivo.
   </Tab>
   <Tab title="Google">
     Selecciona tu cuenta de Google del listado. Recomendado para quienes prefieren no recordar contraseñas adicionales. La cuenta queda vinculada para futuros accesos.
   </Tab>
-  <Tab title="Riot ID">
-    Usa tus credenciales de Riot Games para ingresar. Este método es ideal si ya vinculaste tu cuenta de VALORANT o LoL: el login sincroniza stats y verifica tu perfil competitivo automáticamente.
-  </Tab>
   <Tab title="Steam">
-    Te redirige a Steam Community para autorizar el acceso. Perfecto para jugadores de CS2 que quieren centralizar su identidad en la plataforma.
+    Te redirige a Steam Community mediante OpenID 2.0 para autorizar el acceso. Perfecto para jugadores de CS2 que quieren centralizar su identidad en la plataforma. Ideal para CS2: cuenta verificada por Valve.
   </Tab>
 </Tabs>
+
+<Note>
+  **No existe inicio de sesión con Riot ID** en la web. Para vincular tu cuenta de VALORANT o LoL, usa el comando `/vincular riot` en el bot de Discord después de conectar tu Discord con la cuenta web.
+</Note>
 
 ## Recuperar contraseña
 
@@ -31,29 +32,20 @@ VANTCALL ofrece múltiples formas de iniciar sesión para adaptarse a tu flujo h
     En la pantalla de login, pulsa **Olvidé mi contraseña**. Ingresa el email asociado a tu cuenta.
   </Step>
   <Step title="Revisar tu correo">
-    Recibirás un email con un enlace único válido por 60 minutos. Si no llega, revisa spam y verifica que la dirección sea la correcta.
+    Recibirás un email con un enlace único. Si no llega, revisa spam y verifica que la dirección sea la correcta.
   </Step>
   <Step title="Definir nueva contraseña">
-    Elige una contraseña nueva con al menos 8 caracteres, una mayúscula y un número. No repitas contraseñas usadas anteriormente.
+    Elige una contraseña nueva con al menos 12 caracteres, una mayúscula, una minúscula y un número. No repitas contraseñas usadas anteriormente.
   </Step>
   <Step title="Confirmar y acceder">
-    Ingresa con tu email y la nueva contraseña. Te recomendamos activar 2FA para evitar bloqueos futuros.
+    Ingresa con tu email y la nueva contraseña.
   </Step>
 </Steps>
 
-## Autenticación de dos factores (2FA)
-
 <Warning>
-  A partir del rango **Platino**, el **2FA es obligatorio**. Si intentas subir a Platino sin activarlo, el sistema bloqueará tu progreso hasta que configures un autenticador TOTP.
+  Si perdiste acceso al correo, escribe a [**feispla@hotmail.com**](mailto:feispla@hotmail.com) para recuperación manual de cuenta.
 </Warning>
 
-Para activar 2FA:
+## Cerrar sesión
 
-1. Entra a **Cuenta > Seguridad > Autenticador TOTP**
-2. Escanea el código QR con Google Authenticator, Authy o similar
-3. Ingresa el código de 6 dígitos para confirmar
-4. Guarda los códigos de respaldo en un lugar seguro
-
-<Info>
-  Si pierdes acceso a tu autenticador y no tienes los códigos de respaldo, tendrás que contactar con soporte a través de [Discord](https://discord.gg/rCHE7jvRS4). El proceso de recuperación puede demorar hasta 48 horas por verificación manual de identidad.
-</Info>
+Para salir de tu cuenta, entra a **Mi cuenta** y pulsa **Cerrar sesión**. Esto limpia tu sesión local y te permite volver a entrar con cualquier método sin quedarte bloqueado.

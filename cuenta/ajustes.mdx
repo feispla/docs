@@ -1,32 +1,36 @@
 ---
-title: "Configurar perfil y ajustes de cuenta en VANTCALL"
+title: "Configurar perfil y ajustes de cuenta en VANTS"
 sidebarTitle: "Ajustes"
-description: "Personaliza tu perfil público, disponibilidad horaria, juegos vinculados y preferencias de privacidad en VANTCALL para optimizar tu experiencia competitiva."
+description: "Personaliza tu perfil público, juegos, región y preferencias de privacidad en VANTS para optimizar tu experiencia competitiva."
 ---
 
-Los ajustes de tu cuenta definen cómo te presentas ante la comunidad de VANTCALL y qué oportunidades de competición se ajustan a tu perfil. Desde la visibilidad pública hasta los horarios de juego, cada configuración influye directamente en tu experiencia en la plataforma.
+Los ajustes de tu cuenta definen cómo te presentas ante la comunidad de VANTS y qué oportunidades de competición se ajustan a tu perfil. Desde la visibilidad pública hasta el juego principal, cada configuración influye directamente en tu experiencia en la plataforma.
 
 ## Áreas de configuración
 
 <CardGroup cols={2}>
-  <Card title="Perfil público" icon="user-plus">
-    Edita tu nickname, foto de perfil, biografía corta, país y banner. Este es el perfil que ven otros jugadores al buscar equipos o revisar estadísticas de rivales.
+  <Card title="Perfil de competidor" icon="user-plus">
+    Edita tu nombre visible (máximo 32 caracteres), país, región (EU, LATAM, NA, BR, APAC), juego principal (VALORANT, CS2 o LoL), bio (máximo 280 caracteres) y visibilidad del perfil (Público, Solo amigos o Privado).
   </Card>
 
-  <Card title="Disponibilidad" icon="calendar-days">
-    Marca los días y franjas horarias en las que sueles jugar. El sistema usa estos datos para sugerirte torneos compatibles y mostrarte en listados LFT (buscando equipo).
+  <Card title="Plan actual" icon="crown">
+    Consulta tu plan actual (FREE, BASIC, PRO o ELITE). Pulsa **MEJORAR PLAN** para subir de nivel o **Entrar a mi zona** para acceder al contenido exclusivo según tu plan.
   </Card>
 
-  <Card title="Juegos vinculados" icon="gamepad">
-    Conecta y gestiona tus cuentas de VALORANT, Counter-Strike 2 y League of Legends. Aquí puedes sincronizar Riot ID, Steam y ver el estado de importación de stats.
+  <Card title="Correo y verificación" icon="envelope">
+    Consulta el estado de tu correo: verificado, pendiente o "Sin correo (cuenta Steam)". Las cuentas creadas solo con Steam no tienen email asociado.
   </Card>
 
-  <Card title="Notificaciones" icon="bell">
-    Elige qué alertas recibir: torneos próximos, resultados de partidas, mensajes de equipo, actualizaciones de rango y promociones. Disponible por email y push web.
+  <Card title="Discord y proveedores" icon="discord">
+    Vincula o desvincula Discord, Google y Steam. El bot de VANTS usa tu Discord conectado para mostrar tu perfil competitivo con `/perfil`.
   </Card>
 
-  <Card title="Privacidad" icon="eye">
-    Controla quién ve tu perfil, tu historial de partidas, tu rango y tu disponibilidad. Las opciones son: Público (todos), Solo amigos (usuarios que sigues) o Privado (solo tú).
+  <Card title="Mis torneos" icon="trophy">
+    Lista los torneos en los que estás inscrito. Si no tienes ninguno, verás un enlace para apuntarte.
+  </Card>
+
+  <Card title="Compras y tickets" icon="receipt">
+    Revisa tu historial de compras de planes y tickets de soporte abiertos.
   </Card>
 </CardGroup>
 
@@ -34,103 +38,52 @@ Los ajustes de tu cuenta definen cómo te presentas ante la comunidad de VANTCAL
 
 | Dato | Público | Solo amigos | Privado |
 | --- | --- | --- | --- |
-| Nickname y país | Sí | Sí | Sí |
+| Nombre visible y país | Sí | Sí | Sí |
 | Rango VANTS | Sí | Sí | No |
 | Historial de partidas | Sí | Sí | No |
-| Disponibilidad horaria | Sí | No | No |
-| Juegos vinculados | No | No | No |
+| Bio | Sí | Sí | No |
+| Juego principal | Sí | Sí | No |
 
 <Info>
-  Algunos datos, como tu nickname y país, siempre son visibles para permitir la organización de torneos regionales. Los juegos vinculados nunca se muestran públicamente: solo se usan internamente para clasificación y stats.
+  Algunos datos, como tu nombre visible y país, siempre son visibles para permitir la organización de torneos regionales. Tu perfil de competidor es lo que ven otros jugadores cuando te buscan.
 </Info>
 
-## Modo LFT (buscando equipo)
-
-<CardGroup cols={2}>
-  <Card title="Perfil público" icon="user-plus">
-    Edita tu nickname, foto de perfil, biografía corta, país y banner. Este es el perfil que ven otros jugadores al buscar equipos o revisar estadísticas de rivales.
-  </Card>
-
-  <Card title="Disponibilidad" icon="calendar-days">
-    Marca los días y franjas horarias en las que sueles jugar. El sistema usa estos datos para sugerirte torneos compatibles y mostrarte en listados LFT (buscando equipo).
-  </Card>
-
-  <Card title="Juegos vinculados" icon="gamepad">
-    Conecta y gestiona tus cuentas de VALORANT, Counter-Strike 2 y League of Legends. Aquí puedes sincronizar Riot ID, Steam y ver el estado de importación de stats.
-  </Card>
-
-  <Card title="Notificaciones" icon="bell">
-    Elige qué alertas recibir: torneos próximos, resultados de partidas, mensajes de equipo, actualizaciones de rango y promociones. Disponible por email y push web.
-  </Card>
-
-  <Card title="Privacidad" icon="eye">
-    Controla quién ve tu perfil, tu historial de partidas, tu rango y tu disponibilidad. Las opciones son: Público (todos), Solo amigos (usuarios que sigues) o Privado (solo tú).
-  </Card>
-</CardGroup>
-
-## Configuración de visibilidad
-
-Pulsa **GUARDAR PERFIL** para aplicar los cambios. Usa **VER PERFIL PÚBLICO** para ver cómo lo ven los demás y compartirlo.
-
-Lista los torneos en los que estás inscrito. Si no tienes ninguno, verás "No estás inscrito en ningún torneo" y un enlace a **VER TORNEOS** para apuntarte.
+## Cómo editar tu perfil
 
 <Steps>
-  <Step title="Abre el formulario">
-    Pulsa **ABRIR UN TICKET DE SOPORTE**.
+  <Step title="Entra a Mi cuenta">
+    Inicia sesión en [https://vantsbetaa.pplx.app/](https://vantsbetaa.pplx.app/) y ve a **Mi cuenta**.
   </Step>
-  <Step title="Rellena los campos">
-    Elige la **Categoría** (por ejemplo, **Cuenta y acceso**), escribe un **Asunto** y explica el problema en **Descripción**.
+  <Step title="Completa tu Perfil de competidor">
+    Rellena los campos: nombre visible, país, región, juego principal, bio y visibilidad. Pulsa **Guardar perfil**.
   </Step>
-  <Step title="Envía">
-    Pulsa **ENVIAR TICKET**. La respuesta llega en el mismo ticket, dentro de esta sección.
+  <Step title="Ver perfil público">
+    Usa el enlace **Ver perfil público** para ver cómo te ven otros jugadores y compartirlo.
   </Step>
 </Steps>
 
-- **MEJORAR PLAN:** te lleva a los planes. Eliges VANT BASIC, VANT PRO o VANT ELITE y de ahí pasas a la página segura de Stripe para pagar. Consulta la [comparativa de planes](/monetizacion/planes).
-- **CERRAR SESIÓN:** sale de tu cuenta en este dispositivo.
+## Soporte desde Mi cuenta
 
-| Dato | Público | Solo amigos | Privado |
-| --- | --- | --- | --- |
-| Nickname y país | Sí | Sí | Sí |
-| Rango VANTS | Sí | Sí | No |
-| Historial de partidas | Sí | Sí | No |
-| Disponibilidad horaria | Sí | No | No |
-| Juegos vinculados | No | No | No |
-
-<Info>
-  Algunos datos, como tu nickname y país, siempre son visibles para permitir la organización de torneos regionales. Los juegos vinculados nunca se muestran públicamente: solo se usan internamente para clasificación y stats.
-</Info>
-
-## Modo LFT (buscando equipo)
-
-Si activas la opción **Mostrarme en LFT**, tu perfil aparece en el listado de jugadores disponibles para reclutamiento. Ahí se muestra:
-
-- Tu rango actual
-- Tu juego principal
-- Tu disponibilidad semanal
-- Una nota corta personalizada
+<Steps>
+  <Step title="Abre el formulario">
+    En **Mi cuenta**, despliega la sección **Soporte** y pulsa **Abrir un ticket de soporte**.
+  </Step>
+  <Step title="Elige la categoría">
+    Selecciona entre: **Cuenta y acceso**, **Pagos**, **Torneos**, **Ranked** u **Otro**.
+  </Step>
+  <Step title="Rellena los campos">
+    Escribe un **Asunto** (máximo 120 caracteres) y una **Descripción** detallada (máximo 2000 caracteres).
+  </Step>
+  <Step title="Envía">
+    Pulsa **Enviar ticket**. El equipo te responderá por correo o Discord en un plazo de 24-48 horas hábiles.
+  </Step>
+</Steps>
 
 <Warning>
-  El modo LFT solo funciona si tu perfil tiene **visibilidad Pública o Solo amigos**. Si lo pones en Privado, nadie podrá encontrarte aunque tengas activada la opción.
+  El modo LFT (buscando equipo) solo funciona si tu perfil tiene **visibilidad Pública o Solo amigos**. Si lo pones en Privado, nadie podrá encontrarte aunque tengas activada la opción.
 </Warning>
 
-- Tu rango actual
-- Tu juego principal
-- Tu disponibilidad semanal
-- Una nota corta personalizada
+## Mejorar plan o cerrar sesión
 
-<Warning>
-  El modo LFT solo funciona si tu perfil tiene **visibilidad Pública o Solo amigos**. Si lo pones en Privado, nadie podrá encontrarte aunque tengas activada la opción.
-</Warning>
-
-## Cambios aplicados en tiempo real
-
-Todos los cambios en ajustes se aplican de inmediato. No necesitas cerrar sesión:
-
-- Cambios de disponibilidad: afectan a las sugerencias de torneos desde la próxima actualización
-- Cambios de privacidad: se reflejan en tu perfil público en segundos
-- Cambios de notificaciones: activos desde la siguiente alerta programada
-
-- Cambios de disponibilidad: afectan a las sugerencias de torneos desde la próxima actualización
-- Cambios de privacidad: se reflejan en tu perfil público en segundos
-- Cambios de notificaciones: activos desde la siguiente alerta programada
+- **MEJORAR PLAN**: te lleva a la comparativa de planes. Eliges VANT BASIC (9 €), VANT PRO (19 €) o VANT ELITE (39 €) y pasas a la página segura de Stripe para pagar. Consulta la [comparativa de planes](/monetizacion/planes).
+- **CERRAR SESIÓN**: sale de tu cuenta en este dispositivo. Tu sesión se limpia localmente para que puedas volver a entrar con cualquier método.

@@ -1,56 +1,36 @@
 ---
-title: "Proteger tu cuenta en VANTCALL: herramientas de seguridad"
+title: "Proteger tu cuenta en VANTS: herramientas de seguridad"
 sidebarTitle: "Seguridad"
-description: "Activa 2FA con TOTP, gestiona sesiones activas, cambia tu contraseña y recibe alertas de acceso para mantener tu cuenta de VANTCALL protegida."
+description: "Gestiona sesiones activas, cambia tu contraseña y recibe alertas de acceso para mantener tu cuenta de VANTS protegida."
 ---
 
-La seguridad de tu cuenta en VANTCALL es prioritaria, especialmente a medida que subes de rango y accedes a torneos con premio. La plataforma ofrece múltiples herramientas de protección que deberías activar desde el primer dia.
+La seguridad de tu cuenta en VANTS es prioritaria, especialmente a medida que subes de rango y accedes a torneos con premio. La plataforma ofrece múltiples herramientas de protección que deberías activar desde el primer día.
 
 ## Opciones de seguridad
 
 <AccordionGroup>
-  <Accordion title="Autenticación de dos factores (2FA) con TOTP">
-    El 2FA agrega una capa extra al inicio de sesión: además de tu contraseña, necesitas un código de 6 dígitos generado por una app como Google Authenticator o Authy.
-
-    <Steps>
-      <Step title="Entra a Cuenta > Seguridad > 2FA">
-        Encontrarás la opción para activar el autenticador TOTP.
-      </Step>
-      <Step title="Escanea el código QR">
-        Usa tu app de autenticación favorita para escanear el QR mostrado en pantalla.
-      </Step>
-      <Step title="Confirma el código">
-        Introduce el código de 6 dígitos generado por la app para validar la configuración.
-      </Step>
-      <Step title="Guarda los códigos de respaldo">
-        Descarga o anota los códigos de respaldo. Son tu única vía de recuperación si pierdes el dispositivo.
-      </Step>
-    </Steps>
-
-    <Warning>
-      Desde el rango **Platino**, el **2FA es obligatorio**. Si intentas subir a Platino sin activarlo, el sistema bloquea tu progreso en la cola clasificatoria.
-    </Warning>
-  </Accordion>
-
   <Accordion title="Sesiones activas">
-    En **Cuenta > Seguridad > Sesiones** ves todos los dispositivos donde iniciaste sesión: navegador, sistema operativo, ubicación aproximada y fecha del último acceso.
-
-    Si ves una sesión que no reconoces, puedes cerrarla de forma remota con una sola pulsación. También existe la opción **Cerrar todas las sesiones**, que desconecta todos los dispositivos excepto el actual.
+    En **Mi cuenta** puedes ver los métodos de acceso vinculados: correo, Discord, Google y Steam. Si ves un proveedor que no reconoces, desvincúlalo desde el panel de cuenta.
   </Accordion>
 
-  <Accordion title="Cierre remoto de sesiones">
-    Si perdiste acceso a un dispositivo o sospechas de acceso no autorizado, usa el cierre remoto desde cualquier otro dispositivo donde tengas sesión activa. El dispositivo cerrado deberá volver a autenticarse con contraseña y 2FA.
+  <Accordion title="Cierre de sesión">
+    Pulsa **Cerrar sesión** en **Mi cuenta** para salir de tu cuenta en este dispositivo. Esto limpia la sesión local y te permite volver a entrar con cualquier método sin quedarte bloqueado.
   </Accordion>
 
   <Accordion title="Cambio de contraseña">
-    Para cambiar tu contraseña actual, necesitas conocer la anterior. Si la olvidaste, usa el flujo de recuperación desde la pantalla de inicio de sesión.
+    Para cambiar tu contraseña actual, necesitas conocer la anterior. Si la olvidaste, usa el flujo de recuperación desde la pantalla de login.
 
     Requisitos de contraseña:
 
-    - Mínimo 8 caracteres
+    - Mínimo 12 caracteres
     - Al menos una mayúscula
+    - Al menos una minúscula
     - Al menos un número
-    - No puede coincidir con las últimas 3 contraseñas usadas
+    - No puede coincidir con la contraseña anterior
+  </Accordion>
+
+  <Accordion title="Recuperación de contraseña">
+    Si olvidaste tu contraseña, pulsa **¿Olvidaste tu contraseña?** en la pantalla de login. Recibirás un enlace de un solo uso en tu correo. Ábrelo en el mismo navegador donde iniciaste el proceso.
   </Accordion>
 
   <Accordion title="Alertas por email">
@@ -59,22 +39,21 @@ La seguridad de tu cuenta en VANTCALL es prioritaria, especialmente a medida que
     - Se inicia sesión desde un nuevo dispositivo
     - Se cambia la contraseña
     - Se vincula o desvincula un proveedor OAuth
-    - Se activa o desactiva el 2FA
 
-    Estas alertas son gratuitas y te las recomendamos sin importar tu plan.
+    Estas alertas son gratuitas y recomendadas para todos los usuarios, sin importar su plan.
   </Accordion>
 </AccordionGroup>
 
 ## Recomendaciones generales
 
 <Warning>
-  **Nunca compartas tu cuenta de VANTCALL.** El uso compartido de cuenta es motivo de suspensión permanente del ranking. Cada jugador debe tener su propio perfil verificado.
+  **Nunca compartas tu cuenta de VANTS.** El uso compartido de cuenta es motivo de suspensión permanente del ranking. Cada jugador debe tener su propio perfil verificado.
 </Warning>
 
 <Tip>
-  Revisa tus sesiones activas al menos **una vez por mes**. Es una buena práctica para detectar accesos anómalos antes de que generen problemas en torneos o ligas.
+  Revisa tus métodos de acceso al menos **una vez por mes**. Es una buena práctica detectar vinculaciones anómalas antes de que generen problemas en torneos o ligas.
 </Tip>
 
 <Info>
-  Si detectas una actividad sospechosa que no puedes resolver desde los ajustes, contacta con soporte inmediatamente a través de [Discord](https://discord.gg/rCHE7jvRS4). El equipo de moderación está activo en horario europeo e hispano.
+  Si detectas una actividad sospechosa que no puedes resolver desde los ajustes, contacta soporte inmediatamente a través de [Discord](https://discord.gg/rCHE7jvRS4) o escribe a [**feispla@hotmail.com**](mailto:feispla@hotmail.com). El equipo de moderación está activo en horario europeo e hispano.
 </Info>
