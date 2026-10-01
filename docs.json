@@ -31,6 +31,7 @@
               "acceso/registro",
               "acceso/iniciar-sesion",
               "acceso/proveedores",
+              "acceso/integraciones/steam-web-api",
               "cuenta/ajustes",
               "cuenta/seguridad"
             ]

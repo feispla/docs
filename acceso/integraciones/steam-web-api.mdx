@@ -1,0 +1,95 @@
+---
+title: "Steam Web API: referencia oficial de Valve"
+sidebarTitle: "Steam Web API"
+description: "Resumen de la Steam Web API de Valve, formatos de salida y OpenID como base para vincular cuentas de Steam en VANTS."
+---
+
+Steam Web API es el conjunto de servicios de Valve que expone datos públicos de Steam (usuarios, estadísticas, noticias) para integrarlos en aplicaciones externas. En VANTS la usamos como base para vincular cuentas de Steam de jugadores y verificar su identidad de forma segura.
+
+<Note>
+  Esta página es un resumen operativo de la documentación oficial de Valve, guardado como referencia interna. La fuente autorizada sigue siendo [Steam Web API Documentation](https://steamcommunity.com/dev).
+</Note>
+
+## Interfaces disponibles
+
+<CardGroup cols={2}>
+  <Card title="ISteamNews" icon="newspaper">
+    Métodos para obtener los feeds de noticias de cada juego de Steam.
+  </Card>
+  <Card title="ISteamUserStats" icon="chart-line">
+    Estadísticas globales por juego (logros, contadores, rankings).
+  </Card>
+  <Card title="ISteamUser" icon="user">
+    Información pública de usuarios de Steam a partir de su SteamID.
+  </Card>
+  <Card title="ITFItems_440" icon="box">
+    Datos de objetos del jugador en Team Fortress 2.
+  </Card>
+</CardGroup>
+
+## Clave de API
+
+Todo uso de la Steam Web API requiere una clave. Se solicita en [steamcommunity.com/dev/apikey](https://steamcommunity.com/dev/apikey) aceptando los [Steam Web API Terms of Use](https://steamcommunity.com/dev/apiterms).
+
+<Warning>
+  La clave es personal e intransferible. En VANTS se guarda como secreto en el backend (Supabase Edge Functions o variables de entorno), nunca en el cliente ni en el repositorio.
+</Warning>
+
+## Formato de las llamadas
+
+Todas las llamadas siguen esta estructura:
+
+```
+http://api.steampowered.com/<interfaz>/<método>/v<versión>/?key=<clave>&format=<formato>
+```
+
+Formatos de salida soportados:
+
+| Formato | Descripción |
+| --- | --- |
+| `json` | Respuesta JSON. Es el valor por defecto si se omite `format`. |
+| `xml` | Documento XML. |
+| `vdf` | Formato VDF de Valve. |
+
+Ejemplo de llamada real:
+
+```bash cURL
+curl "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=TU_CLAVE&steamids=76561197960435530"
+```
+
+## Steam como proveedor OpenID
+
+Steam actúa como proveedor OpenID 2.0. Permite autenticar el SteamID de un usuario sin pedirle nombre de usuario ni contraseña en tu sitio, lo cual es obligatorio: pedir credenciales de Steam directamente viola los términos de uso.
+
+<Steps>
+  <Step title="Elegir librería OpenID">
+    Usa una librería OpenID 2.0 compatible con el lenguaje del backend (por ejemplo, `openid` en Node.js o `python-openid` en Python).
+  </Step>
+  <Step title="Configurar proveedor">
+    Apunta la librería al proveedor `https://steamcommunity.com/openid`.
+  </Step>
+  <Step title="Leer el claimed ID">
+    Tras el retorno, el `claimed_id` tiene el formato `https://steamcommunity.com/openid/id/<steamid>`. El SteamID de 64 bits es la última parte de la URL.
+  </Step>
+  <Step title="Persistir el vínculo">
+    Guarda el SteamID en `user_game_accounts` con `game = 'steam'` y `verified = true` una vez validada la respuesta OpenID.
+  </Step>
+</Steps>
+
+## Uso en VANTS
+
+- **Vinculación de cuenta**: el jugador conecta su Steam desde VANTCALL Desktop. Usamos OpenID para obtener el SteamID sin pedir contraseña.
+- **Verificación**: marcamos la cuenta como `verified` solo tras el retorno OpenID válido.
+- **Datos públicos**: consultamos `ISteamUser/GetPlayerSummaries` para nombre público y avatar.
+- **Fuera de alcance**: la Steam Web API no expone historiales de partidas competitivas de CS2 ni Valorant por jugador individual, por lo que la ingesta de estadísticas de partida se hace mediante organizadores de torneo (Sprint 6).
+
+## Marca y enlaces
+
+Si expones el flujo de login en tu sitio, Valve pide usar los botones oficiales de "Sign in through Steam" enlazando a la página de login. Descarga los assets desde la documentación oficial de Valve.
+
+## Enlaces
+
+- [Steam Web API Documentation](https://steamcommunity.com/dev)
+- [Obtener clave de API](https://steamcommunity.com/dev/apikey)
+- [Términos de uso](https://steamcommunity.com/dev/apiterms)
+- [OpenID 2.0 en Steam](https://steamcommunity.com/openid/login)
