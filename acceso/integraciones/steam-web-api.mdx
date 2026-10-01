@@ -59,7 +59,7 @@ curl "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=TU_CLAV
 
 ## Steam como proveedor OpenID
 
-Steam actúa como proveedor OpenID 2.0. Permite autenticar el SteamID de un usuario sin pedirle nombre de usuario ni contraseña en tu sitio, lo cual es obligatorio: pedir credenciales de Steam directamente viola los términos de uso.
+Steam actúa como proveedor OpenID 2.0. Permite autenticar el SteamID de un usuario sin pedirle nombre de usuario ni contraseña en tu sitio. Esto es obligatorio: pedir credenciales de Steam directamente viola los términos de uso.
 
 <Steps>
   <Step title="Elegir librería OpenID">
@@ -81,7 +81,7 @@ Steam actúa como proveedor OpenID 2.0. Permite autenticar el SteamID de un usua
 - **Vinculación de cuenta**: el jugador conecta su Steam desde VANTCALL Desktop. Usamos OpenID para obtener el SteamID sin pedir contraseña.
 - **Verificación**: marcamos la cuenta como `verified` solo tras el retorno OpenID válido.
 - **Datos públicos**: consultamos `ISteamUser/GetPlayerSummaries` para nombre público y avatar.
-- **Fuera de alcance**: la Steam Web API no expone historiales de partidas competitivas de CS2 ni Valorant por jugador individual, por lo que la ingesta de estadísticas de partida se hace mediante organizadores de torneo (Sprint 6).
+- **Fuera de alcance**: la Steam Web API no expone historiales de partidas competitivas de CS2 ni VALORANT por jugador individual. Por eso, la ingesta de estadísticas de partida se hace mediante organizadores de torneo (Sprint 6).
 
 ## Marca y enlaces
 
