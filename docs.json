@@ -15,7 +15,6 @@
         "groups": [
           {
             "group": "Empezar",
-            "icon": "rocket",
             "pages": [
               "index",
               "empezar/quickstart",
@@ -25,25 +24,38 @@
           },
           {
             "group": "Cuenta y acceso",
-            "icon": "gear",
             "pages": [
               "acceso/index",
-              "acceso/registro",
-              "acceso/iniciar-sesion",
-              "acceso/proveedores",
-              "acceso/integraciones/steam-web-api",
-              "cuenta/ajustes",
-              "cuenta/seguridad"
+              {
+                "group": "Acceso",
+                "pages": [
+                  "acceso/registro",
+                  "acceso/iniciar-sesion",
+                  "acceso/proveedores",
+                  "acceso/integraciones/steam-web-api"
+                ]
+              },
+              {
+                "group": "Cuenta",
+                "pages": [
+                  "cuenta/ajustes",
+                  "cuenta/seguridad"
+                ]
+              }
             ]
           },
           {
             "group": "Ayuda y legal",
-            "icon": "scale-balanced",
             "pages": [
               "colabora/contacto",
-              "colabora/derechos-de-autor",
-              "colabora/privacidad",
-              "colabora/terminos"
+              {
+                "group": "Legal",
+                "pages": [
+                  "colabora/derechos-de-autor",
+                  "colabora/privacidad",
+                  "colabora/terminos"
+                ]
+              }
             ]
           }
         ]
@@ -53,18 +65,21 @@
         "groups": [
           {
             "group": "Planes",
-            "icon": "credit-card",
             "pages": [
               "monetizacion/planes",
-              "monetizacion/free",
-              "monetizacion/vant-basic",
-              "monetizacion/vant-pro",
-              "monetizacion/vant-elite"
+              {
+                "group": "Niveles",
+                "pages": [
+                  "monetizacion/free",
+                  "monetizacion/vant-basic",
+                  "monetizacion/vant-pro",
+                  "monetizacion/vant-elite"
+                ]
+              }
             ]
           },
           {
             "group": "Pagos",
-            "icon": "wallet",
             "pages": [
               "monetizacion/pagos",
               "monetizacion/facturacion",
